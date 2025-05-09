@@ -1,0 +1,16 @@
+services:
+  bot:
+    pull_policy: build
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile
+    container_name: thufir-bit
+    restart: unless-stopped
+    environment:
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge

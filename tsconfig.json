@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "module": "NodeNext",
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "sourceMap": true,
+    "lib": [
+      "es2022"
+    ],
+    "paths": {
+      "#commands": ["commands"],
+      "#commands/*": ["commands/*"],
+      "#events": ["events"],
+      "#events/*": ["events/*"],
+      "#models/*": ["models/*"],
+      "#types": ["types"],
+      "#types/*": ["types/*"],
+      "#utils/*": ["utils/*"],
+      "#config": ["config"]
+    }
+  },
+  "tsc-alias": {
+    "verbose": false,
+    "resolveFullPaths": true,
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
