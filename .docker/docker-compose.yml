@@ -4,10 +4,12 @@ services:
     build:
       context: ../
       dockerfile: .docker/Dockerfile
-    container_name: thufir-bit
+    container_name: thufir-bot
     restart: unless-stopped
     environment:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - GT_API_URL=${GT_API_URL}
+      - GT_CDN_URL=${GT_CDN_URL}
     networks:
       - network
 
