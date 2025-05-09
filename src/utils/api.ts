@@ -1,0 +1,53 @@
+import { config } from "#config";
+import type { SearchEntry } from "#types/database";
+import { cache } from "#utils/cache";
+import { logger } from "#utils/logger";
+
+export const api = {
+  search: async (query?: string, types?: string[]): Promise<SearchEntry[]> => {
+    let data = await customFetch<SearchEntry[]>('search');
+
+    if (!data) {
+      return [];
+    }
+
+    if (types?.length) {
+      data = data.filter((entry) => entry.type && types.includes(entry.type));
+    }
+
+    if (!query?.length) return data;
+
+    const regex = new RegExp(query, 'i');
+
+    return data.filter((entry) => entry.name && regex.test(entry.name));
+  },
+  get: async <T>(path: string): Promise<T | null> => {
+    const data = await customFetch<T>(path);
+
+    return data;
+  }
+};
+
+const format = (path: string) => config.apiUrl + '/' + encodeURI(path) + '.json';
+
+const customFetch = async <T>(path: string): Promise<T | null> => {
+  if (cache.has(path)) {
+    return cache.get(path);
+  }
+
+  let data: T | null = null;
+
+  try {
+    const response = await fetch(format(path));
+    data = (await response.json()) as T;
+    cache.set(path, data);
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      logger.error(`Syntax error while fetching ${format(path)}: ${error}`);
+    } else {
+      logger.error(`Failed to fetch ${format(path)}: ${error}`);
+    }
+  }
+
+  return data;
+};

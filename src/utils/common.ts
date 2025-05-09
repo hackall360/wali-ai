@@ -15,3 +15,14 @@ export const DEVELOPERS = [
 ];
 
 export const DATABASE_URL = 'https://dune.gaming.tools';
+
+export const truncateArray = <T>(arr: T[], length: number): Array<T | string> => {
+  if (arr.length <= length) {
+    return arr;
+  }
+
+  const truncatedArray = arr.slice(0, length);
+  const remaining = arr.length - length;
+
+  return [...truncatedArray, `and ${remaining} more`];
+};

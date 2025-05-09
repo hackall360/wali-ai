@@ -9,6 +9,7 @@ const client = new Client({
   shards: 'auto',
   intents: [GatewayIntentBits.Guilds],
   presence: {
+    status: 'online',
     activities: [
       {
         name: 'dune.gaming.tools',

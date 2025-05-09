@@ -7,3 +7,9 @@ export const contributors = new LRUCache<Snowflake, Date>({
   ttl: 1000 * 60 * 60,
   ttlAutopurge: true
 });
+
+export const cache = new LRUCache<string, any>({
+	max: 100,
+	ttl: 1000 * 60 * 60,
+	ttlAutopurge: true
+});
