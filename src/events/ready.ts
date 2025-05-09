@@ -1,11 +1,11 @@
 import { createServer } from 'node:http';
 
 import { Client, Events } from 'discord.js';
+import { register } from 'prom-client';
 
 import { Event } from '#models/event';
 import { logger } from '#utils/logger';
 import { PROMETHEUS_PORT, totalGuilds, totalUsers } from '#utils/prometheus';
-import { register } from 'prom-client';
 
 export default new (class extends Event {
   constructor() {
@@ -41,7 +41,9 @@ export default new (class extends Event {
       }
     });
 
-    server.listen(PROMETHEUS_PORT);
+    server.listen(PROMETHEUS_PORT, () => {
+      logger.info(`Prometheus metrics available at http://localhost:${PROMETHEUS_PORT}/metrics`);
+    });
 
     logger.info(
       `Logged in as ${client.user?.tag}, ready to serve ${client.guilds.cache.size} servers ${client.shard?.ids.length ? `on shard #${client.shard.ids[0]}` : ''}`
