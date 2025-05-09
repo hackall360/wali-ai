@@ -15,5 +15,3 @@ export const DEVELOPERS = [
 ];
 
 export const DATABASE_URL = 'https://dune.gaming.tools';
-export const API_URL = 'https://api.dune.gaming.tools';
-export const CDN_URL = 'https://cdn.dune.gaming.tools';
