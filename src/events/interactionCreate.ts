@@ -5,6 +5,7 @@ import { Event } from '#models/event';
 import { contributors } from '#utils/cache';
 import { KO_FI_URL } from '#utils/common';
 import { logger } from '#utils/logger';
+import { commandCounter, commandFailureCounter, commandSuccessCounter } from '#utils/prometheus';
 
 export default new (class extends Event {
   constructor() {
@@ -32,6 +33,12 @@ export default new (class extends Event {
 
     if (!command) return;
 
+    commandCounter.inc({
+      commandType: interaction.commandType,
+      type: interaction.type,
+      commandName: interaction.commandName
+    });
+
     logger.info(`Command interaction received: ${interaction.commandName}`);
 
     try {
@@ -50,11 +57,23 @@ export default new (class extends Event {
 
         await interaction.followUp({ embeds: [embed], ephemeral: true });
       }
+
+      commandSuccessCounter.inc({
+        commandType: interaction.commandType,
+        type: interaction.type,
+        commandName: interaction.commandName
+      });
     } catch (_error) {
       const error = _error as Error;
 
       logger.error(error.message);
       logger.error(error.stack);
+
+      commandFailureCounter.inc({
+        commandType: interaction.commandType,
+        type: interaction.type,
+        commandName: interaction.commandName
+      });
 
       try {
         if (interaction.isAutocomplete()) {

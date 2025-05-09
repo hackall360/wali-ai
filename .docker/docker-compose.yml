@@ -12,7 +12,10 @@ services:
       - GT_CDN_URL=${GT_CDN_URL}
     networks:
       - network
+      - monitoring
 
 networks:
   network:
     driver: bridge
+  monitoring:
+    external: true
