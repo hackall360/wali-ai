@@ -1,7 +1,7 @@
 import { Counter, Gauge } from 'prom-client';
 
 export const PROMETHEUS_PREFIX = 'thufir_bot_';
-export const PROMETHEUS_PORT = 45407;
+export const PROMETHEUS_PORT = 52278;
 
 export const totalGuilds = new Gauge({
 	name: PROMETHEUS_PREFIX + 'guilds_total',
