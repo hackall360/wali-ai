@@ -48,7 +48,7 @@ export default new (class extends Command {
       return;
     }
 
-    const components = new ActionRowBuilder<ButtonBuilder>();
+    const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
     const embed = new EmbedBuilder();
 
@@ -58,7 +58,7 @@ export default new (class extends Command {
       embed.setTitle(data.name);
       embed.setURL(`${DATABASE_URL}/npcs/${data.id}`);
       if (data.locations?.length) {
-        components.addComponents(
+        actionRow.addComponents(
           new ButtonBuilder({
             label: 'View locations',
             style: ButtonStyle.Link,
@@ -79,17 +79,14 @@ export default new (class extends Command {
     const fields: APIEmbedField[] = [];
 
     if (data.contracts?.length) {
+      const contracts = data.contracts.map((contract) => {
+        if (!contract?.name) return 'Unknown';
+        return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)
+      });
+
       fields.push({
-        name: 'Contracts',
-        value: unorderedList(
-          truncateArray(
-            data.contracts.map((contract) => {
-              if (!contract?.name) return 'Unknown';
-              return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)
-            }),
-            5
-          )
-        ),
+        name: 'Related Contracts',
+        value: unorderedList(truncateArray(contracts, 5)),
       });
     }
 
@@ -97,7 +94,7 @@ export default new (class extends Command {
 
     await interaction.editReply({
       embeds: [embed],
-      components: components.components.length ? [components] : []
+      components: actionRow.components.length ? [actionRow] : []
     });
   }
 
@@ -118,5 +115,4 @@ export default new (class extends Command {
         }))
     );
   }
-
 })();

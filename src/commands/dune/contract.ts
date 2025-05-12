@@ -48,7 +48,7 @@ export default new (class extends Command {
       return;
     }
 
-    const components = new ActionRowBuilder<ButtonBuilder>();
+    const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
     const embed = new EmbedBuilder();
 
@@ -57,15 +57,6 @@ export default new (class extends Command {
     if (data.name) {
       embed.setTitle(data.name);
       embed.setURL(`${DATABASE_URL}/contracts/${data.id}`);
-      if (data.conditions?.some((condition) => condition.locations)) {
-        components.addComponents(
-          new ButtonBuilder({
-            label: 'View locations',
-            style: ButtonStyle.Link,
-            url: `${DATABASE_URL}/contracts/${data.id}`,
-          }),
-        );
-      }
     }
 
     if (data.description) {
@@ -79,21 +70,29 @@ export default new (class extends Command {
     const fields: APIEmbedField[] = [];
 
     if (data.conditions?.length) {
-      fields.push({
-        name: 'Conditions',
-        // TODO: Verify if this is correct
-        value: unorderedList(data.conditions.map((condition) => {
-          if (condition.name) {
-            if (condition.number) {
-              return condition.name.replace("{number}", condition.number.toString());
-            }
-            if (condition.name) {
-              return condition.name;
-            }
-          }
-          return "Unknown";
-        }))
+      if (data.conditions.some((condition) => condition.locations)) {
+        actionRow.addComponents(
+          new ButtonBuilder({
+            label: 'View locations',
+            style: ButtonStyle.Link,
+            url: `${DATABASE_URL}/contracts/${data.id}`,
+          }),
+        );
+      }
+
+      const conditions = data.conditions.map((condition) => {
+        if (condition.name) {
+          return condition.number ? condition.name.replace("{number}", condition.number.toString()) : condition.name;
+        }
+        return "Unknown";
       });
+
+      if (conditions.length) {
+        fields.push({
+          name: 'Conditions',
+          value: unorderedList(truncateArray(conditions, 5))
+        });
+      }
     }
 
     if (data.chainName && data.chainContracts?.length) {
@@ -107,7 +106,7 @@ export default new (class extends Command {
 
     await interaction.editReply({
       embeds: [embed],
-      components: components.components.length ? [components] : []
+      components: actionRow.components.length ? [actionRow] : []
     });
   }
 
@@ -128,5 +127,4 @@ export default new (class extends Command {
         }))
     );
   }
-
 })();
