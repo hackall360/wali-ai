@@ -4,13 +4,13 @@ import {
   ButtonBuilder,
   ButtonStyle,
   CommandInteraction,
-  EmbedBuilder,
   chatInputApplicationCommandMention,
   inlineCode,
-  unorderedList,
+  unorderedList
 } from 'discord.js';
 
 import { Command } from '#models/command';
+import { Embed } from '#models/embed';
 import { BOT_PERMISSIONS, KO_FI_URL } from '#utils/common';
 
 export default new (class extends Command {
@@ -72,12 +72,14 @@ export default new (class extends Command {
       return `${names.join(' - ')} : ${command.description}`;
     });
 
-    const embed = new EmbedBuilder();
+    const embed = new Embed();
 
     embed.setAuthor({
       name: `${interaction.client.user.username}'s commands`,
       iconURL: interaction.client.user.displayAvatarURL(),
     });
+
+    embed.setThumbnail(interaction.client.user.displayAvatarURL());
 
     embed.setDescription(
       [
@@ -85,10 +87,6 @@ export default new (class extends Command {
         unorderedList(list),
       ].join('\n\n')
     );
-
-    embed.setThumbnail(interaction.client.user.displayAvatarURL());
-
-    embed.setColor(0xf3deb5);
 
     embed.setFooter({
       text: interaction.client.user.username,

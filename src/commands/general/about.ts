@@ -36,8 +36,6 @@ export default new (class extends Command {
 
     embed.setThumbnail(interaction.client.user.displayAvatarURL());
 
-    embed.setColor(0xf3deb5);
-
     const fields: APIEmbedField[] = [];
 
     const shardInfo = interaction.client.shard
@@ -57,7 +55,7 @@ export default new (class extends Command {
       ]),
     });
 
-    if (fields.length) embed.setFields(fields);
+    embed.addFields(fields);
 
     embed.setFooter({
       text: interaction.client.user.username,

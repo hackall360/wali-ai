@@ -5,7 +5,6 @@ import {
   ButtonBuilder,
   ButtonStyle,
   CommandInteraction,
-  EmbedBuilder,
   hyperlink,
   unorderedList,
   type APIEmbedField
@@ -13,6 +12,7 @@ import {
 
 import { config } from '#config';
 import { Command } from '#models/command';
+import { Embed } from '#models/embed';
 import { type ItemModel } from '#types/database';
 import { api } from '#utils/api';
 import { DATABASE_URL, truncateArray } from '#utils/common';
@@ -50,9 +50,7 @@ export default new (class extends Command {
 
     const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
-    const embed = new EmbedBuilder();
-
-    embed.setColor(0xf3deb5);
+    const embed = new Embed();
 
     if (data.name) {
       embed.setTitle(data.name);
