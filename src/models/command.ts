@@ -1,8 +1,4 @@
-import type {
-  AutocompleteInteraction,
-  CommandInteraction,
-  RESTPostAPIApplicationCommandsJSONBody
-} from 'discord.js';
+import type { AutocompleteInteraction, CommandInteraction, RESTPostAPIApplicationCommandsJSONBody } from 'discord.js';
 
 export abstract class Command {
   public readonly data: RESTPostAPIApplicationCommandsJSONBody;

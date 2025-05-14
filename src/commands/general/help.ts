@@ -6,7 +6,7 @@ import {
   CommandInteraction,
   chatInputApplicationCommandMention,
   inlineCode,
-  unorderedList
+  unorderedList,
 } from 'discord.js';
 
 import { Command } from '#models/command';

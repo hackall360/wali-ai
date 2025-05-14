@@ -1,6 +1,5 @@
-import { createServer } from 'node:http';
-
 import { Client, Events } from 'discord.js';
+import { createServer } from 'node:http';
 import { register } from 'prom-client';
 
 import { Event } from '#models/event';
@@ -13,7 +12,6 @@ export default new (class extends Event {
   }
 
   async listener(client: Client): Promise<void> {
-
     totalGuilds.set(client.guilds.cache.size);
 
     for (const [, guild] of client.guilds.cache) {

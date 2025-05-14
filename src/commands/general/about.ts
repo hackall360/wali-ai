@@ -40,9 +40,9 @@ export default new (class extends Command {
 
     const shardInfo = interaction.client.shard
       ? [
-        interaction.client.shard.count ? `Shards: ${interaction.client.shard.count}` : '',
-        interaction.client.shard.ids.length ? `Shard: #${interaction.client.shard.ids[0]}` : '',
-      ].filter(Boolean)
+          interaction.client.shard.count ? `Shards: ${interaction.client.shard.count}` : '',
+          interaction.client.shard.ids.length ? `Shard: #${interaction.client.shard.ids[0]}` : '',
+        ].filter(Boolean)
       : [];
 
     fields.push({

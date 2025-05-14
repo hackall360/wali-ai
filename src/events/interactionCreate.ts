@@ -1,4 +1,12 @@
-import { EmbedBuilder, Events, hyperlink, type Interaction, type InteractionReplyOptions, MessageFlags, MessagePayload } from 'discord.js';
+import {
+  EmbedBuilder,
+  Events,
+  type Interaction,
+  type InteractionReplyOptions,
+  MessageFlags,
+  MessagePayload,
+  hyperlink,
+} from 'discord.js';
 
 import { commands } from '#commands';
 import { Event } from '#models/event';
@@ -36,7 +44,7 @@ export default new (class extends Event {
     commandCounter.inc({
       commandType: interaction.commandType,
       type: interaction.type,
-      commandName: interaction.commandName
+      commandName: interaction.commandName,
     });
 
     logger.info(`Command interaction received: ${interaction.commandName}`);
@@ -61,7 +69,7 @@ export default new (class extends Event {
       commandSuccessCounter.inc({
         commandType: interaction.commandType,
         type: interaction.type,
-        commandName: interaction.commandName
+        commandName: interaction.commandName,
       });
     } catch (_error) {
       const error = _error as Error;
@@ -72,7 +80,7 @@ export default new (class extends Event {
       commandFailureCounter.inc({
         commandType: interaction.commandType,
         type: interaction.type,
-        commandName: interaction.commandName
+        commandName: interaction.commandName,
       });
 
       try {

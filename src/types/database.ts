@@ -11,253 +11,253 @@
  */
 
 export enum LocalizationField {
-  ListingTitle = "ListingTitle",
-  ListingDescription = "ListingDescription",
-  DetailsTitle = "DetailsTitle",
-  DetailsDescription = "DetailsDescription",
+  ListingTitle = 'ListingTitle',
+  ListingDescription = 'ListingDescription',
+  DetailsTitle = 'DetailsTitle',
+  DetailsDescription = 'DetailsDescription',
 }
 
 export enum Language {
-  En = "En",
+  En = 'En',
 }
 
 export enum EntityType {
-  None = "None",
-  Unknown = "Unknown",
-  Any = "Any",
-  Item = "Item",
-  Recipe = "Recipe",
-  TechTree = "TechTree",
-  BuildableUnlockableSet = "BuildableUnlockableSet",
-  Placeable = "Placeable",
-  Npc = "Npc",
-  Faction = "Faction",
-  Contract = "Contract",
-  Dialogue = "Dialogue",
-  JourneyStory = "JourneyStory",
-  LootContainer = "LootContainer",
-  LootSpawner = "LootSpawner",
-  Skill = "Skill",
-  Research = "Research",
+  None = 'None',
+  Unknown = 'Unknown',
+  Any = 'Any',
+  Item = 'Item',
+  Recipe = 'Recipe',
+  TechTree = 'TechTree',
+  BuildableUnlockableSet = 'BuildableUnlockableSet',
+  Placeable = 'Placeable',
+  Npc = 'Npc',
+  Faction = 'Faction',
+  Contract = 'Contract',
+  Dialogue = 'Dialogue',
+  JourneyStory = 'JourneyStory',
+  LootContainer = 'LootContainer',
+  LootSpawner = 'LootSpawner',
+  Skill = 'Skill',
+  Research = 'Research',
 }
 
 export enum EVectorQuantization {
-  None = "None",
-  RoundWholeNumber = "RoundWholeNumber",
-  RoundOneDecimal = "RoundOneDecimal",
-  RoundTwoDecimals = "RoundTwoDecimals",
+  None = 'None',
+  RoundWholeNumber = 'RoundWholeNumber',
+  RoundOneDecimal = 'RoundOneDecimal',
+  RoundTwoDecimals = 'RoundTwoDecimals',
 }
 
 export enum ETickingGroup {
-  None = "None",
-  TGPrePhysics = "TG_PrePhysics",
-  TGStartPhysics = "TG_StartPhysics",
-  TGDuringPhysics = "TG_DuringPhysics",
-  TGEndPhysics = "TG_EndPhysics",
-  TGPostPhysics = "TG_PostPhysics",
-  TGPostUpdateWork = "TG_PostUpdateWork",
-  TGLastDemotable = "TG_LastDemotable",
-  TGNewlySpawned = "TG_NewlySpawned",
-  TG_MAX = "TG_MAX",
+  None = 'None',
+  TGPrePhysics = 'TG_PrePhysics',
+  TGStartPhysics = 'TG_StartPhysics',
+  TGDuringPhysics = 'TG_DuringPhysics',
+  TGEndPhysics = 'TG_EndPhysics',
+  TGPostPhysics = 'TG_PostPhysics',
+  TGPostUpdateWork = 'TG_PostUpdateWork',
+  TGLastDemotable = 'TG_LastDemotable',
+  TGNewlySpawned = 'TG_NewlySpawned',
+  TG_MAX = 'TG_MAX',
 }
 
 export enum ESurfaceSnappingType {
-  None = "None",
-  ToSurface = "ToSurface",
-  ToSurfaceNormal = "ToSurfaceNormal",
-  ToLowestSurfaceInArea = "ToLowestSurfaceInArea",
-  ToTopmostSurfaceInArea = "ToTopmostSurfaceInArea",
+  None = 'None',
+  ToSurface = 'ToSurface',
+  ToSurfaceNormal = 'ToSurfaceNormal',
+  ToLowestSurfaceInArea = 'ToLowestSurfaceInArea',
+  ToTopmostSurfaceInArea = 'ToTopmostSurfaceInArea',
 }
 
 export enum ESpawnActorCollisionHandlingMethod {
-  None = "None",
-  Undefined = "Undefined",
-  AlwaysSpawn = "AlwaysSpawn",
-  AdjustIfPossibleButAlwaysSpawn = "AdjustIfPossibleButAlwaysSpawn",
-  AdjustIfPossibleButDontSpawnIfColliding = "AdjustIfPossibleButDontSpawnIfColliding",
-  DontSpawnIfColliding = "DontSpawnIfColliding",
+  None = 'None',
+  Undefined = 'Undefined',
+  AlwaysSpawn = 'AlwaysSpawn',
+  AdjustIfPossibleButAlwaysSpawn = 'AdjustIfPossibleButAlwaysSpawn',
+  AdjustIfPossibleButDontSpawnIfColliding = 'AdjustIfPossibleButDontSpawnIfColliding',
+  DontSpawnIfColliding = 'DontSpawnIfColliding',
 }
 
 export enum ESkillType {
-  None = "None",
-  Ability = "Ability",
-  Technique = "Technique",
-  Attribute = "Attribute",
+  None = 'None',
+  Ability = 'Ability',
+  Technique = 'Technique',
+  Attribute = 'Attribute',
 }
 
 export enum ESkillTree {
-  None = "None",
-  Hidden = "Hidden",
-  BeneGesserit = "BeneGesserit",
-  Mentat = "Mentat",
-  Trooper = "Trooper",
-  Swordmaster = "Swordmaster",
-  Planetologist = "Planetologist",
-  MAX = "MAX",
+  None = 'None',
+  Hidden = 'Hidden',
+  BeneGesserit = 'BeneGesserit',
+  Mentat = 'Mentat',
+  Trooper = 'Trooper',
+  Swordmaster = 'Swordmaster',
+  Planetologist = 'Planetologist',
+  MAX = 'MAX',
 }
 
 export enum ES2SCull {
-  None = "None",
-  Players = "Players",
-  DistanceOnly = "DistanceOnly",
-  Off = "Off",
+  None = 'None',
+  Players = 'Players',
+  DistanceOnly = 'DistanceOnly',
+  Off = 'Off',
 }
 
 export enum ERotatorQuantization {
-  None = "None",
-  ByteComponents = "ByteComponents",
-  ShortComponents = "ShortComponents",
+  None = 'None',
+  ByteComponents = 'ByteComponents',
+  ShortComponents = 'ShortComponents',
 }
 
 export enum ERangeBoundTypes {
-  None = "None",
-  Exclusive = "Exclusive",
-  Inclusive = "Inclusive",
-  Open = "Open",
+  None = 'None',
+  Exclusive = 'Exclusive',
+  Inclusive = 'Inclusive',
+  Open = 'Open',
 }
 
 export enum EObjectNeedsLoadFor {
-  None = "None",
-  ClientAndServer = "ClientAndServer",
-  ClientOnly = "ClientOnly",
-  ServerOnly = "ServerOnly",
-  EditorOnly = "EditorOnly",
+  None = 'None',
+  ClientAndServer = 'ClientAndServer',
+  ClientOnly = 'ClientOnly',
+  ServerOnly = 'ServerOnly',
+  EditorOnly = 'EditorOnly',
 }
 
 export enum ENetRole {
-  None = "None",
-  ROLENone = "ROLE_None",
-  ROLESimulatedProxy = "ROLE_SimulatedProxy",
-  ROLEAutonomousProxy = "ROLE_AutonomousProxy",
-  ROLEAuthority = "ROLE_Authority",
-  ROLE_MAX = "ROLE_MAX",
+  None = 'None',
+  ROLENone = 'ROLE_None',
+  ROLESimulatedProxy = 'ROLE_SimulatedProxy',
+  ROLEAutonomousProxy = 'ROLE_AutonomousProxy',
+  ROLEAuthority = 'ROLE_Authority',
+  ROLE_MAX = 'ROLE_MAX',
 }
 
 export enum ENetDormancy {
-  None = "None",
-  DORMNever = "DORM_Never",
-  DORMAwake = "DORM_Awake",
-  DORMDormantAll = "DORM_DormantAll",
-  DORMDormantPartial = "DORM_DormantPartial",
-  DORMInitial = "DORM_Initial",
-  DORM_MAX = "DORM_MAX",
+  None = 'None',
+  DORMNever = 'DORM_Never',
+  DORMAwake = 'DORM_Awake',
+  DORMDormantAll = 'DORM_DormantAll',
+  DORMDormantPartial = 'DORM_DormantPartial',
+  DORMInitial = 'DORM_Initial',
+  DORM_MAX = 'DORM_MAX',
 }
 
 export enum ELootTableItemVariety {
-  None = "None",
-  RandomItems = "RandomItems",
-  LockFirstRandomItem = "LockFirstRandomItem",
-  Unique = "Unique",
+  None = 'None',
+  RandomItems = 'RandomItems',
+  LockFirstRandomItem = 'LockFirstRandomItem',
+  Unique = 'Unique',
 }
 
 export enum EJourneyNodeEventState {
-  None = "None",
-  Hidden = "Hidden",
-  Revealed = "Revealed",
-  Completed = "Completed",
+  None = 'None',
+  Hidden = 'Hidden',
+  Revealed = 'Revealed',
+  Completed = 'Completed',
 }
 
 export enum EHostilityType {
-  None = "None",
-  Neutral = "Neutral",
-  Hostile = "Hostile",
+  None = 'None',
+  Neutral = 'Neutral',
+  Hostile = 'Hostile',
 }
 
 export enum EGameplayModOp {
-  None = "None",
-  Additive = "Additive",
-  Multiplicitive = "Multiplicitive",
-  Division = "Division",
-  Override = "Override",
-  Max = "Max",
+  None = 'None',
+  Additive = 'Additive',
+  Multiplicitive = 'Multiplicitive',
+  Division = 'Division',
+  Override = 'Override',
+  Max = 'Max',
 }
 
 export enum EContractConditionType {
-  None = "None",
-  Invalid = "Invalid",
-  KillNumber = "KillNumber",
-  ClearArea = "ClearArea",
-  DeliverItemById = "DeliverItemById",
-  ReceiveItemById = "ReceiveItemById",
-  Interact = "Interact",
-  GoToLocation = "GoToLocation",
-  ScanObject = "ScanObject",
-  UseAbility = "UseAbility",
-  PlayerHasFlags = "PlayerHasFlags",
-  HandInContract = "HandInContract",
-  ContactIssuer = "ContactIssuer",
-  Exsanguination = "Exsanguination",
+  None = 'None',
+  Invalid = 'Invalid',
+  KillNumber = 'KillNumber',
+  ClearArea = 'ClearArea',
+  DeliverItemById = 'DeliverItemById',
+  ReceiveItemById = 'ReceiveItemById',
+  Interact = 'Interact',
+  GoToLocation = 'GoToLocation',
+  ScanObject = 'ScanObject',
+  UseAbility = 'UseAbility',
+  PlayerHasFlags = 'PlayerHasFlags',
+  HandInContract = 'HandInContract',
+  ContactIssuer = 'ContactIssuer',
+  Exsanguination = 'Exsanguination',
 }
 
 export enum ECompositeConditionType {
-  None = "None",
-  And = "And",
-  Or = "Or",
+  None = 'None',
+  And = 'And',
+  Or = 'Or',
 }
 
 export enum EAutoReceiveInput {
-  None = "None",
-  Disabled = "Disabled",
-  Player0 = "Player0",
-  Player1 = "Player1",
-  Player2 = "Player2",
-  Player3 = "Player3",
-  Player4 = "Player4",
-  Player5 = "Player5",
-  Player6 = "Player6",
-  Player7 = "Player7",
+  None = 'None',
+  Disabled = 'Disabled',
+  Player0 = 'Player0',
+  Player1 = 'Player1',
+  Player2 = 'Player2',
+  Player3 = 'Player3',
+  Player4 = 'Player4',
+  Player5 = 'Player5',
+  Player6 = 'Player6',
+  Player7 = 'Player7',
 }
 
 export enum EAuthorityTransferState {
-  None = "None",
-  AUTHTRANSFERNone = "AUTHTRANSFER_None",
-  AUTHTRANSFERTransferring = "AUTHTRANSFER_Transferring",
-  AUTHTRANSFERFixed = "AUTHTRANSFER_Fixed",
-  AUTHTRANSFERSerializing = "AUTHTRANSFER_Serializing",
-  AUTHTRANSFER_MAX = "AUTHTRANSFER_MAX",
+  None = 'None',
+  AUTHTRANSFERNone = 'AUTHTRANSFER_None',
+  AUTHTRANSFERTransferring = 'AUTHTRANSFER_Transferring',
+  AUTHTRANSFERFixed = 'AUTHTRANSFER_Fixed',
+  AUTHTRANSFERSerializing = 'AUTHTRANSFER_Serializing',
+  AUTHTRANSFER_MAX = 'AUTHTRANSFER_MAX',
 }
 
 export enum EActorUpdateOverlapsMethod {
-  None = "None",
-  UseConfigDefault = "UseConfigDefault",
-  AlwaysUpdate = "AlwaysUpdate",
-  OnlyUpdateMovable = "OnlyUpdateMovable",
-  NeverUpdate = "NeverUpdate",
+  None = 'None',
+  UseConfigDefault = 'UseConfigDefault',
+  AlwaysUpdate = 'AlwaysUpdate',
+  OnlyUpdateMovable = 'OnlyUpdateMovable',
+  NeverUpdate = 'NeverUpdate',
 }
 
 export enum DepthType {
-  Cv8U = "Cv8U",
-  Cv8S = "Cv8S",
-  Cv16U = "Cv16U",
-  Cv16S = "Cv16S",
-  Cv32S = "Cv32S",
-  Cv32F = "Cv32F",
-  Cv64F = "Cv64F",
-  Default = "Default",
+  Cv8U = 'Cv8U',
+  Cv8S = 'Cv8S',
+  Cv16U = 'Cv16U',
+  Cv16S = 'Cv16S',
+  Cv32S = 'Cv32S',
+  Cv32F = 'Cv32F',
+  Cv64F = 'Cv64F',
+  Default = 'Default',
 }
 
 export enum BindingFlags {
-  Default = "Default",
-  IgnoreCase = "IgnoreCase",
-  DeclaredOnly = "DeclaredOnly",
-  Instance = "Instance",
-  Static = "Static",
-  Public = "Public",
-  NonPublic = "NonPublic",
-  FlattenHierarchy = "FlattenHierarchy",
-  InvokeMethod = "InvokeMethod",
-  CreateInstance = "CreateInstance",
-  GetField = "GetField",
-  SetField = "SetField",
-  GetProperty = "GetProperty",
-  SetProperty = "SetProperty",
-  PutDispProperty = "PutDispProperty",
-  PutRefDispProperty = "PutRefDispProperty",
-  ExactBinding = "ExactBinding",
-  SuppressChangeType = "SuppressChangeType",
-  OptionalParamBinding = "OptionalParamBinding",
-  IgnoreReturn = "IgnoreReturn",
-  DoNotWrapExceptions = "DoNotWrapExceptions",
+  Default = 'Default',
+  IgnoreCase = 'IgnoreCase',
+  DeclaredOnly = 'DeclaredOnly',
+  Instance = 'Instance',
+  Static = 'Static',
+  Public = 'Public',
+  NonPublic = 'NonPublic',
+  FlattenHierarchy = 'FlattenHierarchy',
+  InvokeMethod = 'InvokeMethod',
+  CreateInstance = 'CreateInstance',
+  GetField = 'GetField',
+  SetField = 'SetField',
+  GetProperty = 'GetProperty',
+  SetProperty = 'SetProperty',
+  PutDispProperty = 'PutDispProperty',
+  PutRefDispProperty = 'PutRefDispProperty',
+  ExactBinding = 'ExactBinding',
+  SuppressChangeType = 'SuppressChangeType',
+  OptionalParamBinding = 'OptionalParamBinding',
+  IgnoreReturn = 'IgnoreReturn',
+  DoNotWrapExceptions = 'DoNotWrapExceptions',
 }
 
 export interface ActorTickFunction {
@@ -475,12 +475,8 @@ export interface BPTerrainBlockActorC {
   m_bWasObjectLoaded?: boolean;
   m_bIsTerrainBlockEnabled?: boolean;
   m_TerrainBlockAsset?: ObjectProperty;
-  m_SubLevelGroupsSettings?:
-    | KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[]
-    | null;
-  m_SubContentBlocksSettings?:
-    | TerrainBlockTemplateSubLevelContentBlockSettings[]
-    | null;
+  m_SubLevelGroupsSettings?: KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[] | null;
+  m_SubContentBlocksSettings?: TerrainBlockTemplateSubLevelContentBlockSettings[] | null;
   m_bIsVistaOnly?: boolean;
   debugArea?: boolean;
 }
@@ -2173,9 +2169,7 @@ export interface TerrainBlockTemplateSubLevelContentBlockSettings {
   bShouldOverrideTerrainBlockAsset?: boolean;
   terrainBlockAsset?: ObjectProperty;
   bShouldOverrideSubLevelsGroups?: boolean;
-  subLevelsGroupsOverride?:
-    | TerrainBlockTemplateSubLevelGroupSettingsOverride[]
-    | null;
+  subLevelsGroupsOverride?: TerrainBlockTemplateSubLevelGroupSettingsOverride[] | null;
 }
 
 export interface TerrainBlockTemplateSubLevelGroupSettings {

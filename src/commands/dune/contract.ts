@@ -1,4 +1,5 @@
 import {
+  type APIEmbedField,
   ActionRowBuilder,
   ApplicationCommandOptionType,
   AutocompleteInteraction,
@@ -7,7 +8,6 @@ import {
   CommandInteraction,
   hyperlink,
   unorderedList,
-  type APIEmbedField
 } from 'discord.js';
 
 import { config } from '#config';
@@ -28,9 +28,9 @@ export default new (class extends Command {
           description: 'Name of the contract',
           type: ApplicationCommandOptionType.String,
           required: true,
-          autocomplete: true
-        }
-      ]
+          autocomplete: true,
+        },
+      ],
     });
   }
 
@@ -62,7 +62,7 @@ export default new (class extends Command {
     }
 
     if (data.iconPath) {
-      embed.setThumbnail(`${config.cdnUrl}${data.iconPath.replace('{height}', '256')}`);
+      embed.setThumbnail(`${config.cdnUrl}${data.iconPath}`);
     }
 
     const fields: APIEmbedField[] = [];
@@ -74,21 +74,21 @@ export default new (class extends Command {
             label: 'View locations',
             style: ButtonStyle.Link,
             url: `${DATABASE_URL}/contracts/${data.id}`,
-          }),
+          })
         );
       }
 
       const conditions = data.conditions.map((condition) => {
         if (condition.name) {
-          return condition.number ? condition.name.replace("{number}", condition.number.toString()) : condition.name;
+          return condition.number ? condition.name.replace('{number}', condition.number.toString()) : condition.name;
         }
-        return "Unknown";
+        return 'Unknown';
       });
 
       if (conditions.length) {
         fields.push({
           name: 'Conditions',
-          value: unorderedList(truncateArray(conditions, 5))
+          value: unorderedList(truncateArray(conditions, 5)),
         });
       }
     }
@@ -96,15 +96,22 @@ export default new (class extends Command {
     if (data.chainName && data.chainContracts?.length) {
       fields.push({
         name: data.chainName,
-        value: unorderedList(truncateArray(data.chainContracts.map((contract) => hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)), 5))
+        value: unorderedList(
+          truncateArray(
+            data.chainContracts.map((contract) =>
+              hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)
+            ),
+            5
+          )
+        ),
       });
     }
 
-    embed.addFields(fields)
+    embed.addFields(fields);
 
     await interaction.editReply({
       embeds: [embed],
-      components: actionRow.components.length ? [actionRow] : []
+      components: actionRow.components.length ? [actionRow] : [],
     });
   }
 
@@ -112,7 +119,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(value, ["Contracts"])
+    let data = await api.search(value, ['Contracts']);
 
     data = data.slice(0, 25);
 
@@ -121,7 +128,7 @@ export default new (class extends Command {
         .filter((entry) => entry.name !== undefined && entry.path !== undefined)
         .map((entry) => ({
           name: entry.name as string,
-          value: entry.path as string
+          value: entry.path as string,
         }))
     );
   }

@@ -14,4 +14,3 @@ export default new (class extends Event {
     totalUsers.inc({ guildId: member.guild.id });
   }
 })();
-

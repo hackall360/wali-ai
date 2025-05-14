@@ -1,4 +1,5 @@
 import {
+  type APIEmbedField,
   ActionRowBuilder,
   ApplicationCommandOptionType,
   AutocompleteInteraction,
@@ -7,7 +8,6 @@ import {
   CommandInteraction,
   hyperlink,
   unorderedList,
-  type APIEmbedField
 } from 'discord.js';
 
 import { config } from '#config';
@@ -28,9 +28,9 @@ export default new (class extends Command {
           description: 'Name of the item',
           type: ApplicationCommandOptionType.String,
           required: true,
-          autocomplete: true
-        }
-      ]
+          autocomplete: true,
+        },
+      ],
     });
   }
 
@@ -62,7 +62,7 @@ export default new (class extends Command {
     }
 
     if (data.iconPath) {
-      embed.setThumbnail(`${config.cdnUrl}${data.iconPath.replace('{height}', '256')}`);
+      embed.setThumbnail(`${config.cdnUrl}${data.iconPath}`);
     }
 
     if (data.dropLocations?.length) {
@@ -71,7 +71,7 @@ export default new (class extends Command {
           label: 'View locations',
           style: ButtonStyle.Link,
           url: `${DATABASE_URL}/items/${data.id}`,
-        }),
+        })
       );
     }
 
@@ -82,7 +82,7 @@ export default new (class extends Command {
     if (data.requiredForContract?.length) {
       const contracts = data.requiredForContract.map((contract) => {
         if (!contract?.name) return 'Unknown';
-        return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)
+        return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`);
       });
 
       fields.push({
@@ -91,11 +91,11 @@ export default new (class extends Command {
       });
     }
 
-    embed.addFields(fields)
+    embed.addFields(fields);
 
     await interaction.editReply({
       embeds: [embed],
-      components: actionRow.components.length ? [actionRow] : []
+      components: actionRow.components.length ? [actionRow] : [],
     });
   }
 
@@ -103,7 +103,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(value, ["Items", "Misc", "Weapons", "Utilty", "Vehicles", "Garment", "Contract"])
+    let data = await api.search(value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract']);
 
     data = data.slice(0, 25);
 
@@ -112,7 +112,7 @@ export default new (class extends Command {
         .filter((entry) => entry.name !== undefined && entry.path !== undefined)
         .map((entry) => ({
           name: entry.name as string,
-          value: entry.path as string
+          value: entry.path as string,
         }))
     );
   }

@@ -1,7 +1,7 @@
-import { config } from "#config";
-import type { SearchEntry } from "#types/database";
-import { cache } from "#utils/cache";
-import { logger } from "#utils/logger";
+import { config } from '#config';
+import type { SearchEntry } from '#types/database';
+import { cache } from '#utils/cache';
+import { logger } from '#utils/logger';
 
 export const api = {
   search: async (query?: string, types?: string[]): Promise<SearchEntry[]> => {
@@ -25,7 +25,7 @@ export const api = {
     const data = await customFetch<T>(path);
 
     return data;
-  }
+  },
 };
 
 const format = (path: string) => config.apiUrl + '/' + encodeURI(path) + '.json';
