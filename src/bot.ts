@@ -53,6 +53,18 @@ await client.login(config.token);
 
 await registerCommands(client);
 
+process.on('SIGINT', () => {
+  logger.info('SIGINT received. Shutting down...');
+  client.destroy();
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM received. Shutting down...');
+  client.destroy();
+  process.exit(0);
+});
+
 process.on('uncaughtException', (error) => {
   logger.error(`Uncaught exception: ${error}`);
   process.exit(1);
