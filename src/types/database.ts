@@ -10,265 +10,303 @@
  * ---------------------------------------------------------------
  */
 
+export enum MapLocationType {
+  Marker = "Marker",
+  Npc = "Npc",
+  LootContainer = "LootContainer",
+  ExplorationVolume = "ExplorationVolume",
+  PentashieldKey = "PentashieldKey",
+  SecretDoor = "SecretDoor",
+  InteractionTarget = "InteractionTarget",
+}
+
 export enum LocalizationField {
-  ListingTitle = 'ListingTitle',
-  ListingDescription = 'ListingDescription',
-  DetailsTitle = 'DetailsTitle',
-  DetailsDescription = 'DetailsDescription',
+  ListingTitle = "ListingTitle",
+  ListingDescription = "ListingDescription",
+  DetailsTitle = "DetailsTitle",
+  DetailsDescription = "DetailsDescription",
 }
 
 export enum Language {
-  En = 'En',
+  En = "En",
 }
 
 export enum EntityType {
-  None = 'None',
-  Unknown = 'Unknown',
-  Any = 'Any',
-  Item = 'Item',
-  Recipe = 'Recipe',
-  TechTree = 'TechTree',
-  BuildableUnlockableSet = 'BuildableUnlockableSet',
-  Placeable = 'Placeable',
-  Npc = 'Npc',
-  Faction = 'Faction',
-  Contract = 'Contract',
-  Dialogue = 'Dialogue',
-  JourneyStory = 'JourneyStory',
-  LootContainer = 'LootContainer',
-  LootSpawner = 'LootSpawner',
-  Skill = 'Skill',
-  Research = 'Research',
+  None = "None",
+  Unknown = "Unknown",
+  Any = "Any",
+  Item = "Item",
+  Recipe = "Recipe",
+  TechTree = "TechTree",
+  BuildableUnlockableSet = "BuildableUnlockableSet",
+  Placeable = "Placeable",
+  Npc = "Npc",
+  Faction = "Faction",
+  Contract = "Contract",
+  Dialogue = "Dialogue",
+  JourneyStory = "JourneyStory",
+  LootContainer = "LootContainer",
+  LootSpawner = "LootSpawner",
+  Skill = "Skill",
+  Research = "Research",
 }
 
 export enum EVectorQuantization {
-  None = 'None',
-  RoundWholeNumber = 'RoundWholeNumber',
-  RoundOneDecimal = 'RoundOneDecimal',
-  RoundTwoDecimals = 'RoundTwoDecimals',
+  None = "None",
+  RoundWholeNumber = "RoundWholeNumber",
+  RoundOneDecimal = "RoundOneDecimal",
+  RoundTwoDecimals = "RoundTwoDecimals",
 }
 
 export enum ETickingGroup {
-  None = 'None',
-  TGPrePhysics = 'TG_PrePhysics',
-  TGStartPhysics = 'TG_StartPhysics',
-  TGDuringPhysics = 'TG_DuringPhysics',
-  TGEndPhysics = 'TG_EndPhysics',
-  TGPostPhysics = 'TG_PostPhysics',
-  TGPostUpdateWork = 'TG_PostUpdateWork',
-  TGLastDemotable = 'TG_LastDemotable',
-  TGNewlySpawned = 'TG_NewlySpawned',
-  TG_MAX = 'TG_MAX',
+  None = "None",
+  TGPrePhysics = "TG_PrePhysics",
+  TGStartPhysics = "TG_StartPhysics",
+  TGDuringPhysics = "TG_DuringPhysics",
+  TGEndPhysics = "TG_EndPhysics",
+  TGPostPhysics = "TG_PostPhysics",
+  TGPostUpdateWork = "TG_PostUpdateWork",
+  TGLastDemotable = "TG_LastDemotable",
+  TGNewlySpawned = "TG_NewlySpawned",
+  TG_MAX = "TG_MAX",
 }
 
 export enum ESurfaceSnappingType {
-  None = 'None',
-  ToSurface = 'ToSurface',
-  ToSurfaceNormal = 'ToSurfaceNormal',
-  ToLowestSurfaceInArea = 'ToLowestSurfaceInArea',
-  ToTopmostSurfaceInArea = 'ToTopmostSurfaceInArea',
+  None = "None",
+  ToSurface = "ToSurface",
+  ToSurfaceNormal = "ToSurfaceNormal",
+  ToLowestSurfaceInArea = "ToLowestSurfaceInArea",
+  ToTopmostSurfaceInArea = "ToTopmostSurfaceInArea",
 }
 
 export enum ESpawnActorCollisionHandlingMethod {
-  None = 'None',
-  Undefined = 'Undefined',
-  AlwaysSpawn = 'AlwaysSpawn',
-  AdjustIfPossibleButAlwaysSpawn = 'AdjustIfPossibleButAlwaysSpawn',
-  AdjustIfPossibleButDontSpawnIfColliding = 'AdjustIfPossibleButDontSpawnIfColliding',
-  DontSpawnIfColliding = 'DontSpawnIfColliding',
+  None = "None",
+  Undefined = "Undefined",
+  AlwaysSpawn = "AlwaysSpawn",
+  AdjustIfPossibleButAlwaysSpawn = "AdjustIfPossibleButAlwaysSpawn",
+  AdjustIfPossibleButDontSpawnIfColliding = "AdjustIfPossibleButDontSpawnIfColliding",
+  DontSpawnIfColliding = "DontSpawnIfColliding",
 }
 
 export enum ESkillType {
-  None = 'None',
-  Ability = 'Ability',
-  Technique = 'Technique',
-  Attribute = 'Attribute',
+  None = "None",
+  Ability = "Ability",
+  Technique = "Technique",
+  Attribute = "Attribute",
 }
 
 export enum ESkillTree {
-  None = 'None',
-  Hidden = 'Hidden',
-  BeneGesserit = 'BeneGesserit',
-  Mentat = 'Mentat',
-  Trooper = 'Trooper',
-  Swordmaster = 'Swordmaster',
-  Planetologist = 'Planetologist',
-  MAX = 'MAX',
+  None = "None",
+  Hidden = "Hidden",
+  BeneGesserit = "BeneGesserit",
+  Mentat = "Mentat",
+  Trooper = "Trooper",
+  Swordmaster = "Swordmaster",
+  Planetologist = "Planetologist",
+  MAX = "MAX",
 }
 
 export enum ES2SCull {
-  None = 'None',
-  Players = 'Players',
-  DistanceOnly = 'DistanceOnly',
-  Off = 'Off',
+  None = "None",
+  Players = "Players",
+  DistanceOnly = "DistanceOnly",
+  Off = "Off",
 }
 
 export enum ERotatorQuantization {
-  None = 'None',
-  ByteComponents = 'ByteComponents',
-  ShortComponents = 'ShortComponents',
+  None = "None",
+  ByteComponents = "ByteComponents",
+  ShortComponents = "ShortComponents",
 }
 
 export enum ERangeBoundTypes {
-  None = 'None',
-  Exclusive = 'Exclusive',
-  Inclusive = 'Inclusive',
-  Open = 'Open',
+  None = "None",
+  Exclusive = "Exclusive",
+  Inclusive = "Inclusive",
+  Open = "Open",
 }
 
 export enum EObjectNeedsLoadFor {
-  None = 'None',
-  ClientAndServer = 'ClientAndServer',
-  ClientOnly = 'ClientOnly',
-  ServerOnly = 'ServerOnly',
-  EditorOnly = 'EditorOnly',
+  None = "None",
+  ClientAndServer = "ClientAndServer",
+  ClientOnly = "ClientOnly",
+  ServerOnly = "ServerOnly",
+  EditorOnly = "EditorOnly",
 }
 
 export enum ENetRole {
-  None = 'None',
-  ROLENone = 'ROLE_None',
-  ROLESimulatedProxy = 'ROLE_SimulatedProxy',
-  ROLEAutonomousProxy = 'ROLE_AutonomousProxy',
-  ROLEAuthority = 'ROLE_Authority',
-  ROLE_MAX = 'ROLE_MAX',
+  None = "None",
+  ROLENone = "ROLE_None",
+  ROLESimulatedProxy = "ROLE_SimulatedProxy",
+  ROLEAutonomousProxy = "ROLE_AutonomousProxy",
+  ROLEAuthority = "ROLE_Authority",
+  ROLE_MAX = "ROLE_MAX",
 }
 
 export enum ENetDormancy {
-  None = 'None',
-  DORMNever = 'DORM_Never',
-  DORMAwake = 'DORM_Awake',
-  DORMDormantAll = 'DORM_DormantAll',
-  DORMDormantPartial = 'DORM_DormantPartial',
-  DORMInitial = 'DORM_Initial',
-  DORM_MAX = 'DORM_MAX',
+  None = "None",
+  DORMNever = "DORM_Never",
+  DORMAwake = "DORM_Awake",
+  DORMDormantAll = "DORM_DormantAll",
+  DORMDormantPartial = "DORM_DormantPartial",
+  DORMInitial = "DORM_Initial",
+  DORM_MAX = "DORM_MAX",
+}
+
+export enum EModularAiBehaviorState {
+  None = "None",
+  Active = "Active",
+  Inactive = "Inactive",
+  InUse = "InUse",
 }
 
 export enum ELootTableItemVariety {
-  None = 'None',
-  RandomItems = 'RandomItems',
-  LockFirstRandomItem = 'LockFirstRandomItem',
-  Unique = 'Unique',
+  None = "None",
+  RandomItems = "RandomItems",
+  LockFirstRandomItem = "LockFirstRandomItem",
+  Unique = "Unique",
 }
 
 export enum EJourneyNodeEventState {
-  None = 'None',
-  Hidden = 'Hidden',
-  Revealed = 'Revealed',
-  Completed = 'Completed',
+  None = "None",
+  Hidden = "Hidden",
+  Revealed = "Revealed",
+  Completed = "Completed",
 }
 
 export enum EHostilityType {
-  None = 'None',
-  Neutral = 'Neutral',
-  Hostile = 'Hostile',
+  None = "None",
+  Neutral = "Neutral",
+  Hostile = "Hostile",
 }
 
 export enum EGameplayModOp {
-  None = 'None',
-  Additive = 'Additive',
-  Multiplicitive = 'Multiplicitive',
-  Division = 'Division',
-  Override = 'Override',
-  Max = 'Max',
+  None = "None",
+  Additive = "Additive",
+  Multiplicitive = "Multiplicitive",
+  Division = "Division",
+  Override = "Override",
+  Max = "Max",
+}
+
+export enum EDoorState {
+  None = "None",
+  Opened = "Opened",
+  ClosedByPlayer = "ClosedByPlayer",
+  ClosedAutomatically = "ClosedAutomatically",
+}
+
+export enum EDespawnConditionFlags {
+  None = "None",
+  QuickResetEvent = "QuickResetEvent",
+  QuickResetLOD = "QuickResetLOD",
+  VictoryEvent = "VictoryEvent",
 }
 
 export enum EContractConditionType {
-  None = 'None',
-  Invalid = 'Invalid',
-  KillNumber = 'KillNumber',
-  ClearArea = 'ClearArea',
-  DeliverItemById = 'DeliverItemById',
-  ReceiveItemById = 'ReceiveItemById',
-  Interact = 'Interact',
-  GoToLocation = 'GoToLocation',
-  ScanObject = 'ScanObject',
-  UseAbility = 'UseAbility',
-  PlayerHasFlags = 'PlayerHasFlags',
-  HandInContract = 'HandInContract',
-  ContactIssuer = 'ContactIssuer',
-  Exsanguination = 'Exsanguination',
+  None = "None",
+  Invalid = "Invalid",
+  KillNumber = "KillNumber",
+  ClearArea = "ClearArea",
+  DeliverItemById = "DeliverItemById",
+  ReceiveItemById = "ReceiveItemById",
+  Interact = "Interact",
+  GoToLocation = "GoToLocation",
+  ScanObject = "ScanObject",
+  UseAbility = "UseAbility",
+  PlayerHasFlags = "PlayerHasFlags",
+  HandInContract = "HandInContract",
+  ContactIssuer = "ContactIssuer",
+  Exsanguination = "Exsanguination",
 }
 
 export enum ECompositeConditionType {
-  None = 'None',
-  And = 'And',
-  Or = 'Or',
+  None = "None",
+  And = "And",
+  Or = "Or",
 }
 
 export enum EAutoReceiveInput {
-  None = 'None',
-  Disabled = 'Disabled',
-  Player0 = 'Player0',
-  Player1 = 'Player1',
-  Player2 = 'Player2',
-  Player3 = 'Player3',
-  Player4 = 'Player4',
-  Player5 = 'Player5',
-  Player6 = 'Player6',
-  Player7 = 'Player7',
+  None = "None",
+  Disabled = "Disabled",
+  Player0 = "Player0",
+  Player1 = "Player1",
+  Player2 = "Player2",
+  Player3 = "Player3",
+  Player4 = "Player4",
+  Player5 = "Player5",
+  Player6 = "Player6",
+  Player7 = "Player7",
 }
 
 export enum EAuthorityTransferState {
-  None = 'None',
-  AUTHTRANSFERNone = 'AUTHTRANSFER_None',
-  AUTHTRANSFERTransferring = 'AUTHTRANSFER_Transferring',
-  AUTHTRANSFERFixed = 'AUTHTRANSFER_Fixed',
-  AUTHTRANSFERSerializing = 'AUTHTRANSFER_Serializing',
-  AUTHTRANSFER_MAX = 'AUTHTRANSFER_MAX',
+  None = "None",
+  AUTHTRANSFERNone = "AUTHTRANSFER_None",
+  AUTHTRANSFERTransferring = "AUTHTRANSFER_Transferring",
+  AUTHTRANSFERFixed = "AUTHTRANSFER_Fixed",
+  AUTHTRANSFERSerializing = "AUTHTRANSFER_Serializing",
+  AUTHTRANSFER_MAX = "AUTHTRANSFER_MAX",
 }
 
 export enum EActorUpdateOverlapsMethod {
-  None = 'None',
-  UseConfigDefault = 'UseConfigDefault',
-  AlwaysUpdate = 'AlwaysUpdate',
-  OnlyUpdateMovable = 'OnlyUpdateMovable',
-  NeverUpdate = 'NeverUpdate',
+  None = "None",
+  UseConfigDefault = "UseConfigDefault",
+  AlwaysUpdate = "AlwaysUpdate",
+  OnlyUpdateMovable = "OnlyUpdateMovable",
+  NeverUpdate = "NeverUpdate",
 }
 
 export enum DepthType {
-  Cv8U = 'Cv8U',
-  Cv8S = 'Cv8S',
-  Cv16U = 'Cv16U',
-  Cv16S = 'Cv16S',
-  Cv32S = 'Cv32S',
-  Cv32F = 'Cv32F',
-  Cv64F = 'Cv64F',
-  Default = 'Default',
+  Cv8U = "Cv8U",
+  Cv8S = "Cv8S",
+  Cv16U = "Cv16U",
+  Cv16S = "Cv16S",
+  Cv32S = "Cv32S",
+  Cv32F = "Cv32F",
+  Cv64F = "Cv64F",
+  Default = "Default",
 }
 
 export enum BindingFlags {
-  Default = 'Default',
-  IgnoreCase = 'IgnoreCase',
-  DeclaredOnly = 'DeclaredOnly',
-  Instance = 'Instance',
-  Static = 'Static',
-  Public = 'Public',
-  NonPublic = 'NonPublic',
-  FlattenHierarchy = 'FlattenHierarchy',
-  InvokeMethod = 'InvokeMethod',
-  CreateInstance = 'CreateInstance',
-  GetField = 'GetField',
-  SetField = 'SetField',
-  GetProperty = 'GetProperty',
-  SetProperty = 'SetProperty',
-  PutDispProperty = 'PutDispProperty',
-  PutRefDispProperty = 'PutRefDispProperty',
-  ExactBinding = 'ExactBinding',
-  SuppressChangeType = 'SuppressChangeType',
-  OptionalParamBinding = 'OptionalParamBinding',
-  IgnoreReturn = 'IgnoreReturn',
-  DoNotWrapExceptions = 'DoNotWrapExceptions',
+  Default = "Default",
+  IgnoreCase = "IgnoreCase",
+  DeclaredOnly = "DeclaredOnly",
+  Instance = "Instance",
+  Static = "Static",
+  Public = "Public",
+  NonPublic = "NonPublic",
+  FlattenHierarchy = "FlattenHierarchy",
+  InvokeMethod = "InvokeMethod",
+  CreateInstance = "CreateInstance",
+  GetField = "GetField",
+  SetField = "SetField",
+  GetProperty = "GetProperty",
+  SetProperty = "SetProperty",
+  PutDispProperty = "PutDispProperty",
+  PutRefDispProperty = "PutRefDispProperty",
+  ExactBinding = "ExactBinding",
+  SuppressChangeType = "SuppressChangeType",
+  OptionalParamBinding = "OptionalParamBinding",
+  IgnoreReturn = "IgnoreReturn",
+  DoNotWrapExceptions = "DoNotWrapExceptions",
+}
+
+export interface AISpawnAnimation {
+  m_Animation?: SoftObjectProperty;
+  bInvisibleOnSpawn?: boolean | null;
+  bEquipWeapon?: boolean | null;
+  bPlayed?: boolean | null;
 }
 
 export interface ActorTickFunction {
   tickGroup?: ETickingGroup;
   endTickGroup?: ETickingGroup;
-  bTickEvenWhenPaused?: boolean;
-  bCanEverTick?: boolean;
-  bStartWithTickEnabled?: boolean;
-  bAllowTickOnDedicatedServer?: boolean;
-  bAllowAggregation?: boolean;
-  bTickWithOwner?: boolean;
+  bTickEvenWhenPaused?: boolean | null;
+  bCanEverTick?: boolean | null;
+  bStartWithTickEnabled?: boolean | null;
+  bAllowTickOnDedicatedServer?: boolean | null;
+  bAllowAggregation?: boolean | null;
+  bTickWithOwner?: boolean | null;
   /** @format int32 */
   priorityGroup?: number;
   /** @format float */
@@ -325,6 +363,26 @@ export interface ArmorItemStats {
   armorValue?: number;
 }
 
+export interface AssetEntry {
+  type?: string;
+  name?: string;
+  outer?: string;
+  /** @format int32 */
+  index?: number;
+  class?: string;
+  superStruct?: ObjectProperty;
+  template?: ObjectProperty;
+  rowStruct?: string;
+  path?: string;
+  classDefaultObject?: ObjectProperty;
+  persistentLevel?: ObjectProperty;
+  actors?: ObjectProperty[] | null;
+  fullJson?: string;
+  /** @format byte */
+  bitmapBytes?: string | null;
+  dataIndex?: DataIndex;
+}
+
 export interface AssetEntryLink {
   assetPath?: string;
   assetEntryName?: string;
@@ -333,77 +391,55 @@ export interface AssetEntryLink {
   assetEntryIndex?: number;
 }
 
-export interface BPAiSpawnLocationC {
-  m_bIsStatic?: boolean;
-  npcType?: DataTableRowReference;
-  rootComponent?: ObjectProperty;
-  arrow?: ObjectProperty;
-}
-
-export interface BPContractGoToTargetC {
-  contractContent?: ObjectProperty;
-  rootComponent?: ObjectProperty;
-}
-
-export interface BPContractInteractionTargetC {
-  contractContent?: ObjectProperty;
-  rootComponent?: ObjectProperty;
-}
-
-export interface BPRoomDescriptorC {
-  m_SpawnLocations?: ObjectProperty[] | null;
-  rootComponent?: ObjectProperty;
-}
-
-export interface BPTerrainBlockActorC {
+export interface BPAISpawnManagerC {
   primaryActorTick?: ActorTickFunction;
-  bNetTemporary?: boolean;
-  bOnlyRelevantToOwner?: boolean;
-  bAlwaysRelevant?: boolean;
-  bReplicateMovement?: boolean;
-  bCallPreReplication?: boolean;
-  bCallPreReplicationForReplay?: boolean;
-  bHidden?: boolean;
-  bTearOff?: boolean;
-  bForceNetAddressable?: boolean;
-  bExchangedRoles?: boolean;
-  bNetLoadOnClient?: boolean;
-  bNetUseOwnerRelevancy?: boolean;
-  bRelevantForNetworkReplays?: boolean;
-  bRelevantForLevelBounds?: boolean;
-  bReplayRewindable?: boolean;
-  bAllowTickBeforeBeginPlay?: boolean;
-  bAutoDestroyWhenFinished?: boolean;
-  bCanBeDamaged?: boolean;
-  bBlockInput?: boolean;
-  bCollideWhenPlacing?: boolean;
-  bFindCameraComponentWhenViewTarget?: boolean;
-  bGenerateOverlapEventsDuringLevelStreaming?: boolean;
-  bIgnoresOriginShifting?: boolean;
-  bEnableAutoLODGeneration?: boolean;
-  bIsEditorOnlyActor?: boolean;
-  bActorSeamlessTraveled?: boolean;
-  bUseExtendedRelevancyTimeout?: boolean;
-  bIgnoreLevelBoundsClamp?: boolean;
-  bUsesFgl?: boolean;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
   fglType?: ObjectProperty;
   entityId?: EntityId;
   /** @format int32 */
   m_DimensionIndex?: number;
   actorNeedsLoadFor?: EObjectNeedsLoadFor;
   layoutReplicator?: ReplicatorProxy;
-  bReplicates?: boolean;
-  bProxyReplicates?: boolean;
-  bProxyHasInitialReplication?: boolean;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
   s2sCull?: ES2SCull;
-  bLostRelevancy?: boolean;
-  bNoServerReplicates?: boolean;
-  bCanBeInCluster?: boolean;
-  bAllowReceiveTickEventOnDedicatedServer?: boolean;
-  bReplicateUsingRegisteredSubObjectList?: boolean;
-  bActorEnableCollision?: boolean;
-  bActorIsBeingDestroyed?: boolean;
-  bAsyncPhysicsTickEnabled?: boolean;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
   updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
   defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
   /** @format float */
@@ -440,8 +476,8 @@ export interface BPTerrainBlockActorC {
   children?: ObjectProperty[] | null;
   originalActor?: ObjectProperty;
   authorityTransferState?: EAuthorityTransferState;
-  bActorIsWaitingForPersistence?: boolean;
-  bActorBeingReplaced?: boolean;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
   rootComponent?: ObjectProperty;
   layers?: string[] | null;
   parentComponent?: ObjectProperty;
@@ -464,20 +500,1157 @@ export interface BPTerrainBlockActorC {
   onEndPlay?: any;
   instanceComponents?: ObjectProperty[] | null;
   blueprintCreatedComponents?: ObjectProperty[] | null;
-  m_bIsPartOfWorldLayout?: boolean;
-  m_bShouldLoadLodOnly?: boolean;
-  m_bShouldOverrideSnapType?: boolean;
+  m_bGhostSpawningEnabled?: boolean | null;
+  m_ModularAIBehaviorActors?: ObjectProperty[] | null;
+  m_ModularAIBehaviors?: ModularAiBehaviorInstance[] | null;
+  m_SpawnLocations?: ObjectProperty[] | null;
+  m_CachedSpawnLocations?: ObjectProperty[] | null;
+  m_StaticSpawnLocations?: ObjectProperty[] | null;
+  m_CachedStaticSpawnLocations?: ObjectProperty[] | null;
+  m_SpawnedLocations?: ObjectProperty[] | null;
+  m_SpawnComponent?: ObjectProperty;
+  m_WaveSpawnComponent?: ObjectProperty;
+  m_bAutoDespawn?: boolean | null;
+  m_DespawnConditionFlags?: EDespawnConditionFlags;
+  m_NavInvokerVolume?: ObjectProperty;
+  m_NavGrid?: ObjectProperty;
+  m_EncounterActorComponent?: ObjectProperty;
+  m_TriggerListenerComponent?: ObjectProperty;
+  /** @format float */
+  m_Radius?: number;
+  m_CombatVolume?: ObjectProperty;
+  m_OnControlStatusChangedDelegate?: any;
+  m_OnTriggerSpawning?: any;
+  m_OnNpcsBeginSpawningDelay?: any;
+  m_OnNpcsBeginSpawning?: any;
+  m_OnAllNpcsKilled?: any;
+  m_OnCombatBegin?: any;
+  m_OnIdleBegin?: any;
+  m_OnSpawnerClearedEvent?: any;
+  m_OnSingleNPCSpawnedEvent?: any;
+  m_OnSingleNPCRemovedEvent?: any;
+  m_DefaultSquadController?: ObjectProperty;
+  /** @format float */
+  m_QuickResetDespawnDelaySeconds?: number;
+  m_OverriddenNPCAttributes?: OverriddenNPCAttribute[] | null;
+  aiPopulationSpawn?: ObjectProperty;
+}
+
+export interface BPAIStaticSpawnLocationC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_SpawnLocations?: ObjectProperty[] | null;
+  m_StaticSpawnLocations?: ObjectProperty[] | null;
+  m_OnWaveStartAISpawn?: any;
+  m_ContractTagsToAddOnSpawn?: GameplayTagContainer;
+  m_SpawningAnimation?: AISpawnAnimation;
+  m_bCanSnapToGroundOnSpawn?: boolean | null;
+  m_NPCType?: DataTableRowHandle;
+  m_bOnlySpawnFromDescriptor?: boolean | null;
+  m_ClientVisibilityTagQuery?: GameplayTagQuery;
+  info?: ObjectProperty;
+  baseText?: TextProperty;
+}
+
+export interface BPAiSpawnLocationC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_SpawnLocations?: ObjectProperty[] | null;
+  m_StaticSpawnLocations?: ObjectProperty[] | null;
+  m_OnWaveStartAISpawn?: any;
+  m_ContractTagsToAddOnSpawn?: GameplayTagContainer;
+  m_SpawningAnimation?: AISpawnAnimation;
+  m_bCanSnapToGroundOnSpawn?: boolean | null;
+  m_bIsStatic?: boolean | null;
+  npcType?: DataTableRowHandle;
+  m_IdleAnimation?: SoftObjectProperty;
+  m_JobTags?: GameplayTagContainer;
+  m_ClientVisibilityTagQuery?: GameplayTagQuery;
+  m_bAllowMultipleSpawns?: boolean | null;
+  /** @format int32 */
+  m_Priority?: number;
+  m_EncounterActorComponent?: ObjectProperty;
+  m_MetaTags?: GameplayTagContainer;
+  arrow?: ObjectProperty;
+}
+
+export interface BPContractGoToTargetC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  contractContent?: ObjectProperty;
+}
+
+export interface BPContractInteractionTargetC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  contractContent?: ObjectProperty;
+  interactableBase?: ObjectProperty;
+}
+
+export interface BPEcolabSecretDoorC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_bIsPawnInTheWay?: boolean | null;
+  m_bHasBlueprintAnimation?: boolean | null;
+  m_PivotComponent?: ObjectProperty;
+  m_MeshContainerComponent?: ObjectProperty;
+  m_PawnInTheWayBoxData?: OrientedBoxData;
+  m_OpeningDoorAudioEvent?: ObjectProperty;
+  m_ClosingDoorAudioEvent?: ObjectProperty;
+  m_DoorState?: EDoorState;
+  m_ClosedScale?: Vector;
+  m_OpenedScale?: Vector;
+}
+
+export interface BPPentashieldKeyC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_NeededKey?: EInteractionKeyCode;
+  m_PickupKeyAudioEvent?: ObjectProperty;
+  m_AvailableKeyStartAudioEvent?: ObjectProperty;
+  m_AvailableKeyStopAudioEvent?: ObjectProperty;
+  m_InteractionsComponent?: ObjectProperty;
+  lightColor?: LinearColor;
+}
+
+export interface BPPvEContentDescriptorC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_bSelectCompositionFromWorldDistributionTags?: boolean | null;
+  m_GroupCompositionMaps?: ObjectProperty[] | null;
+  m_FallbackGroupComposition?: ObjectProperty;
+  m_ManagedSpawners?: ObjectProperty[] | null;
+  m_ContentDescriptorTags?: GameplayTagContainer;
+  m_WorldNpcTierOverride?: GameplayTag;
+  m_WorldContentDistributionTags?: GameplayTagContainer;
+  m_SelectedNpcComposition?: ObjectProperty;
+  /** @format float */
+  m_CooldownTimeMinutes?: number;
+  m_bUseDefaultRespawnTimeFromSetting?: boolean | null;
+  /** @format float */
+  m_DespawnTimeSeconds?: number;
+  m_SpawnersRespawnDespawnTimer?: TimerHandle;
+  m_DespawnConditionFlags?: EDespawnConditionFlags;
+}
+
+export interface BPRoomDescriptorC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_bGhostSpawningEnabled?: boolean | null;
+  m_ModularAIBehaviorActors?: ObjectProperty[] | null;
+  m_ModularAIBehaviors?: ModularAiBehaviorInstance[] | null;
+  m_SpawnLocations?: ObjectProperty[] | null;
+  m_CachedSpawnLocations?: ObjectProperty[] | null;
+  m_StaticSpawnLocations?: ObjectProperty[] | null;
+  m_CachedStaticSpawnLocations?: ObjectProperty[] | null;
+  m_SpawnedLocations?: ObjectProperty[] | null;
+  m_SpawnComponent?: ObjectProperty;
+  m_WaveSpawnComponent?: ObjectProperty;
+  m_bAutoDespawn?: boolean | null;
+  m_DespawnConditionFlags?: EDespawnConditionFlags;
+  m_NavInvokerVolume?: ObjectProperty;
+  m_NavGrid?: ObjectProperty;
+  m_EncounterActorComponent?: ObjectProperty;
+  m_TriggerListenerComponent?: ObjectProperty;
+  /** @format float */
+  m_Radius?: number;
+  m_CombatVolume?: ObjectProperty;
+  m_OnControlStatusChangedDelegate?: any;
+  m_OnTriggerSpawning?: any;
+  m_OnNpcsBeginSpawningDelay?: any;
+  m_OnNpcsBeginSpawning?: any;
+  m_OnAllNpcsKilled?: any;
+  m_OnCombatBegin?: any;
+  m_OnIdleBegin?: any;
+  m_OnSpawnerClearedEvent?: any;
+  m_OnSingleNPCSpawnedEvent?: any;
+  m_OnSingleNPCRemovedEvent?: any;
+  m_DefaultSquadController?: ObjectProperty;
+  /** @format float */
+  m_QuickResetDespawnDelaySeconds?: number;
+  m_OverriddenNPCAttributes?: OverriddenNPCAttribute[] | null;
+  aiPopulationSpawn?: ObjectProperty;
+  textRender?: ObjectProperty;
+  gatedContentComponent?: ObjectProperty;
+  npcTotemTrigger?: ObjectProperty;
+  aiReinforcement?: ObjectProperty;
+}
+
+export interface BPTerrainBlockActorC {
+  primaryActorTick?: ActorTickFunction;
+  bNetTemporary?: boolean | null;
+  bOnlyRelevantToOwner?: boolean | null;
+  bAlwaysRelevant?: boolean | null;
+  bReplicateMovement?: boolean | null;
+  bCallPreReplication?: boolean | null;
+  bCallPreReplicationForReplay?: boolean | null;
+  bHidden?: boolean | null;
+  bTearOff?: boolean | null;
+  bForceNetAddressable?: boolean | null;
+  bExchangedRoles?: boolean | null;
+  bNetLoadOnClient?: boolean | null;
+  bNetUseOwnerRelevancy?: boolean | null;
+  bRelevantForNetworkReplays?: boolean | null;
+  bRelevantForLevelBounds?: boolean | null;
+  bReplayRewindable?: boolean | null;
+  bAllowTickBeforeBeginPlay?: boolean | null;
+  bAutoDestroyWhenFinished?: boolean | null;
+  bCanBeDamaged?: boolean | null;
+  bBlockInput?: boolean | null;
+  bCollideWhenPlacing?: boolean | null;
+  bFindCameraComponentWhenViewTarget?: boolean | null;
+  bGenerateOverlapEventsDuringLevelStreaming?: boolean | null;
+  bIgnoresOriginShifting?: boolean | null;
+  bEnableAutoLODGeneration?: boolean | null;
+  bIsEditorOnlyActor?: boolean | null;
+  bActorSeamlessTraveled?: boolean | null;
+  bUseExtendedRelevancyTimeout?: boolean | null;
+  bIgnoreLevelBoundsClamp?: boolean | null;
+  bUsesFgl?: boolean | null;
+  fglType?: ObjectProperty;
+  entityId?: EntityId;
+  /** @format int32 */
+  m_DimensionIndex?: number;
+  actorNeedsLoadFor?: EObjectNeedsLoadFor;
+  layoutReplicator?: ReplicatorProxy;
+  bReplicates?: boolean | null;
+  bProxyReplicates?: boolean | null;
+  bProxyHasInitialReplication?: boolean | null;
+  s2sCull?: ES2SCull;
+  bLostRelevancy?: boolean | null;
+  bNoServerReplicates?: boolean | null;
+  bCanBeInCluster?: boolean | null;
+  bAllowReceiveTickEventOnDedicatedServer?: boolean | null;
+  bReplicateUsingRegisteredSubObjectList?: boolean | null;
+  bActorEnableCollision?: boolean | null;
+  bActorIsBeingDestroyed?: boolean | null;
+  bAsyncPhysicsTickEnabled?: boolean | null;
+  updateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  defaultUpdateOverlapsMethodDuringLevelStreaming?: EActorUpdateOverlapsMethod;
+  /** @format float */
+  initialLifeSpan?: number;
+  /** @format float */
+  customTimeDilation?: number;
+  remoteRole?: ENetRole;
+  /** @format int32 */
+  rayTracingGroupId?: number;
+  attachmentReplication?: RepAttachment;
+  replicatedMovement?: RepMovement;
+  owner?: ObjectProperty;
+  netDriverName?: string;
+  role?: ENetRole;
+  netDormancy?: ENetDormancy;
+  spawnCollisionHandlingMethod?: ESpawnActorCollisionHandlingMethod;
+  autoReceiveInput?: EAutoReceiveInput;
+  /** @format int32 */
+  inputPriority?: number;
+  inputComponent?: ObjectProperty;
+  /** @format float */
+  netCullDistanceSquared?: number;
+  /** @format float */
+  viewTargetNetCullDistanceSquared?: number;
+  /** @format int32 */
+  netTag?: number;
+  /** @format float */
+  netUpdateFrequency?: number;
+  /** @format float */
+  minNetUpdateFrequency?: number;
+  /** @format float */
+  netPriority?: number;
+  instigator?: ObjectProperty;
+  children?: ObjectProperty[] | null;
+  originalActor?: ObjectProperty;
+  authorityTransferState?: EAuthorityTransferState;
+  bActorIsWaitingForPersistence?: boolean | null;
+  bActorBeingReplaced?: boolean | null;
+  rootComponent?: ObjectProperty;
+  layers?: string[] | null;
+  parentComponent?: ObjectProperty;
+  tags?: string[] | null;
+  onTakeAnyDamage?: any;
+  onTakePointDamage?: any;
+  onTakeRadialDamage?: any;
+  onActorBeginOverlap?: any;
+  onActorEndOverlap?: any;
+  onBeginCursorOver?: any;
+  onEndCursorOver?: any;
+  onClicked?: any;
+  onReleased?: any;
+  onInputTouchBegin?: any;
+  onInputTouchEnd?: any;
+  onInputTouchEnter?: any;
+  onInputTouchLeave?: any;
+  onActorHit?: any;
+  onDestroyed?: any;
+  onEndPlay?: any;
+  instanceComponents?: ObjectProperty[] | null;
+  blueprintCreatedComponents?: ObjectProperty[] | null;
+  m_bIsPartOfWorldLayout?: boolean | null;
+  m_bShouldLoadLodOnly?: boolean | null;
+  m_bShouldOverrideSnapType?: boolean | null;
   m_SnapType?: ESurfaceSnappingType;
-  m_bShouldOverrideAdditionalSnappingOffsetByZ?: boolean;
+  m_bShouldOverrideAdditionalSnappingOffsetByZ?: boolean | null;
   /** @format float */
   m_AdditionalSnappingOffsetByZ?: number;
   m_SceneComponent?: ObjectProperty;
-  m_bWasObjectLoaded?: boolean;
-  m_bIsTerrainBlockEnabled?: boolean;
+  m_bWasObjectLoaded?: boolean | null;
+  m_bIsTerrainBlockEnabled?: boolean | null;
   m_TerrainBlockAsset?: ObjectProperty;
-  m_SubLevelGroupsSettings?: KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[] | null;
-  m_SubContentBlocksSettings?: TerrainBlockTemplateSubLevelContentBlockSettings[] | null;
-  m_bIsVistaOnly?: boolean;
+  m_SubLevelGroupsSettings?:
+    | KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[]
+    | null;
+  m_SubContentBlocksSettings?:
+    | TerrainBlockTemplateSubLevelContentBlockSettings[]
+    | null;
+  m_bIsVistaOnly?: boolean | null;
   debugArea?: boolean;
 }
 
@@ -557,6 +1730,8 @@ export interface ChannelMat {
   y?: number;
   mat?: Mat;
 }
+
+export type CircleUtils = object;
 
 export type CombinedModel = {
   /** @minLength 1 */
@@ -684,30 +1859,13 @@ export type CombinedModel = {
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
-  locations?: Record<string, Vector2[] | null>;
+  locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
   quests?: RelatedEntity[] | null;
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
-} & {
-  /** @minLength 1 */
-  id: string;
-  entityType: EntityType;
-  type?: string;
-  name?: string;
-  iconPath?: string;
-  description?: string;
-  mainCategoryId?: string;
-  subCategoryId?: string;
-  isDev?: boolean;
-  /** @uniqueItems true */
-  filterCategoryIds: string[];
-  mapId?: string;
-  location?: Vector3;
-  lootTable?: string;
-  lootTier?: string;
-  loot?: EntityQuantityRangeModel[] | null;
+  configId?: string;
 } & {
   /** @minLength 1 */
   id: string;
@@ -725,7 +1883,6 @@ export type CombinedModel = {
   lifeSpanInSeconds?: number;
   /** @format int32 */
   lifeSpanAfterInteractionInSeconds?: number | null;
-  lootDistributionSettings?: LootDistributionSettingsRowBase[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -788,10 +1945,6 @@ export type CombinedModel = {
   createdByRecipe?: RelatedEntity[] | null;
   armorStats?: ArmorItemStats;
   weaponStats?: WeaponStats;
-  /** @uniqueItems true */
-  lootTables?: string[] | null;
-  /** @uniqueItems true */
-  weightedLootTables?: string[] | null;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
@@ -799,9 +1952,14 @@ export type CombinedModel = {
   soldBy?: RelatedEntity[] | null;
   action?: string;
   infoCard?: string;
+  lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
+  dewReaperStats?: DewReaperStats;
+  cutlerayYields?: Record<string, number | null>;
+  otherContainers?: ItemDropLocation[] | null;
+  schematicOtherContainers?: ItemDropLocation[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -893,6 +2051,20 @@ export interface ContractGoToTargetModel {
   tags?: string[] | null;
 }
 
+export interface ContractInteractionTargetModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+}
+
 export interface ContractItem {
   entity?: RelatedEntity;
   /** @format int32 */
@@ -937,6 +2109,25 @@ export interface CoordinateModel {
   z?: number;
 }
 
+export interface DataIndex {
+  path?: string;
+  entries?: DataIndexEntry[] | null;
+}
+
+export interface DataIndexEntry {
+  dataIndex?: DataIndex;
+  /** @format int32 */
+  index?: number;
+  name?: string;
+  type?: string;
+  rowStruct?: string;
+}
+
+export interface DataTableRowHandle {
+  dataTable?: ObjectProperty;
+  rowName?: string;
+}
+
 export interface DataTableRowReference {
   dataTable?: ObjectProperty;
   rowName?: string;
@@ -951,6 +2142,13 @@ export interface DetailsContractResolver {
   ignoreIsSpecifiedMembers?: boolean;
   ignoreShouldSerializeMembers?: boolean;
   namingStrategy?: NamingStrategy;
+}
+
+export interface DewReaperStats {
+  /** @format float */
+  harvestYield?: number;
+  /** @format double */
+  harvestArea?: number;
 }
 
 export interface DialogueModel {
@@ -981,6 +2179,10 @@ export interface DialogueNodeModel {
 }
 
 export type DialoguesBuilder = object;
+
+export interface EInteractionKeyCode {
+  name?: string;
+}
 
 export interface ELootContainerType {
   name?: string;
@@ -1068,6 +2270,7 @@ export interface FloatRangeBound {
 }
 
 export interface GameDb {
+  mapLocations?: MapLocationModel[] | null;
   uiLocalizations?: UILocalizationsModel;
   buildableUnlockableSets?: BuildableUnlockableSetModel[] | null;
   buildableUnlockableSetsMap?: Record<string, BuildableUnlockableSetModel>;
@@ -1091,10 +2294,14 @@ export interface GameDb {
   journeysMap?: Record<string, JourneyModel>;
   lootContainers?: LootContainerModel[] | null;
   lootContainersMap?: Record<string, LootContainerModel>;
-  lootSpawners?: LootSpawnerModel[] | null;
-  lootSpawnersMap?: Record<string, LootSpawnerModel>;
   skills?: SkillModel[] | null;
   skillsMap?: Record<string, SkillModel>;
+}
+
+export interface GameplayAttribute {
+  attributeName?: string;
+  attribute?: string;
+  attributeOwner?: ObjectProperty;
 }
 
 export interface GameplayTag {
@@ -1111,11 +2318,22 @@ export interface GameplayTagDictionaryConverter {
   canWrite?: boolean;
 }
 
+export interface GameplayTagQuery {
+  /** @format int32 */
+  tokenStreamVersion?: number;
+  tagDictionary?: GameplayTag[] | null;
+  queryTokenStream?: number[] | null;
+  userDescription?: string;
+  autoDescription?: string;
+}
+
 export type GatherablesBuilder = object;
 
 export type HeatmapsBuilder = object;
 
 export type IBaseAttribute = object;
+
+export type IconsBuilder = object;
 
 export type ImageProcessor = object;
 
@@ -1142,6 +2360,8 @@ export interface ItemDropLocation {
   maxQuantity?: number;
   /** @format float */
   probability?: number;
+  parents?: string[] | null;
+  areaLootTier?: string;
 }
 
 export interface ItemModel {
@@ -1178,10 +2398,6 @@ export interface ItemModel {
   createdByRecipe?: RelatedEntity[] | null;
   armorStats?: ArmorItemStats;
   weaponStats?: WeaponStats;
-  /** @uniqueItems true */
-  lootTables?: string[] | null;
-  /** @uniqueItems true */
-  weightedLootTables?: string[] | null;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
@@ -1189,9 +2405,14 @@ export interface ItemModel {
   soldBy?: RelatedEntity[] | null;
   action?: string;
   infoCard?: string;
+  lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
+  dewReaperStats?: DewReaperStats;
+  cutlerayYields?: Record<string, number | null>;
+  otherContainers?: ItemDropLocation[] | null;
+  schematicOtherContainers?: ItemDropLocation[] | null;
 }
 
 export type ItemsBuilder = object;
@@ -1255,17 +2476,26 @@ export interface KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings {
 
 export type LanguageExtensions = object;
 
-export interface LevelBoundsModel {
-  path?: string;
-  transform?: SimpleTransform;
+export interface LinearColor {
+  /** @format float */
+  r?: number;
+  /** @format float */
+  g?: number;
+  /** @format float */
+  b?: number;
+  /** @format float */
+  a?: number;
 }
-
-export type Line = object;
 
 export interface LocalizationAttribute {
   typeId?: any;
   defaultValue?: string;
   localizationKey?: string;
+}
+
+export interface LocalizationKeyAttribute {
+  typeId?: any;
+  key?: string;
 }
 
 export interface LocalizedEntryConverter {
@@ -1299,13 +2529,12 @@ export interface LootContainerModel {
   lifeSpanInSeconds?: number;
   /** @format int32 */
   lifeSpanAfterInteractionInSeconds?: number | null;
-  lootDistributionSettings?: LootDistributionSettingsRowBase[] | null;
 }
 
 export type LootContainersBuilder = object;
 
 export interface LootDistributionSettingsRowBase {
-  bIsEnabled?: boolean;
+  bIsEnabled?: boolean | null;
   /** @format int32 */
   priority?: number;
   requiredTags?: GameplayTagContainer;
@@ -1317,9 +2546,9 @@ export interface LootDistributionSettingsRowBase {
   minimumRespawnTimeInSec?: number;
   /** @format int32 */
   maximumRespawnTimeInSec?: number;
-  bOverrideLifespanAfterInteractionIfShared?: boolean;
+  bOverrideLifespanAfterInteractionIfShared?: boolean | null;
   lifespanAfterInteractionInSecOverrideIfShared?: FloatRange;
-  bOverrideLifespanAfterInteractionIfInstanced?: boolean;
+  bOverrideLifespanAfterInteractionIfInstanced?: boolean | null;
   lifespanAfterInteractionInSecOverrideIfInstanced?: FloatRange;
   containedWater?: FloatRange;
 }
@@ -1335,23 +2564,20 @@ export interface LootEntryModel {
 }
 
 export interface LootSpawnerModel {
-  /** @minLength 1 */
-  id: string;
-  entityType: EntityType;
-  type?: string;
-  name?: string;
-  iconPath?: string;
-  description?: string;
-  mainCategoryId?: string;
-  subCategoryId?: string;
-  isDev?: boolean;
-  /** @uniqueItems true */
-  filterCategoryIds: string[];
   mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
   location?: Vector3;
+  lootContainerType?: RelatedEntity;
   lootTable?: string;
-  lootTier?: string;
-  loot?: EntityQuantityRangeModel[] | null;
+  parents?: string[] | null;
 }
 
 export interface LootStats {
@@ -1397,26 +2623,49 @@ export interface LootTableEntryBase {
   itemsQueryMatches?: string[] | null;
 }
 
-export interface LootTierArea {
-  mapId?: string;
-  lootTier?: string;
-  polygons?: Polygon[] | null;
+export type MapActorsBuilder = object;
+
+export interface MapIconModel {
+  id?: string;
+  iconPath?: string;
+  x2IconPath?: string;
+  /** @format int32 */
+  width?: number;
+  /** @format int32 */
+  height?: number;
 }
 
-export interface MapMarkerModel {
-  path?: string;
+export interface MapLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
   name?: string;
-  location?: Vector3;
-  iconPath?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
   /** @uniqueItems true */
   tags?: string[] | null;
-  color?: string;
-  levelBounds?: PointF[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
 }
 
 export type MapTilesBuilder = object;
 
 export type Mappers = object;
+
+export interface MarkerLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+}
 
 export interface Mat {
   ptr?: IntPtr;
@@ -1472,10 +2721,33 @@ export interface MetadataModel {
   path?: string;
 }
 
+export interface ModularAiBehaviorInstance {
+  m_BehaviorAsset?: SoftObjectProperty;
+  m_LevelObjects?: ObjectProperty[] | null;
+  m_ActivationState?: EModularAiBehaviorState;
+  m_Owner?: ObjectProperty;
+}
+
 export interface NamingStrategy {
   processDictionaryKeys?: boolean;
   processExtensionDataNames?: boolean;
   overrideSpecifiedNames?: boolean;
+}
+
+export interface NpcLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  npcId?: string;
+  transformSource?: string;
 }
 
 export interface NpcModel {
@@ -1493,20 +2765,13 @@ export interface NpcModel {
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
-  locations?: Record<string, Vector2[] | null>;
+  locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
   quests?: RelatedEntity[] | null;
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
-}
-
-export interface NpcSpawnerModel {
-  mapId?: string;
-  location?: SimpleTransform;
-  path?: string;
-  npcId?: string;
-  npc?: RelatedEntity;
+  configId?: string;
 }
 
 export type NpcsBuilder = object;
@@ -1519,6 +2784,32 @@ export interface ObjectProperty {
 export interface ObjectPropertyDictionaryConverter {
   canRead?: boolean;
   canWrite?: boolean;
+}
+
+export interface OrientedBoxData {
+  m_LocalOffset?: Vector;
+  m_Extent?: Vector;
+  m_LocalRotation?: Quat;
+}
+
+export interface OverriddenNPCAttribute {
+  overridingGameplayAttribute?: GameplayAttribute;
+  /** @format float */
+  overridingValue?: number;
+}
+
+export interface PentashieldKeyModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
 }
 
 export interface PlaceableModel {
@@ -1589,18 +2880,21 @@ export interface Point {
   y?: number;
 }
 
-export interface PointF {
-  isEmpty?: boolean;
-  /** @format float */
-  x?: number;
-  /** @format float */
-  y?: number;
-}
-
 export interface Polygon {
   points?: Point[] | null;
   /** @format double */
   area?: number;
+}
+
+export interface Quat {
+  /** @format double */
+  x?: number;
+  /** @format double */
+  y?: number;
+  /** @format double */
+  z?: number;
+  /** @format double */
+  w?: number;
 }
 
 export interface RecipeModel {
@@ -1763,30 +3057,13 @@ export type RelatedEntity = {
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
-  locations?: Record<string, Vector2[] | null>;
+  locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
   quests?: RelatedEntity[] | null;
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
-} & {
-  /** @minLength 1 */
-  id: string;
-  entityType: EntityType;
-  type?: string;
-  name?: string;
-  iconPath?: string;
-  description?: string;
-  mainCategoryId?: string;
-  subCategoryId?: string;
-  isDev?: boolean;
-  /** @uniqueItems true */
-  filterCategoryIds: string[];
-  mapId?: string;
-  location?: Vector3;
-  lootTable?: string;
-  lootTier?: string;
-  loot?: EntityQuantityRangeModel[] | null;
+  configId?: string;
 } & {
   /** @minLength 1 */
   id: string;
@@ -1804,7 +3081,6 @@ export type RelatedEntity = {
   lifeSpanInSeconds?: number;
   /** @format int32 */
   lifeSpanAfterInteractionInSeconds?: number | null;
-  lootDistributionSettings?: LootDistributionSettingsRowBase[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -1867,10 +3143,6 @@ export type RelatedEntity = {
   createdByRecipe?: RelatedEntity[] | null;
   armorStats?: ArmorItemStats;
   weaponStats?: WeaponStats;
-  /** @uniqueItems true */
-  lootTables?: string[] | null;
-  /** @uniqueItems true */
-  weightedLootTables?: string[] | null;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
@@ -1878,9 +3150,14 @@ export type RelatedEntity = {
   soldBy?: RelatedEntity[] | null;
   action?: string;
   infoCard?: string;
+  lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
+  dewReaperStats?: DewReaperStats;
+  cutlerayYields?: Record<string, number | null>;
+  otherContainers?: ItemDropLocation[] | null;
+  schematicOtherContainers?: ItemDropLocation[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -1981,8 +3258,8 @@ export interface RepMovement {
   angularVelocity?: Vector;
   location?: Vector;
   rotation?: Rotator;
-  bSimulatedPhysicSleep?: boolean;
-  bRepPhysics?: boolean;
+  bSimulatedPhysicSleep?: boolean | null;
+  bRepPhysics?: boolean | null;
   /** @format int32 */
   serverFrame?: number;
   /** @format int32 */
@@ -2047,6 +3324,20 @@ export interface SearchEntry {
 }
 
 export type SearchIndex = object;
+
+export interface SecretDoorLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+}
 
 export type SimpleCurveExtensions = object;
 
@@ -2152,6 +3443,13 @@ export type T0 = object;
 
 export type T1 = object;
 
+export interface TagArea {
+  mapId?: string;
+  tag?: string;
+  polygons?: Polygon[] | null;
+  data?: any[] | null;
+}
+
 export interface TagBehavior {
   /** @uniqueItems true */
   tags?: string[] | null;
@@ -2164,23 +3462,47 @@ export interface TerrainBlockTemplateSubLevelContentBlockSettings {
   alias?: string;
   groupsNames?: string[] | null;
   contentBlockActor?: SoftObjectPath;
-  bShouldOverrideIsEnabled?: boolean;
-  bIsEnabled?: boolean;
-  bShouldOverrideTerrainBlockAsset?: boolean;
+  bShouldOverrideIsEnabled?: boolean | null;
+  bIsEnabled?: boolean | null;
+  bShouldOverrideTerrainBlockAsset?: boolean | null;
   terrainBlockAsset?: ObjectProperty;
-  bShouldOverrideSubLevelsGroups?: boolean;
-  subLevelsGroupsOverride?: TerrainBlockTemplateSubLevelGroupSettingsOverride[] | null;
+  bShouldOverrideSubLevelsGroups?: boolean | null;
+  subLevelsGroupsOverride?:
+    | TerrainBlockTemplateSubLevelGroupSettingsOverride[]
+    | null;
 }
 
 export interface TerrainBlockTemplateSubLevelGroupSettings {
-  bIsEnabled?: boolean;
+  bIsEnabled?: boolean | null;
 }
 
 export interface TerrainBlockTemplateSubLevelGroupSettingsOverride {
   alias?: string;
   groupName?: string;
-  bShouldOverrideIsEnabled?: boolean;
-  bIsEnabled?: boolean;
+  bShouldOverrideIsEnabled?: boolean | null;
+  bIsEnabled?: boolean | null;
+}
+
+export interface TextProperty {
+  namespace?: string;
+  key?: string;
+  sourceString?: string;
+  localizedString?: string;
+  cultureInvariantString?: string;
+  tableId?: string;
+  sourceFmt?: TextProperty;
+  arguments?: Record<string, TextPropertyVariable>;
+}
+
+export interface TextPropertyVariable {
+  /** @format int32 */
+  type?: number;
+  value?: TextProperty;
+}
+
+export interface TimerHandle {
+  /** @format int64 */
+  handle?: number;
 }
 
 export interface TopLevelAssetPath {
@@ -2261,6 +3583,12 @@ export interface WeaponModStats {
   isSemiAuto?: boolean;
   /** @format float */
   reloadTime?: number;
+  /** @format float */
+  clipSize?: number;
+  /** @format float */
+  accuracy?: number;
+  /** @format float */
+  weaponPowerConsumption?: number;
 }
 
 export interface WeaponStats {
@@ -2295,13 +3623,42 @@ export interface WeightedLootTableEntry {
   weight?: number;
 }
 
+export type WorldBuilder = object;
+
 export interface WorldModel {
   id?: string;
   subWorlds?: WorldModel[] | null;
-  subLevels?: string[] | null;
   path?: string;
   parent?: WorldModel;
   fTransform?: SimpleTransform;
-  actors?: ObjectProperty[] | null;
-  boxTransform?: SimpleTransform;
+  subLevels?: WorldSubLevelModel[] | null;
+  markers?: MarkerLocationModel[] | null;
+  lootSpawners?: LootSpawnerModel[] | null;
+  pentashieldKeys?: PentashieldKeyModel[] | null;
+  rootId?: string;
 }
+
+export interface WorldSubLevelModel {
+  id?: string;
+  actorsMap?: Record<string, ObjectProperty[] | null>;
+  actorTypes?: string[] | null;
+}
+
+export interface XpTableLevelModel {
+  /** @format int32 */
+  level?: number;
+  /** @format float */
+  xpNeeded?: number;
+  /** @format float */
+  skillPointsRewarded?: number;
+  /** @format float */
+  intelPointsRewarded?: number;
+  /** @format float */
+  totalXPNeeded?: number;
+  /** @format float */
+  totalSkillPointsRewarded?: number;
+  /** @format float */
+  totalIntelPointsRewarded?: number;
+}
+
+export type XpTablesBuilder = object;
