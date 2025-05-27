@@ -1,7 +1,7 @@
-# Thufir the Dune Awekening Database Discord bot
+# Wali the Dune Awekening Database Discord bot
 
-[![License](https://img.shields.io/github/license/glazk0/thufir)](LICENSE)
-[![Contributors](https://img.shields.io/github/contributors/glazk0/thufir.svg)](https://gitHub.com/glazk0/thufir/graphs/contributors/)
+[![License](https://img.shields.io/github/license/glazk0/wali)](LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/glazk0/wali.svg)](https://gitHub.com/glazk0/wali/graphs/contributors/)
 
 A simple & user-friendly Discord bot integration of [dune.gaming.tools](https://dune.gaming.tools/) for Dune Awekening.
 
@@ -28,14 +28,14 @@ A simple & user-friendly Discord bot integration of [dune.gaming.tools](https://
 ## Installation
 
 > [!NOTE]  
-> We recommend using our hosted version of Thufir cause API access is not guaranteed for self-hosted instances.
+> We recommend using our hosted version of Wali cause API access is not guaranteed for self-hosted instances.
 
 To get started, follow these steps:
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/glazk0/thufir.git
+git clone https://github.com/glazk0/wali.git
 ```
 
 2. Install dependencies
@@ -66,8 +66,8 @@ pnpm start
 
 We welcome contributions from the community. If you have ideas for improvements or find issues, please open a pull request or submit an issue.
 
-<a href="https://github.com/glazk0/thufir/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=glazk0/thufir" />
+<a href="https://github.com/glazk0/wali/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=glazk0/wali" />
 </a>
 
 ## Self-Hosting
@@ -80,7 +80,7 @@ While users are granted the autonomy to host the bot on their own servers, it is
 
 ## Issues
 
-If you find a bug or have a feature request, please [open an issue](https://github.com/glazk0/thufir/issues/new/choose) on GitHub.
+If you find a bug or have a feature request, please [open an issue](https://github.com/glazk0/wali/issues/new/choose) on GitHub.
 
 ## License
 

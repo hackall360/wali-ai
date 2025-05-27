@@ -1,5 +1,5 @@
 {
-  "name": "thufir",
+  "name": "wali",
   "version": "0.0.1",
   "description": "An intuitive and user-friendly Discord bot connected to dune.gaming.tools the Dune Awakening database",
   "type": "module",
@@ -12,13 +12,13 @@
     "dev:shard": "NODE_ENV=development tsx watch src/index.ts",
     "format": "prettier --write src"
   },
-  "homepage": "https://github.com/glazk0/thufir#readme",
+  "homepage": "https://github.com/glazk0/wali#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glazk0/thufir.git"
+    "url": "git+https://github.com/glazk0/wali.git"
   },
   "bugs": {
-    "url": "https://github.com/glazk0/thufir/issues"
+    "url": "https://github.com/glazk0/wali/issues"
   },
   "author": "glazk0 <hi@glazk0.dev> (https://glazk0.dev)",
   "funding": {
