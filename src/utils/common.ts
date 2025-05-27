@@ -7,14 +7,16 @@ export const BOT_PERMISSIONS = {
   permissions: [PermissionFlagsBits.ManageWebhooks, PermissionFlagsBits.EmbedLinks],
 };
 
+export const DATABASE_URL = 'https://dune.gaming.tools';
+
+export const PROXY_URL = 'https://proxy.wali.glazk0.dev';
+
 export const KO_FI_URL = 'https://ko-fi.com/glazk0';
 
 export const DEVELOPERS = [
   // glazk0
   '247344130798256130',
 ];
-
-export const DATABASE_URL = 'https://dune.gaming.tools';
 
 export const truncateArray = <T>(arr: T[], length: number): Array<T | string> => {
   if (arr.length <= length) {

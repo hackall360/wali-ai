@@ -1,6 +1,7 @@
 import { config } from '#config';
 import type { SearchEntry } from '#types/database';
 import { cache } from '#utils/cache';
+import { PROXY_URL } from '#utils/common';
 import { logger } from '#utils/logger';
 
 export const api = {
@@ -28,7 +29,7 @@ export const api = {
   },
 };
 
-const format = (path: string) => config.apiUrl + '/' + encodeURI(path) + '.json';
+const format = (path: string) => PROXY_URL + '/' + encodeURI(path) + '.json';
 
 const customFetch = async <T>(path: string): Promise<T | null> => {
   if (cache.has(path)) {
@@ -38,9 +39,11 @@ const customFetch = async <T>(path: string): Promise<T | null> => {
   let data: T | null = null;
 
   try {
-    const response = await fetch(format(path));
-    data = (await response.json()) as T;
+    const headers: Record<string, string> = config.secretToken ? { 'X-Secret-Token': config.secretToken } : {};
+    const response = await fetch(format(path), { headers });
+    const data = (await response.json()) as T;
     cache.set(path, data);
+    return data;
   } catch (error) {
     if (error instanceof SyntaxError) {
       logger.error(`Syntax error while fetching ${format(path)}: ${error}`);
