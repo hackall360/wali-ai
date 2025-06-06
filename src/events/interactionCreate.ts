@@ -1,17 +1,17 @@
 import {
-  EmbedBuilder,
   Events,
+  hyperlink,
   type Interaction,
   type InteractionReplyOptions,
   MessageFlags,
-  MessagePayload,
-  hyperlink,
+  MessagePayload
 } from 'discord.js';
 
 import { commands } from '#commands';
+import { Embed } from '#models/embed';
 import { Event } from '#models/event';
 import { contributors } from '#utils/cache';
-import { isSupportedLocale, KO_FI_URL } from '#utils/common';
+import { KO_FI_URL } from '#utils/common';
 import { logger } from '#utils/logger';
 import { commandCounter, commandFailureCounter, commandSuccessCounter } from '#utils/prometheus';
 
@@ -60,7 +60,7 @@ export default new (class extends Event {
       if (!contributors.has(interaction.user.id)) {
         contributors.set(interaction.user.id, new Date());
 
-        const embed = new EmbedBuilder()
+        const embed = new Embed()
           .setTitle(`Hey ${interaction.user.username}, thanks for using ${interaction.client.user.username}!`)
           .setDescription(
             `I hope you're enjoying the bot! If you find it helpful, please consider ${hyperlink('supporting the developer', KO_FI_URL)} to help him maintain and improve it further. Your support is greatly appreciated!`

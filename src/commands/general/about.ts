@@ -4,13 +4,13 @@ import {
   ButtonBuilder,
   ButtonStyle,
   CommandInteraction,
-  EmbedBuilder,
   hyperlink,
   unorderedList,
-  userMention,
+  userMention
 } from 'discord.js';
 
 import { Command } from '#models/command';
+import { Embed } from '#models/embed';
 import { BOT_PERMISSIONS, DATABASE_URL, DEVELOPERS, KO_FI_URL } from '#utils/common';
 
 export default new (class extends Command {
@@ -26,7 +26,7 @@ export default new (class extends Command {
 
     await interaction.deferReply();
 
-    const embed = new EmbedBuilder();
+    const embed = new Embed();
 
     embed.setTitle('About');
 
@@ -40,9 +40,9 @@ export default new (class extends Command {
 
     const shardInfo = interaction.client.shard
       ? [
-          interaction.client.shard.count ? `Shards: ${interaction.client.shard.count}` : '',
-          interaction.client.shard.ids.length ? `Shard: #${interaction.client.shard.ids[0]}` : '',
-        ].filter(Boolean)
+        interaction.client.shard.count ? `Shards: ${interaction.client.shard.count}` : '',
+        interaction.client.shard.ids.length ? `Shard: #${interaction.client.shard.ids[0]}` : '',
+      ].filter(Boolean)
       : [];
 
     fields.push({
