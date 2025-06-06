@@ -18,6 +18,9 @@ export enum MapLocationType {
   PentashieldKey = "PentashieldKey",
   SecretDoor = "SecretDoor",
   InteractionTarget = "InteractionTarget",
+  IntelPoint = "IntelPoint",
+  GoToTarget = "GoToTarget",
+  ResourceNode = "ResourceNode",
 }
 
 export enum LocalizationField {
@@ -49,6 +52,7 @@ export enum EntityType {
   LootSpawner = "LootSpawner",
   Skill = "Skill",
   Research = "Research",
+  LandsraadHouse = "LandsraadHouse",
 }
 
 export enum EVectorQuantization {
@@ -389,6 +393,21 @@ export interface AssetEntryLink {
   assetEntryType?: string;
   /** @format int32 */
   assetEntryIndex?: number;
+}
+
+export interface AttributeName {
+  key?: string;
+  name?: string;
+  percentBased?: boolean;
+  higherIsBetter?: boolean;
+}
+
+export type AttributeNameMappings = object;
+
+export interface AttributeValueModel {
+  key?: string;
+  attribute?: AttributeName;
+  value?: any;
 }
 
 export interface BPAISpawnManagerC {
@@ -1702,6 +1721,8 @@ export interface Categories {
   story?: Category[] | null;
   /** @uniqueItems true */
   research?: Category[] | null;
+  /** @uniqueItems true */
+  landsraad?: Category[] | null;
 }
 
 export interface Category {
@@ -1866,6 +1887,9 @@ export type CombinedModel = {
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
   configId?: string;
+  /** @uniqueItems true */
+  moduleTags?: string[] | null;
+  landsraadHouse?: RelatedEntity;
 } & {
   /** @minLength 1 */
   id: string;
@@ -1896,12 +1920,30 @@ export type CombinedModel = {
   isDev?: boolean;
   /** @uniqueItems true */
   filterCategoryIds: string[];
+  uniqueReward?: RelatedEntity;
+  mapMarkerIconPath?: string;
+  npc?: NpcModel;
+  mapMarkers?: MarkerLocationModel[] | null;
+} & {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
   children?: JourneyModel[] | null;
   completionCondition?: JourneyConditionModel;
   revealCondition?: JourneyConditionModel;
   itemRewards?: EntityQuantityModel[] | null;
   /** @format int32 */
   depth?: number;
+  subNames?: string[] | null;
   /** @uniqueItems true */
   relatedEntities?: RelatedEntity[] | null;
   /** @uniqueItems true */
@@ -1948,8 +1990,7 @@ export type CombinedModel = {
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
-  /** @uniqueItems true */
-  soldBy?: RelatedEntity[] | null;
+  soldBy?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
@@ -1960,6 +2001,24 @@ export type CombinedModel = {
   cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
+  isSchematic?: boolean;
+  schematicSoldBy?: VendorItem[] | null;
+  /** @format int32 */
+  baseBuyFromVendorPrice?: number;
+  /** @format int32 */
+  maxStackSize?: number;
+  /** @format float */
+  volume?: number;
+  /** @format int32 */
+  schematicBaseBuyFromVendorPrice?: number;
+  mtxSources?: string[] | null;
+  schematicOutputItem?: RelatedEntity;
+  resourceNodeLocations?: ItemDropLocation[] | null;
+  /** @uniqueItems true */
+  landsraadRewardHouses?: RelatedEntity[] | null;
+  attributeValues?: AttributeValueModel[] | null;
+  customization?: ItemCustomizationModel;
+  rewardFrom?: EntityCountInt32[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -1986,7 +2045,15 @@ export type CombinedModel = {
   isDev?: boolean;
   /** @uniqueItems true */
   filterCategoryIds: string[];
-  dialogueTree?: TreeNodeDialogueNodeModel[] | null;
+  nodes?: Record<string, DialogueNodeModel>;
+  rootNodes?: DialogueNodeModel[] | null;
+  /** @uniqueItems true */
+  rootIds?: number[] | null;
+  /** @uniqueItems true */
+  setModuleTags?: string[] | null;
+  /** @uniqueItems true */
+  flagsToAdd?: string[] | null;
+  npcs?: RelatedEntity[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -2010,6 +2077,10 @@ export type CombinedModel = {
   /** @format int32 */
   chainOrder?: number | null;
   chainContracts?: RelatedEntity[] | null;
+  contractCustomRewards?: ContractCustomRewardModel[] | null;
+  /** @format int64 */
+  xpReward?: number;
+  itemRewards?: EntityCountInt32[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -2030,6 +2101,11 @@ export type CombinedModel = {
 
 export type Config = object;
 
+export interface ContractConditionDialoguesModel {
+  npc?: RelatedEntity;
+  texts?: string[] | null;
+}
+
 export interface ContractConditionModel {
   name?: string;
   contractItem?: ContractItem;
@@ -2038,24 +2114,23 @@ export interface ContractConditionModel {
   killNpcs?: RelatedEntity[] | null;
   /** @format int32 */
   number?: number;
-  locations?: Record<string, Vector2[] | null>;
+  locations?: MapLocationModel[] | null;
   /** @uniqueItems true */
   dialogueNpcs?: RelatedEntity[] | null;
+  contractDialogues?: ContractConditionDialoguesModel[] | null;
+}
+
+export interface ContractCustomRewardModel {
+  name?: string;
+  iconPath?: string;
 }
 
 export interface ContractGoToTargetModel {
   mapId?: string;
-  path?: string;
-  location?: SimpleTransform;
-  /** @uniqueItems true */
-  tags?: string[] | null;
-}
-
-export interface ContractInteractionTargetModel {
-  mapId?: string;
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2063,6 +2138,27 @@ export interface ContractInteractionTargetModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
+}
+
+export interface ContractInteractionTargetModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  localizationKey?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
 }
 
 export interface ContractItem {
@@ -2096,6 +2192,10 @@ export interface ContractModel {
   /** @format int32 */
   chainOrder?: number | null;
   chainContracts?: RelatedEntity[] | null;
+  contractCustomRewards?: ContractCustomRewardModel[] | null;
+  /** @format int64 */
+  xpReward?: number;
+  itemRewards?: EntityCountInt32[] | null;
 }
 
 export type ContractsBuilder = object;
@@ -2164,18 +2264,40 @@ export interface DialogueModel {
   isDev?: boolean;
   /** @uniqueItems true */
   filterCategoryIds: string[];
-  dialogueTree?: TreeNodeDialogueNodeModel[] | null;
+  nodes?: Record<string, DialogueNodeModel>;
+  rootNodes?: DialogueNodeModel[] | null;
+  /** @uniqueItems true */
+  rootIds?: number[] | null;
+  /** @uniqueItems true */
+  setModuleTags?: string[] | null;
+  /** @uniqueItems true */
+  flagsToAdd?: string[] | null;
+  npcs?: RelatedEntity[] | null;
 }
 
 export interface DialogueNodeModel {
   /** @format int32 */
   id?: number;
+  model?: DialogueModel;
   /** @format int32 */
   nodeId?: number;
   text?: string;
   playerNode?: boolean;
   /** @uniqueItems true */
-  links?: number[] | null;
+  linkIds?: number[] | null;
+  /** @uniqueItems true */
+  linkerIds?: number[] | null;
+  /** @uniqueItems true */
+  rootIds?: number[] | null;
+  /** @uniqueItems true */
+  connectedNodeIds?: number[] | null;
+  linkedNodes?: DialogueNodeModel[] | null;
+  linkerNodes?: DialogueNodeModel[] | null;
+  rootNodes?: DialogueNodeModel[] | null;
+  /** @uniqueItems true */
+  setModuleTags?: string[] | null;
+  /** @uniqueItems true */
+  flagsToAdd?: string[] | null;
 }
 
 export type DialoguesBuilder = object;
@@ -2191,6 +2313,12 @@ export interface ELootContainerType {
 export interface EntityCount {
   entity?: RelatedEntity;
   count?: T1;
+}
+
+export interface EntityCountInt32 {
+  entity?: RelatedEntity;
+  /** @format int32 */
+  count?: number;
 }
 
 export interface EntityId {
@@ -2218,10 +2346,20 @@ export type EnumLocalizations = object;
 
 export interface ExplorationVolumeModel {
   mapId?: string;
-  location?: SimpleTransform;
-  path?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  localizationKey?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
   /** @uniqueItems true */
   tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
 }
 
 export type Extensions = object;
@@ -2296,6 +2434,8 @@ export interface GameDb {
   lootContainersMap?: Record<string, LootContainerModel>;
   skills?: SkillModel[] | null;
   skillsMap?: Record<string, SkillModel>;
+  landstraadHouses?: LandsraadHouseModel[] | null;
+  landsraadHousesMap?: Record<string, LandsraadHouseModel>;
 }
 
 export interface GameplayAttribute {
@@ -2343,7 +2483,31 @@ export interface IncludeInDetailsAttribute {
 
 export type IntPtr = object;
 
+export interface IntelPointLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  localizationKey?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
+  /** @format int32 */
+  intelPoints?: number;
+}
+
 export type ItemCategoryTreeBuilder = object;
+
+export interface ItemCustomizationModel {
+  swatchColors?: string[] | null;
+}
 
 export interface ItemDropLocation {
   name?: string;
@@ -2362,6 +2526,8 @@ export interface ItemDropLocation {
   probability?: number;
   parents?: string[] | null;
   areaLootTier?: string;
+  ddLayout?: string;
+  markers?: string[] | null;
 }
 
 export interface ItemModel {
@@ -2401,8 +2567,7 @@ export interface ItemModel {
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
-  /** @uniqueItems true */
-  soldBy?: RelatedEntity[] | null;
+  soldBy?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
@@ -2413,6 +2578,24 @@ export interface ItemModel {
   cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
+  isSchematic?: boolean;
+  schematicSoldBy?: VendorItem[] | null;
+  /** @format int32 */
+  baseBuyFromVendorPrice?: number;
+  /** @format int32 */
+  maxStackSize?: number;
+  /** @format float */
+  volume?: number;
+  /** @format int32 */
+  schematicBaseBuyFromVendorPrice?: number;
+  mtxSources?: string[] | null;
+  schematicOutputItem?: RelatedEntity;
+  resourceNodeLocations?: ItemDropLocation[] | null;
+  /** @uniqueItems true */
+  landsraadRewardHouses?: RelatedEntity[] | null;
+  attributeValues?: AttributeValueModel[] | null;
+  customization?: ItemCustomizationModel;
+  rewardFrom?: EntityCountInt32[] | null;
 }
 
 export type ItemsBuilder = object;
@@ -2452,6 +2635,7 @@ export interface JourneyModel {
   itemRewards?: EntityQuantityModel[] | null;
   /** @format int32 */
   depth?: number;
+  subNames?: string[] | null;
   /** @uniqueItems true */
   relatedEntities?: RelatedEntity[] | null;
   /** @uniqueItems true */
@@ -2472,6 +2656,25 @@ export type KeyBuilder = object;
 export interface KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings {
   key?: string;
   value?: TerrainBlockTemplateSubLevelGroupSettings;
+}
+
+export interface LandsraadHouseModel {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
+  uniqueReward?: RelatedEntity;
+  mapMarkerIconPath?: string;
+  npc?: NpcModel;
+  mapMarkers?: MarkerLocationModel[] | null;
 }
 
 export type LanguageExtensions = object;
@@ -2502,6 +2705,8 @@ export interface LocalizedEntryConverter {
   canRead?: boolean;
   canWrite?: boolean;
 }
+
+export type LocalizedEntryEqualityComparer = object;
 
 export interface LocalizedEnumConverter {
   canRead?: boolean;
@@ -2568,6 +2773,7 @@ export interface LootSpawnerModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2575,9 +2781,13 @@ export interface LootSpawnerModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
   lootContainerType?: RelatedEntity;
   lootTable?: string;
   parents?: string[] | null;
+  everyWeek?: boolean;
 }
 
 export interface LootStats {
@@ -2640,6 +2850,7 @@ export interface MapLocationModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2647,6 +2858,9 @@ export interface MapLocationModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
 }
 
 export type MapTilesBuilder = object;
@@ -2658,6 +2872,7 @@ export interface MarkerLocationModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2665,6 +2880,9 @@ export interface MarkerLocationModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
 }
 
 export interface Mat {
@@ -2739,6 +2957,7 @@ export interface NpcLocationModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2746,6 +2965,9 @@ export interface NpcLocationModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
   npcId?: string;
   transformSource?: string;
 }
@@ -2772,6 +2994,9 @@ export interface NpcModel {
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
   configId?: string;
+  /** @uniqueItems true */
+  moduleTags?: string[] | null;
+  landsraadHouse?: RelatedEntity;
 }
 
 export type NpcsBuilder = object;
@@ -2803,6 +3028,7 @@ export interface PentashieldKeyModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -2810,6 +3036,9 @@ export interface PentashieldKeyModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
 }
 
 export interface PlaceableModel {
@@ -3064,6 +3293,9 @@ export type RelatedEntity = {
   /** @uniqueItems true */
   contracts?: RelatedEntity[] | null;
   configId?: string;
+  /** @uniqueItems true */
+  moduleTags?: string[] | null;
+  landsraadHouse?: RelatedEntity;
 } & {
   /** @minLength 1 */
   id: string;
@@ -3094,12 +3326,30 @@ export type RelatedEntity = {
   isDev?: boolean;
   /** @uniqueItems true */
   filterCategoryIds: string[];
+  uniqueReward?: RelatedEntity;
+  mapMarkerIconPath?: string;
+  npc?: NpcModel;
+  mapMarkers?: MarkerLocationModel[] | null;
+} & {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
   children?: JourneyModel[] | null;
   completionCondition?: JourneyConditionModel;
   revealCondition?: JourneyConditionModel;
   itemRewards?: EntityQuantityModel[] | null;
   /** @format int32 */
   depth?: number;
+  subNames?: string[] | null;
   /** @uniqueItems true */
   relatedEntities?: RelatedEntity[] | null;
   /** @uniqueItems true */
@@ -3146,8 +3396,7 @@ export type RelatedEntity = {
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
-  /** @uniqueItems true */
-  soldBy?: RelatedEntity[] | null;
+  soldBy?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
@@ -3158,6 +3407,24 @@ export type RelatedEntity = {
   cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
+  isSchematic?: boolean;
+  schematicSoldBy?: VendorItem[] | null;
+  /** @format int32 */
+  baseBuyFromVendorPrice?: number;
+  /** @format int32 */
+  maxStackSize?: number;
+  /** @format float */
+  volume?: number;
+  /** @format int32 */
+  schematicBaseBuyFromVendorPrice?: number;
+  mtxSources?: string[] | null;
+  schematicOutputItem?: RelatedEntity;
+  resourceNodeLocations?: ItemDropLocation[] | null;
+  /** @uniqueItems true */
+  landsraadRewardHouses?: RelatedEntity[] | null;
+  attributeValues?: AttributeValueModel[] | null;
+  customization?: ItemCustomizationModel;
+  rewardFrom?: EntityCountInt32[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -3184,7 +3451,15 @@ export type RelatedEntity = {
   isDev?: boolean;
   /** @uniqueItems true */
   filterCategoryIds: string[];
-  dialogueTree?: TreeNodeDialogueNodeModel[] | null;
+  nodes?: Record<string, DialogueNodeModel>;
+  rootNodes?: DialogueNodeModel[] | null;
+  /** @uniqueItems true */
+  rootIds?: number[] | null;
+  /** @uniqueItems true */
+  setModuleTags?: string[] | null;
+  /** @uniqueItems true */
+  flagsToAdd?: string[] | null;
+  npcs?: RelatedEntity[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -3208,6 +3483,10 @@ export type RelatedEntity = {
   /** @format int32 */
   chainOrder?: number | null;
   chainContracts?: RelatedEntity[] | null;
+  contractCustomRewards?: ContractCustomRewardModel[] | null;
+  /** @format int64 */
+  xpReward?: number;
+  itemRewards?: EntityCountInt32[] | null;
 } & {
   /** @minLength 1 */
   id: string;
@@ -3304,6 +3583,25 @@ export interface ResearchNodeModel {
 
 export type ResearchNodesBuilder = object;
 
+export interface ResourceNodeLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  localizationKey?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
+  resourceItemId?: string;
+}
+
 export type ResponseSerializer = object;
 
 export interface Rotator {
@@ -3330,6 +3628,7 @@ export interface SecretDoorLocationModel {
   worldId?: string;
   subMapId?: string;
   name?: string;
+  localizationKey?: string;
   transform?: SimpleTransform;
   mapIcon?: MapIconModel;
   locationType?: MapLocationType;
@@ -3337,6 +3636,13 @@ export interface SecretDoorLocationModel {
   tags?: string[] | null;
   metadata?: AssetEntry;
   location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
+}
+
+export interface SetModuleLevelEvent {
+  module?: GameplayTag;
 }
 
 export type SimpleCurveExtensions = object;
@@ -3517,11 +3823,6 @@ export interface TreeNode {
   children?: TreeNode[] | null;
 }
 
-export interface TreeNodeDialogueNodeModel {
-  value?: DialogueNodeModel;
-  children?: TreeNodeDialogueNodeModel[] | null;
-}
-
 export interface UILocalizationsModel {
   languages: Record<string, string | null>;
   homePage: Record<string, string>;
@@ -3564,6 +3865,12 @@ export interface VectorNetQuantize100 {
 
 export interface VendorItem {
   entity?: RelatedEntity;
+  /** @format float */
+  percentToApplyOnBaseItemPrice?: number;
+  /** @format int32 */
+  stockAmount?: number | null;
+  requiredTags?: string[] | null;
+  isSchematic?: boolean;
 }
 
 export interface WeaponModStats {
@@ -3636,6 +3943,8 @@ export interface WorldModel {
   lootSpawners?: LootSpawnerModel[] | null;
   pentashieldKeys?: PentashieldKeyModel[] | null;
   rootId?: string;
+  /** @format uuid */
+  guid?: string;
 }
 
 export interface WorldSubLevelModel {

@@ -10,12 +10,11 @@ import {
   unorderedList,
 } from 'discord.js';
 
-import { config } from '#config';
-import { Command } from '#models/command';
+import { Command, type Context } from '#models/command';
 import { Embed } from '#models/embed';
 import { type ItemModel } from '#types/database';
 import { api } from '#utils/api';
-import { DATABASE_URL, truncateArray } from '#utils/common';
+import { DATABASE_URL, PROXY_URL, truncateArray } from '#utils/common';
 
 export default new (class extends Command {
   constructor() {
@@ -34,14 +33,14 @@ export default new (class extends Command {
     });
   }
 
-  override async execute(interaction: CommandInteraction): Promise<void> {
+  override async execute(interaction: CommandInteraction, context: Context): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
     await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
 
-    const data = await api.get<ItemModel>(name);
+    const data = await api.get<ItemModel>(name, context.locale);
 
     if (!data) {
       interaction.reply(`The item "${name}" could not be found.`);
@@ -62,7 +61,7 @@ export default new (class extends Command {
     }
 
     if (data.iconPath) {
-      embed.setThumbnail(`${config.cdnUrl}${data.iconPath}`);
+      embed.setThumbnail(`${PROXY_URL}/1_10_1/${data.iconPath}`);
     }
 
     if (data.dropLocations?.length) {
@@ -99,11 +98,11 @@ export default new (class extends Command {
     });
   }
 
-  override async autocomplete(interaction: AutocompleteInteraction): Promise<void> {
+  override async autocomplete(interaction: AutocompleteInteraction, context: Context): Promise<void> {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract']);
+    let data = await api.search(context.locale, value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract']);
 
     data = data.slice(0, 25);
 

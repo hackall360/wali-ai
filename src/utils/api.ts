@@ -1,12 +1,12 @@
 import { config } from '#config';
 import type { SearchEntry } from '#types/database';
 import { cache } from '#utils/cache';
-import { PROXY_URL } from '#utils/common';
+import { PROXY_URL, type SupportedLocales } from '#utils/common';
 import { logger } from '#utils/logger';
 
 export const api = {
-  search: async (query?: string, types?: string[]): Promise<SearchEntry[]> => {
-    let data = await customFetch<SearchEntry[]>('search');
+  search: async (locale: SupportedLocales, query?: string, types?: string[]): Promise<SearchEntry[]> => {
+    let data = await customFetch<SearchEntry[]>(locale + "/" + 'search');
 
     if (!data) {
       return [];
@@ -22,8 +22,8 @@ export const api = {
 
     return data.filter((entry) => entry.name && regex.test(entry.name));
   },
-  get: async <T>(path: string): Promise<T | null> => {
-    const data = await customFetch<T>(path);
+  get: async <T>(path: string, locale: SupportedLocales): Promise<T | null> => {
+    const data = await customFetch<T>(locale + "/" + path);
 
     return data;
   },
@@ -41,6 +41,7 @@ const customFetch = async <T>(path: string): Promise<T | null> => {
   try {
     const headers: Record<string, string> = config.secretToken ? { 'X-Secret-Token': config.secretToken } : {};
     const response = await fetch(format(path), { headers });
+    console.log(response)
     const data = (await response.json()) as T;
     cache.set(path, data);
     return data;

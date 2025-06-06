@@ -18,6 +18,32 @@ export const DEVELOPERS = [
   '247344130798256130',
 ];
 
+export const SUPPORTED_LOCALES = [
+  'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pl', 'pt-br', 'ru', 'tr', 'uk', 'zh-cn', 'zh-tw',
+] as const;
+
+export type SupportedLocales = typeof SUPPORTED_LOCALES[number];
+
+export const SUPPORTED_LOCALES_NAMES: Record<SupportedLocales, string> = {
+  en: 'English',
+  de: 'Deutsch',
+  es: 'Español',
+  fr: 'Français',
+  it: 'Italiano',
+  ja: '日本語',
+  ko: '한국어',
+  pl: 'Polski',
+  'pt-br': 'Português (Brasil)',
+  ru: 'Русский',
+  tr: 'Türkçe',
+  uk: 'Українська',
+  'zh-cn': '中文（中国）',
+  'zh-tw': '中文（台灣）',
+};
+
+export const isSupportedLocale = (lang: string): lang is SupportedLocales =>
+  SUPPORTED_LOCALES.includes(lang as SupportedLocales);
+
 export const truncateArray = <T>(arr: T[], length: number): Array<T | string> => {
   if (arr.length <= length) {
     return arr;

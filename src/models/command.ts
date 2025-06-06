@@ -1,5 +1,11 @@
 import type { AutocompleteInteraction, CommandInteraction, RESTPostAPIApplicationCommandsJSONBody } from 'discord.js';
 
+import type { SupportedLocales } from '#utils/common';
+
+export interface Context {
+  locale: SupportedLocales;
+}
+
 export abstract class Command {
   public readonly data: RESTPostAPIApplicationCommandsJSONBody;
 
@@ -7,7 +13,7 @@ export abstract class Command {
     this.data = data;
   }
 
-  abstract execute(interaction: CommandInteraction): Promise<void>;
+  abstract execute(interaction: CommandInteraction, context: Context): Promise<void>;
 
-  autocomplete?(interaction: AutocompleteInteraction): Promise<void>;
+  autocomplete?(interaction: AutocompleteInteraction, context: Context): Promise<void>;
 }

@@ -11,7 +11,7 @@ import {
 import { commands } from '#commands';
 import { Event } from '#models/event';
 import { contributors } from '#utils/cache';
-import { KO_FI_URL } from '#utils/common';
+import { isSupportedLocale, KO_FI_URL } from '#utils/common';
 import { logger } from '#utils/logger';
 import { commandCounter, commandFailureCounter, commandSuccessCounter } from '#utils/prometheus';
 
@@ -21,13 +21,18 @@ export default new (class extends Event {
   }
 
   async listener(interaction: Interaction): Promise<void> {
+    const context = {
+      // locale: isSupportedLocale(interaction.locale) ? interaction.locale : 'en' as const,
+      locale: 'en' as const
+    }
+
     if (interaction.isAutocomplete()) {
       const command = commands.get(interaction.commandName);
 
       if (!command?.autocomplete) return;
 
       try {
-        await command.autocomplete(interaction);
+        await command.autocomplete(interaction, context);
       } catch (error) {
         logger.error(error);
       }
@@ -50,7 +55,7 @@ export default new (class extends Event {
     logger.info(`Command interaction received: ${interaction.commandName}`);
 
     try {
-      await command.execute(interaction);
+      await command.execute(interaction, context);
 
       if (!contributors.has(interaction.user.id)) {
         contributors.set(interaction.user.id, new Date());
