@@ -69,7 +69,7 @@ export default new (class extends Command {
     }
 
     if (data.iconPath) {
-      embed.setThumbnail(`${PROXY_URL}/1_10_1/${data.iconPath}`);
+      embed.setThumbnail(PROXY_URL + data.iconPath);
     }
 
     const fields: APIEmbedField[] = [];

@@ -61,7 +61,7 @@ export default new (class extends Command {
     }
 
     if (data.iconPath) {
-      embed.setThumbnail(`${PROXY_URL}/1_10_1/${data.iconPath}`);
+      embed.setThumbnail(PROXY_URL + data.iconPath);
     }
 
     if (data.dropLocations?.length) {
@@ -87,6 +87,17 @@ export default new (class extends Command {
       fields.push({
         name: 'Related Contracts',
         value: unorderedList(truncateArray(contracts, 5)),
+      });
+    }
+
+    if (data.soldBy?.length) {
+      const vendors = data.soldBy.map((vendor) => {
+        if (!vendor?.entity) return 'Unknown';
+        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/npcs/${vendor.entity.id}`);
+      });
+      fields.push({
+        name: 'Sold By',
+        value: unorderedList(truncateArray(vendors, 5)),
       });
     }
 
