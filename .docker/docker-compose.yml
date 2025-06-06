@@ -8,8 +8,7 @@ services:
     restart: unless-stopped
     environment:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
-      - GT_API_URL=${GT_API_URL}
-      - GT_CDN_URL=${GT_CDN_URL}
+      - SECRET_TOKEN=${SECRET_TOKEN}
     networks:
       - network
       - monitoring
