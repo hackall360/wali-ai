@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from "postgres";
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
 
 import { config } from '#config';
 import * as schema from '#database/schema';
@@ -10,6 +10,6 @@ if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not defined in .env');
 }
 
-const connection = postgres(process.env.DATABASE_URL, { prepare: false });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-export const database = drizzle(connection, { schema, logger: config.isDevelopment });
+export const database = drizzle(pool, { schema, logger: config.isDevelopment });
