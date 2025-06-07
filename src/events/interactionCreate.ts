@@ -1,17 +1,21 @@
 import {
   Events,
+  hyperlink,
   type Interaction,
   type InteractionReplyOptions,
   MessageFlags,
   MessagePayload,
-  hyperlink,
 } from 'discord.js';
+import { eq } from 'drizzle-orm';
 
 import { commands } from '#commands';
+import { database } from '#database';
+import { guilds } from '#database/schema';
+import type { Context } from '#models/command';
 import { Embed } from '#models/embed';
 import { Event } from '#models/event';
 import { contributors } from '#utils/cache';
-import { KO_FI_URL } from '#utils/common';
+import { isSupportedLocale, KO_FI_URL, type SupportedLocales } from '#utils/common';
 import { logger } from '#utils/logger';
 import { commandCounter, commandFailureCounter, commandSuccessCounter } from '#utils/prometheus';
 
@@ -21,10 +25,25 @@ export default new (class extends Event {
   }
 
   async listener(interaction: Interaction): Promise<void> {
-    const context = {
-      // locale: isSupportedLocale(interaction.locale) ? interaction.locale : 'en' as const,
-      locale: 'en' as const,
+    const context: Context = {
+      locale: isSupportedLocale(interaction.locale) ? interaction.locale : 'en' as const,
     };
+
+    if (interaction.inGuild()) {
+      let guild = await database.query.guilds.findFirst({
+        where: eq(guilds.id, interaction.guildId)
+      });
+      if (!guild) {
+        [guild] = await database
+          .insert(guilds)
+          .values({ id: interaction.guildId })
+          .onConflictDoNothing({ target: guilds.id })
+          .returning();
+      }
+      if (guild?.locale) {
+        context.locale = guild.locale as SupportedLocales;
+      }
+    }
 
     if (interaction.isAutocomplete()) {
       const command = commands.get(interaction.commandName);

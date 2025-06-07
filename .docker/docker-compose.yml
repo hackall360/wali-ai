@@ -9,12 +9,51 @@ services:
     environment:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
       - SECRET_TOKEN=${SECRET_TOKEN}
+      - DATABASE_URL=${DATABASE_URL}
     networks:
       - network
       - monitoring
+  
+  postgres:
+    image: postgres:13.11
+    container_name: wali-postgres
+    restart: unless-stopped
+    healthcheck:
+      test: [ 'CMD-SHELL', 'pg_isready -U postgres -d postgres' ]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - network
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+
+  backup:
+    image: offen/docker-volume-backup:v2.43.3
+    container_name: wali-backup
+    restart: unless-stopped
+    environment:
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+      - AWS_S3_PATH=${AWS_S3_PATH}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - BACKUP_RETENTION_DAYS=7
+    networks:
+      - network
+    volumes:
+      - postgresdata:/backup/postgresdata:ro
 
 networks:
   network:
     driver: bridge
   monitoring:
     external: true
+
+volumes:
+  postgresdata:
+    driver: local

@@ -1,7 +1,17 @@
 import { ShardingManager } from 'discord.js';
 
 import { config } from '#config';
+import { migrateDatabase } from '#database/migrator';
 import { logger } from '#utils/logger';
+
+migrateDatabase()
+  .catch((error) => {
+    logger.error(`Failed to migrate database: ${error}`);
+    process.exit(1);
+  })
+  .then(() => {
+    logger.info('Database migration completed successfully');
+  });
 
 const path = config.isDevelopment ? './src/bot.ts' : './dist/bot.js';
 
@@ -22,7 +32,9 @@ manager
     logger.error(`Failed to spawn shards: ${error}`);
     process.exit(1);
   })
-  .then(() => logger.info('All shards launched'));
+  .then(() => {
+    logger.info('All shards launched')
+  });
 
 process.on('SIGINT', () => {
   logger.info('Received SIGINT. Shutting down...');

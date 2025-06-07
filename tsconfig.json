@@ -23,6 +23,8 @@
     "paths": {
       "#commands": ["commands"],
       "#commands/*": ["commands/*"],
+      "#database": ["database"],
+      "#database/*": ["database/*"],
       "#events": ["events"],
       "#events/*": ["events/*"],
       "#models/*": ["models/*"],
