@@ -102,15 +102,16 @@ export default new (class extends Command {
     const rewards: string[] = [];
 
     if (data.itemRewards?.length) {
-      const items = data.itemRewards.map((item) => {
+      // TODO: Add type checking for itemRewards
+      const items = data.itemRewards.map((item: any) => {
         if (!item.entity?.name) {
           return 'Unknown';
         }
         if (item.count) {
-          if (item.entity?.subCategoryId) {
-            return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
+          if (item.entity?.isHidden) {
+            return `x${item.count} ${item.entity.name}`;
           }
-          return `x${item.count} ${item.entity.name}`;
+          return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
         }
         return item.entity.name;
       });
