@@ -1,5 +1,8 @@
 services:
   bot:
+    depends_on:
+      - postgres
+      - backup
     pull_policy: build
     build:
       context: ../
