@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const migrationConfig: MigrationConfig = {
-	migrationsFolder: join(__dirname, '../../drizzle'),
+	migrationsFolder: join(__dirname),
 	migrationsTable: '_migrations'
 };
 
