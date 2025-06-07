@@ -47,22 +47,13 @@ export default new (class extends Command {
       return;
     }
 
-    const actionRow = new ActionRowBuilder<ButtonBuilder>();
-
     const embed = new Embed();
+
+    const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
     if (data.name) {
       embed.setTitle(data.name);
       embed.setURL(`${DATABASE_URL}/npcs/${data.id}`);
-      if (data.locations?.length) {
-        actionRow.addComponents(
-          new ButtonBuilder({
-            label: 'View locations',
-            style: ButtonStyle.Link,
-            url: `${DATABASE_URL}/npcs/${data.id}`,
-          })
-        );
-      }
     }
 
     if (data.description) {
@@ -83,8 +74,57 @@ export default new (class extends Command {
 
       fields.push({
         name: 'Related Contracts',
-        value: unorderedList(truncateArray(contracts, 5)),
+        value: unorderedList(truncateArray(contracts, 10)),
       });
+    }
+
+    if (data.quests?.length) {
+      const quests = data.quests.map((quest) => {
+        if (!quest?.name) return 'Unknown';
+        return hyperlink(quest.name ?? 'Unknown', `${DATABASE_URL}/story/${quest.id}`);
+      });
+
+      fields.push({
+        name: 'Related Quests',
+        value: unorderedList(truncateArray(quests, 10)),
+      });
+    }
+
+    if (data.sellsItems?.length) {
+      const items = data.sellsItems.map((item) => {
+        if (!item.entity?.name) {
+          return 'Unknown';
+        }
+        const price =
+          item.entity.baseBuyFromVendorPrice && item.percentToApplyOnBaseItemPrice
+            ? Math.round(item.entity.baseBuyFromVendorPrice * item.percentToApplyOnBaseItemPrice)
+            : undefined;
+
+        const priceStr = price !== undefined
+          ? ` for ${price.toLocaleString(context.locale)}/unit`
+          : '';
+
+        if (item.stockAmount) {
+          return `x${item.stockAmount} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}${priceStr}`;
+        }
+
+        return `∞ ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}${priceStr}`;
+      });
+
+      fields.push({
+        name: 'Sells Items',
+        value: unorderedList(truncateArray(items, 10)),
+      });
+    }
+
+    if (Object.keys(data).length) {
+      actionRow.addComponents(
+        new ButtonBuilder({
+          label: 'View locations',
+          style: ButtonStyle.Link,
+          url: `${DATABASE_URL}/npcs/${data.id}`,
+        })
+      );
     }
 
     embed.addFields(fields);
