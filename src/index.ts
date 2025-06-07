@@ -4,14 +4,15 @@ import { config } from '#config';
 import { migrateDatabase } from '#database/migrator';
 import { logger } from '#utils/logger';
 
-migrateDatabase()
-  .then(() => {
-    logger.info('Database migration completed successfully');
-  })
-  .catch((error) => {
-    logger.error(`Failed to migrate database: ${error}`);
-    process.exit(1);
-  });
+// TODO: Fix
+// migrateDatabase()
+//   .then(() => {
+//     logger.info('Database migration completed successfully');
+//   })
+//   .catch((error) => {
+//     logger.error(`Failed to migrate database: ${error}`);
+//     process.exit(1);
+//   });
 
 const path = config.isDevelopment ? './src/bot.ts' : './dist/bot.js';
 

@@ -20,10 +20,10 @@ export default new (class extends Event {
       totalUsers.set({ guildId: g.id }, g.memberCount);
     }
 
-    try {
-      await database.insert(guilds).values({ id: guild.id }).onConflictDoNothing({ target: guilds.id });
-    } catch (error) {
-      logger.error(`Error while inserting ${guild.id} in database: ${error}`);
-    }
+    // try {
+    //   await database.insert(guilds).values({ id: guild.id }).onConflictDoNothing({ target: guilds.id });
+    // } catch (error) {
+    //   logger.error(`Error while inserting ${guild.id} in database: ${error}`);
+    // }
   }
 })();
