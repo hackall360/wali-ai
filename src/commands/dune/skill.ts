@@ -47,6 +47,8 @@ export default new (class extends Command {
       return;
     }
 
+    const embed = new Embed();
+
     const actionRow = new ActionRowBuilder<ButtonBuilder>({
       components: [
         new ButtonBuilder({
@@ -56,8 +58,6 @@ export default new (class extends Command {
         }),
       ],
     });
-
-    const embed = new Embed();
 
     if (data.name) {
       embed.setTitle(data.name);

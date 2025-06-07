@@ -49,9 +49,9 @@ export default new (class extends Command {
       return;
     }
 
-    const actionRow = new ActionRowBuilder<ButtonBuilder>();
-
     const embed = new Embed();
+
+    const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
     if (data.name) {
       embed.setTitle(data.name);
