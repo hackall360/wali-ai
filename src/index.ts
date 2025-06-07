@@ -5,12 +5,12 @@ import { migrateDatabase } from '#database/migrator';
 import { logger } from '#utils/logger';
 
 migrateDatabase()
+  .then(() => {
+    logger.info('Database migration completed successfully');
+  })
   .catch((error) => {
     logger.error(`Failed to migrate database: ${error}`);
     process.exit(1);
-  })
-  .then(() => {
-    logger.info('Database migration completed successfully');
   });
 
 const path = config.isDevelopment ? './src/bot.ts' : './dist/bot.js';

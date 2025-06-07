@@ -23,8 +23,8 @@ const migrationConfig: MigrationConfig = {
 	migrationsFolder: join(__dirname, 'migrations'),
 };
 
-export const migrateDatabase = () => {
-	return migrate(
+export const migrateDatabase = async (): Promise<void> => {
+	await migrate(
 		drizzle(migrationClient, {
 			logger: true,
 		}),
