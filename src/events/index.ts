@@ -42,4 +42,4 @@ export const registerEvents = async (client: Client): Promise<void> => {
   }
 
   logger.info(`Loaded ${filesPath.length} event(s)`);
-}
+};

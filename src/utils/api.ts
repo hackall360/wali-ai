@@ -6,7 +6,7 @@ import { logger } from '#utils/logger';
 
 export const api = {
   search: async (locale: SupportedLocales, query?: string, types?: string[]): Promise<SearchEntry[]> => {
-    let data = await customFetch<SearchEntry[]>(locale + "/" + 'search');
+    let data = await customFetch<SearchEntry[]>(locale + '/' + 'search');
 
     if (!data) {
       return [];
@@ -23,7 +23,7 @@ export const api = {
     return data.filter((entry) => entry.name && regex.test(entry.name));
   },
   get: async <T>(path: string, locale: SupportedLocales): Promise<T | null> => {
-    const data = await customFetch<T>(locale + "/" + path);
+    const data = await customFetch<T>(locale + '/' + path);
 
     return data;
   },

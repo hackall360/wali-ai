@@ -61,4 +61,4 @@ export const registerCommands = async (client: Client<true>): Promise<void> => {
   } catch (error) {
     logger.error(`Failed to refresh command(s): ${error}`);
   }
-}
+};

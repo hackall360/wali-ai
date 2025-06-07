@@ -1,10 +1,10 @@
 import {
   Events,
-  hyperlink,
   type Interaction,
   type InteractionReplyOptions,
   MessageFlags,
-  MessagePayload
+  MessagePayload,
+  hyperlink,
 } from 'discord.js';
 
 import { commands } from '#commands';
@@ -23,8 +23,8 @@ export default new (class extends Event {
   async listener(interaction: Interaction): Promise<void> {
     const context = {
       // locale: isSupportedLocale(interaction.locale) ? interaction.locale : 'en' as const,
-      locale: 'en' as const
-    }
+      locale: 'en' as const,
+    };
 
     if (interaction.isAutocomplete()) {
       const command = commands.get(interaction.commandName);

@@ -36,7 +36,7 @@ export default new (class extends Command {
   override async execute(interaction: CommandInteraction, context: Context): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
-    await interaction.deferReply();
+    if (!interaction.deferred) await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
 
@@ -120,10 +120,7 @@ export default new (class extends Command {
         if (data.costPerlevel?.length) {
           const cost = data.costPerlevel[level - 1];
           if (cost) {
-            values = [
-              ...values,
-              `Cost: ${cost} Skill Points`,
-            ];
+            values = [...values, `Cost: ${cost} Skill Points`];
           }
         }
 

@@ -38,7 +38,7 @@ export default new (class extends Command {
   override async execute(interaction: CommandInteraction, context: Context): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
-    await interaction.deferReply();
+    if (!interaction.deferred) await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
 
@@ -126,7 +126,16 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(context.locale, value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract', 'Customization']);
+    let data = await api.search(context.locale, value, [
+      'Items',
+      'Misc',
+      'Weapons',
+      'Utilty',
+      'Vehicles',
+      'Garment',
+      'Contract',
+      'Customization',
+    ]);
 
     data = data.slice(0, 25);
 

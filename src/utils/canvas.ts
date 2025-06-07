@@ -22,4 +22,4 @@ export const createColorPaletteImage = (colors: string[] | null | undefined): Bu
   });
 
   return canvas.toBuffer('image/png');
-}
+};

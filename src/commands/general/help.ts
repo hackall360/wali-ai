@@ -24,7 +24,7 @@ export default new (class extends Command {
   override async execute(interaction: CommandInteraction): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
-    await interaction.deferReply();
+    if (!interaction.deferred) await interaction.deferReply();
 
     const commands = await interaction.client.application.commands.fetch();
 

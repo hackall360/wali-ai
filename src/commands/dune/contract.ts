@@ -36,7 +36,7 @@ export default new (class extends Command {
   override async execute(interaction: CommandInteraction, context: Context): Promise<void> {
     if (!interaction.isChatInputCommand()) return;
 
-    await interaction.deferReply();
+    if (!interaction.deferred) await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
 
@@ -66,6 +66,13 @@ export default new (class extends Command {
 
     const fields: APIEmbedField[] = [];
 
+    if (data.xpReward) {
+      fields.push({
+        name: 'XP Reward',
+        value: data.xpReward.toLocaleString(context.locale),
+      });
+    }
+
     if (data.conditions?.length) {
       if (data.conditions.some((condition) => condition.locations)) {
         actionRow.addComponents(
@@ -90,6 +97,36 @@ export default new (class extends Command {
           value: unorderedList(truncateArray(conditions, 5)),
         });
       }
+    }
+
+    const rewards: string[] = [];
+
+    if (data.itemRewards?.length) {
+      const items = data.itemRewards.map((item) => {
+        if (!item.entity?.name) {
+          return 'Unknown';
+        }
+        if (item.count) {
+          return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
+        }
+        return hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`);
+      });
+      rewards.push(...items);
+    }
+
+    if (data.contractCustomRewards?.length) {
+      const customRewards = data.contractCustomRewards.map((reward) => {
+        if (!reward.name) return 'Unknown';
+        return reward.name;
+      });
+      rewards.push(...customRewards);
+    }
+
+    if (rewards.length) {
+      fields.push({
+        name: 'Rewards',
+        value: unorderedList(truncateArray(rewards, 5)),
+      });
     }
 
     if (data.chainName && data.chainContracts?.length) {

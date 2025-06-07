@@ -19,10 +19,23 @@ export const DEVELOPERS = [
 ];
 
 export const SUPPORTED_LOCALES = [
-  'en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pl', 'pt-br', 'ru', 'tr', 'uk', 'zh-cn', 'zh-tw',
+  'en',
+  'de',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'ko',
+  'pl',
+  'pt-br',
+  'ru',
+  'tr',
+  'uk',
+  'zh-cn',
+  'zh-tw',
 ] as const;
 
-export type SupportedLocales = typeof SUPPORTED_LOCALES[number];
+export type SupportedLocales = (typeof SUPPORTED_LOCALES)[number];
 
 export const SUPPORTED_LOCALES_NAMES: Record<SupportedLocales, string> = {
   en: 'English',
