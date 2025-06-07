@@ -17,7 +17,7 @@ export class Embed extends EmbedBuilder {
   override setDescription(description: string | null): this {
     if (description) {
       description = description
-        .replace(/<[^>]+>/g, '') // remove HTML tags
+        .replace(/<(?![@#][!&]?\d+>)[^>]+>/g, '') // remove HTML tags except Discord mentions
         .replace(/&[a-zA-Z0-9#]+;/g, ''); // remove HTML entities
     }
     return super.setDescription(description);
