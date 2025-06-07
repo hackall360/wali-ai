@@ -105,7 +105,7 @@ export default new (class extends Command {
 
     let file: AttachmentBuilder | null = null;
 
-    if (data.customization) {
+    if (data.customization?.swatchColors?.length) {
       const image = createColorPaletteImage(data.customization.swatchColors);
 
       file = new AttachmentBuilder(image, { name: 'colors.png' });
