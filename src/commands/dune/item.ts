@@ -2,6 +2,7 @@ import {
   type APIEmbedField,
   ActionRowBuilder,
   ApplicationCommandOptionType,
+  AttachmentBuilder,
   AutocompleteInteraction,
   ButtonBuilder,
   ButtonStyle,
@@ -14,6 +15,7 @@ import { Command, type Context } from '#models/command';
 import { Embed } from '#models/embed';
 import { type ItemModel } from '#types/database';
 import { api } from '#utils/api';
+import { createColorPaletteImage } from '#utils/canvas';
 import { DATABASE_URL, PROXY_URL, truncateArray } from '#utils/common';
 
 export default new (class extends Command {
@@ -101,11 +103,22 @@ export default new (class extends Command {
       });
     }
 
+    let file: AttachmentBuilder | null = null;
+
+    if (data.customization) {
+      const image = createColorPaletteImage(data.customization.swatchColors);
+
+      file = new AttachmentBuilder(image, { name: 'colors.png' });
+
+      embed.setImage('attachment://colors.png');
+    }
+
     embed.addFields(fields);
 
     await interaction.editReply({
       embeds: [embed],
       components: actionRow.components.length ? [actionRow] : [],
+      files: file ? [file] : [],
     });
   }
 
@@ -113,7 +126,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(context.locale, value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract']);
+    let data = await api.search(context.locale, value, ['Items', 'Misc', 'Weapons', 'Utilty', 'Vehicles', 'Garment', 'Contract', 'Customization']);
 
     data = data.slice(0, 25);
 

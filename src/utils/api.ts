@@ -41,7 +41,6 @@ const customFetch = async <T>(path: string): Promise<T | null> => {
   try {
     const headers: Record<string, string> = config.secretToken ? { 'X-Secret-Token': config.secretToken } : {};
     const response = await fetch(format(path), { headers });
-    console.log(response)
     const data = (await response.json()) as T;
     cache.set(path, data);
     return data;

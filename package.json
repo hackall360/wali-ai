@@ -26,6 +26,7 @@
     "url": "https://ko-fi.com/glazk0"
   },
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.70",
     "discord-api-types": "0.38.4",
     "discord.js": "14.19.3",
     "dotenv": "16.5.0",
