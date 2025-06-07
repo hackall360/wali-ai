@@ -107,9 +107,12 @@ export default new (class extends Command {
           return 'Unknown';
         }
         if (item.count) {
-          return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
+          if (item.entity?.subCategoryId) {
+            return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
+          }
+          return `x${item.count} ${item.entity.name}`;
         }
-        return hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`);
+        return item.entity.name;
       });
       rewards.push(...items);
     }
