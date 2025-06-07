@@ -31,9 +31,7 @@ export default new (class extends Command {
     const [category, id] = name.split('/');
 
     if (!category || !id) {
-      await interaction.editReply(
-        'It seems like the name you provided is not in the correct format. Please retry or contact the bot owner if you think this is a bug.'
-      );
+      await interaction.editReply('The search did not return a valid category and ID.');
       return;
     }
 
