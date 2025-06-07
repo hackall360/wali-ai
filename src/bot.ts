@@ -5,7 +5,7 @@ import { config } from '#config';
 import { registerEvents } from '#events';
 import { logger } from '#utils/logger';
 
-const client = new Client({
+const client = new Client<true>({
   shards: 'auto',
   intents: [GatewayIntentBits.Guilds],
   presence: {

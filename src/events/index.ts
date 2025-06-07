@@ -9,7 +9,7 @@ import { logger } from '#utils/logger';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export async function registerEvents(client: Client): Promise<void> {
+export const registerEvents = async (client: Client): Promise<void> => {
   const filesPath = await glob('**/*.{ts,js}', {
     cwd: __dirname,
     ignore: ['index.ts', 'index.js'],

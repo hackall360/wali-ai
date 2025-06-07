@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 
 export const commands = new Collection<string, Command>();
 
-export async function registerCommands(client: Client): Promise<void> {
+export const registerCommands = async (client: Client<true>): Promise<void> => {
   const filesPath = await glob('**/*.{ts,js}', {
     cwd: __dirname,
     ignore: ['index.ts', 'index.js'],
@@ -52,9 +52,9 @@ export async function registerCommands(client: Client): Promise<void> {
     logger.info('Started refreshing application (/) command(s)');
 
     if (config.isDevelopment) {
-      await rest.put(Routes.applicationGuildCommands(client.application?.id!, config.guildId), { body: data });
+      await rest.put(Routes.applicationGuildCommands(client.application.id, config.guildId), { body: data });
     } else {
-      await rest.put(Routes.applicationCommands(client.application?.id!), { body: data });
+      await rest.put(Routes.applicationCommands(client.application.id), { body: data });
     }
 
     logger.info(`Successfully refreshed ${data.length} application (/) command(s)`);
