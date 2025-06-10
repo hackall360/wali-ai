@@ -48,7 +48,7 @@ export default new (class extends Command {
     }
 
     const embed = new Embed();
-    
+
     const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
     if (data.name) {
@@ -86,7 +86,14 @@ export default new (class extends Command {
 
       const conditions = data.conditions.map((condition) => {
         if (condition.name) {
-          return condition.number ? condition.name.replace('{number}', condition.number.toString()) : condition.name;
+          let str = condition.name;
+          if (condition.number) {
+            str = str.replace('{number}', condition.number.toString());
+          }
+          if (condition.contractItem?.entity?.name) {
+            str = str.replace('{item_name}', hyperlink(condition.contractItem.entity.name, `${DATABASE_URL}/items/${condition.contractItem.entity.id}`));
+          }
+          return str;
         }
         return 'Unknown';
       });
