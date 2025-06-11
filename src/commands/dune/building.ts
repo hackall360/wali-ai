@@ -33,6 +33,12 @@ export default new (class extends Command {
           description: 'Quantity of the building',
           type: ApplicationCommandOptionType.Integer,
           required: false,
+        },
+        {
+          name: 'deep-desert',
+          description: 'Whether the building is built in the deep desert',
+          type: ApplicationCommandOptionType.Boolean,
+          required: false,
         }
       ],
     });
@@ -44,8 +50,8 @@ export default new (class extends Command {
     if (!interaction.deferred) await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
-    // minmaxing the quantity option
     const quantity = Math.max(1, Math.min(interaction.options.getInteger('quantity') ?? 1, 999));
+    const deepDesert = interaction.options.getBoolean('deep-desert') ?? false;
 
     const data = await api.get<PlaceableModel>(name, context.locale);
 
@@ -77,7 +83,8 @@ export default new (class extends Command {
       const ingredients = data.ingredients.map((ingredient) => {
         if (!ingredient?.entity?.name) return 'Unknown';
         if (ingredient?.quantity) {
-          return `x${ingredient.quantity * quantity} ${hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`)}`;
+          const finalQuantity = deepDesert ? Math.ceil((ingredient.quantity * quantity) / 2) : ingredient.quantity * quantity;
+          return `x${finalQuantity} ${hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`)}`;
         }
         return hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`);
       });
