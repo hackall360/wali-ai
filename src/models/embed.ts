@@ -18,7 +18,7 @@ export class Embed extends EmbedBuilder {
     if (description) {
       description = description
         // Remove HTML tags except Discord user/channel/role mentions and command mentions
-        .replace(/<(?![@#][!&]?\d+>|\/[a-zA-Z0-9_]+:\d+>)[^>]+>/g, '')
+        .replace(/<(?![@#][!&]?\d+>|\/[a-zA-Z0-9_]+:\d+>|\/\S+ \S+:\S+>)[^>]+>/g, '')
         // Remove HTML entities
         .replace(/&[a-zA-Z0-9#]+;/g, '');
     }
