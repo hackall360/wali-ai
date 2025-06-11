@@ -28,6 +28,12 @@ export default new (class extends Command {
           required: true,
           autocomplete: true,
         },
+        {
+          name: 'quantity',
+          description: 'Quantity of the building',
+          type: ApplicationCommandOptionType.Integer,
+          required: false,
+        }
       ],
     });
   }
@@ -38,6 +44,8 @@ export default new (class extends Command {
     if (!interaction.deferred) await interaction.deferReply();
 
     const name = interaction.options.getString('name', true);
+    // minmaxing the quantity option
+    const quantity = Math.max(1, Math.min(interaction.options.getInteger('quantity') ?? 1, 999));
 
     const data = await api.get<PlaceableModel>(name, context.locale);
 
@@ -69,7 +77,7 @@ export default new (class extends Command {
       const ingredients = data.ingredients.map((ingredient) => {
         if (!ingredient?.entity?.name) return 'Unknown';
         if (ingredient?.quantity) {
-          return `x${ingredient.quantity} ${hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`)}`;
+          return `x${ingredient.quantity * quantity} ${hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`)}`;
         }
         return hyperlink(ingredient.entity.name, `${DATABASE_URL}/items/${ingredient.entity.id}`);
       });
