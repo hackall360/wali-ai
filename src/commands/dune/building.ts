@@ -108,8 +108,6 @@ export default new (class extends Command {
       "Decorations",
     ]);
 
-    console.log('Autocomplete data:', data);
-
     data = data.slice(0, 25);
 
     await interaction.respond(
