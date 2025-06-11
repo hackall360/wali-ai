@@ -139,7 +139,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(context.locale, value, ['NPCs']);
+    let data = await api.search(context.locale, value, ['npcs']);
 
     data = data.slice(0, 25);
 

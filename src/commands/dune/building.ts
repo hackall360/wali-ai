@@ -107,13 +107,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(context.locale, value, [
-      "CHOAM Shelter",
-      "Atreides Stronghold",
-      "Harkonnen Stronghold",
-      "CHOAM Facility",
-      "Decorations",
-    ]);
+    let data = await api.search(context.locale, value, ["buildables"]);
 
     data = data.slice(0, 25);
 

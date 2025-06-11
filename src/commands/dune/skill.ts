@@ -165,7 +165,7 @@ export default new (class extends Command {
     const value = interaction.options.getFocused();
 
     // TODO: Add type checking
-    let data = await api.search(context.locale, value, ['Skills']);
+    let data = await api.search(context.locale, value, ['skills']);
 
     data = data.slice(0, 25);
 

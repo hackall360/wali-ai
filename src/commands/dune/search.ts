@@ -28,14 +28,18 @@ export default new (class extends Command {
 
     const name = interaction.options.getString('name', true);
 
-    const [category, id] = name.split('/');
+    let [category, id] = name.split('/');
 
     if (!category || !id) {
       await interaction.editReply('The search did not return a valid category and ID.');
       return;
     }
 
-    const singularCategory = category.endsWith('s') ? category.slice(0, -1) : category;
+    if (category === 'buildables') {
+      category = 'building';
+    }
+
+    let singularCategory = category.endsWith('s') ? category.slice(0, -1) : category;
 
     const command = commands.get(singularCategory);
 
@@ -52,17 +56,11 @@ export default new (class extends Command {
 
     // TODO: Add type checking
     let data = await api.search(context.locale, value, [
-      'Items',
-      'Misc',
-      'Weapons',
-      'Utilty',
-      'Vehicles',
-      'Garment',
-      'Contract',
-      'Customization',
-      'NPCs',
-      'Skills',
-      'Contracts',
+      'items',
+      'contracts',
+      'buildables',
+      'npcs',
+      'skills',
     ]);
 
     data = data.slice(0, 25);

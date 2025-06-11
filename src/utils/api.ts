@@ -13,7 +13,10 @@ export const api = {
     }
 
     if (types?.length) {
-      data = data.filter((entry) => entry.type && types.includes(entry.type));
+      data = data.filter(entry => {
+        const type = entry.path?.split('/')[0];
+        return type ? types.includes(type) : false;
+      });
     }
 
     if (!query?.length) return data;
