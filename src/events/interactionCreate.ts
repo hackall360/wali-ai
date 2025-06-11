@@ -29,21 +29,21 @@ export default new (class extends Event {
       locale: isSupportedLocale(interaction.locale) ? interaction.locale : 'en' as const,
     };
 
-    // if (interaction.inGuild()) {
-    //   let guild = await database.query.guilds.findFirst({
-    //     where: eq(guilds.id, interaction.guildId)
-    //   });
-    //   if (!guild) {
-    //     [guild] = await database
-    //       .insert(guilds)
-    //       .values({ id: interaction.guildId })
-    //       .onConflictDoNothing({ target: guilds.id })
-    //       .returning();
-    //   }
-    //   if (guild?.locale) {
-    //     context.locale = guild.locale as SupportedLocales;
-    //   }
-    // }
+    if (interaction.inGuild()) {
+      let guild = await database.query.guilds.findFirst({
+        where: eq(guilds.id, interaction.guildId)
+      });
+      if (!guild) {
+        [guild] = await database
+          .insert(guilds)
+          .values({ id: interaction.guildId })
+          .onConflictDoNothing({ target: guilds.id })
+          .returning();
+      }
+      if (guild?.locale) {
+        context.locale = guild.locale as SupportedLocales;
+      }
+    }
 
     if (interaction.isAutocomplete()) {
       const command = commands.get(interaction.commandName);

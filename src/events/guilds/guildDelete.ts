@@ -21,10 +21,10 @@ export default new (class extends Event {
       totalUsers.set({ guildId: g.id }, g.memberCount);
     }
 
-    // try {
-    //   await database.delete(guilds).where(eq(guilds.id, guild.id));
-    // } catch (error) {
-    //   logger.error(`Error while deleting ${guild.id} from database: ${error}`);
-    // }
+    try {
+      await database.delete(guilds).where(eq(guilds.id, guild.id));
+    } catch (error) {
+      logger.error(`Error while deleting ${guild.id} from database: ${error}`);
+    }
   }
 })();
