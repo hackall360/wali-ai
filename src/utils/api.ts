@@ -21,13 +21,14 @@ export const api = {
 
     if (!query?.length) return data;
 
+    query = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
     const regex = new RegExp(query, 'i');
 
     return data.filter((entry) => entry.name && regex.test(entry.name));
   },
   get: async <T>(path: string, locale: SupportedLocales): Promise<T | null> => {
     const data = await customFetch<T>(locale + '/' + path);
-
     return data;
   },
 };
