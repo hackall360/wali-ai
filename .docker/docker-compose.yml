@@ -1,8 +1,10 @@
 services:
   bot:
     depends_on:
-      - postgres
-      - backup
+      postgres:
+        condition: service_healthy
+      backup:
+        condition: service_started
     pull_policy: build
     build:
       context: ../
