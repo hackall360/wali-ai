@@ -11,7 +11,10 @@ services:
     restart: unless-stopped
     environment:
       - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
+      - DISCORD_CLIENT_ID=${DISCORD_CLIENT_ID}
+      - DISCORD_GUILD_ID=${DISCORD_GUILD_ID}
       - SECRET_TOKEN=${SECRET_TOKEN}
+      - ENTITLEMENTS_SECRET_TOKEN=${ENTITLEMENTS_SECRET_TOKEN}
       - DATABASE_URL=${DATABASE_URL}
     networks:
       - network
