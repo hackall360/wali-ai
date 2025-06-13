@@ -51,7 +51,7 @@ export const registerCommands = async (client: Client<true>): Promise<void> => {
   try {
     logger.info('Started refreshing application (/) command(s)');
 
-    if (config.isDevelopment) {
+    if (config.isDevelopment && config.guildId) {
       await rest.put(Routes.applicationGuildCommands(client.application.id, config.guildId), { body: data });
     } else {
       await rest.put(Routes.applicationCommands(client.application.id), { body: data });
