@@ -113,7 +113,7 @@ export default new (class extends Command {
       });
       fields.push({
         name: 'Sold By',
-        value: vendors.map((vendor) => vendor).join('\n'),
+        value: unorderedList(truncateArray(vendors, 5)),
       });
     }
 
