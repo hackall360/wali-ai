@@ -109,8 +109,7 @@ export default new (class extends Command {
     const rewards: string[] = [];
 
     if (data.itemRewards?.length) {
-      // TODO: Add type checking for itemRewards
-      const items = data.itemRewards.map((item: any) => {
+      const items = data.itemRewards.map((item) => {
         if (!item.entity?.name) {
           return 'Unknown';
         }
