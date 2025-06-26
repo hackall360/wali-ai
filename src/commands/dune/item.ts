@@ -7,6 +7,7 @@ import {
   ButtonBuilder,
   ButtonStyle,
   CommandInteraction,
+  bold,
   hyperlink,
   unorderedList,
 } from 'discord.js';
@@ -82,13 +83,14 @@ export default new (class extends Command {
       const attributes = this.getAttributeValues(data.attributeValues);
 
       if (attributes.length) {
-        for (const [key, value] of attributes) {
-          fields.push({
-            name: key,
-            value: this.getStatValue(key, value),
-            inline: true,
-          });
-        }
+        const value = attributes.map(([key, value]) => {
+          return `${bold(key)}: ${this.getStatValue(key, value)}`;
+        });
+
+        embed.addFields({
+          name: 'Attributes',
+          value: unorderedList(value),
+        });
       }
     }
 
