@@ -113,6 +113,17 @@ export default new (class extends Command {
       });
       fields.push({
         name: 'Sold By',
+        value: vendors.map((vendor) => vendor).join('\n'),
+      });
+    }
+
+    if (data.canBeSoldTo?.length) {
+      const vendors = data.canBeSoldTo.map((vendor) => {
+        if (!vendor?.entity) return 'Unknown';
+        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/npcs/${vendor.entity.id}`);
+      });
+      fields.push({
+        name: 'Can be sold to',
         value: unorderedList(truncateArray(vendors, 5)),
       });
     }
