@@ -13,7 +13,7 @@ import {
 
 import { Command, type Context } from '#models/command';
 import { Embed } from '#models/embed';
-import { type ItemModel } from '#types/database';
+import { type AttributeValueModel, type ItemModel } from '#types/database';
 import { api } from '#utils/api';
 import { createColorPaletteImage } from '#utils/canvas';
 import { DATABASE_URL, PROXY_URL, truncateArray } from '#utils/common';
@@ -78,7 +78,19 @@ export default new (class extends Command {
 
     const fields: APIEmbedField[] = [];
 
-    // TODO: Add stats & other data
+    if (data.attributeValues?.length) {
+      const attributes = this.getAttributeValues(data.attributeValues);
+
+      if (attributes.length) {
+        for (const [key, value] of attributes) {
+          fields.push({
+            name: key,
+            value: this.getStatValue(key, value),
+            inline: true,
+          });
+        }
+      }
+    }
 
     if (data.requiredForContract?.length) {
       const contracts = data.requiredForContract.map((contract) => {
@@ -138,5 +150,52 @@ export default new (class extends Command {
           value: entry.path as string,
         }))
     );
+  }
+
+  private getAttributeValues(values: AttributeValueModel[]): [string, string | number][] {
+    return values
+      .filter((attr) => {
+        if (!attr?.attribute?.name || attr.value == null) return false;
+        if (typeof attr.value === 'string') return true;
+        if (typeof attr.value === 'number') return !isNaN(attr.value);
+        if (typeof attr.value === 'object') return attr.value !== null;
+        return false;
+      })
+      .map((attr) => {
+        let name = attr.attribute?.name?.endsWith(':')
+          ? attr.attribute.name.slice(0, -1)
+          : attr.attribute?.name ?? '';
+        let value = attr.value;
+
+        if (typeof value === 'number') {
+          value = Math.round(value * 1000) / 1000;
+          if (
+            attr.attribute &&
+            attr.attribute.percentBased &&
+            !attr.attribute.higherIsBetter &&
+            value > 0
+          ) {
+            value = value - 1;
+          }
+        }
+
+        if (attr.attribute && attr.attribute.percentBased) {
+          value = (Math.round(Number(value) * 10000) / 100).toFixed(1) + '%';
+        }
+
+        return [name, value];
+      });
+  }
+
+  private getStatValue(stat: string, value: string | number): string {
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    if (stat.endsWith('MitigationArmor')) {
+      return (Math.round(value * 10000) / 100).toFixed(1) + '%';
+    }
+
+    return (Math.round(Number(value) * 100) / 100).toString();
   }
 })();

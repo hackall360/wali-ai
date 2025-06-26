@@ -11,288 +11,291 @@
  */
 
 export enum MapLocationType {
-  Marker = 'Marker',
-  Npc = 'Npc',
-  LootContainer = 'LootContainer',
-  ExplorationVolume = 'ExplorationVolume',
-  PentashieldKey = 'PentashieldKey',
-  SecretDoor = 'SecretDoor',
-  InteractionTarget = 'InteractionTarget',
-  IntelPoint = 'IntelPoint',
-  GoToTarget = 'GoToTarget',
-  ResourceNode = 'ResourceNode',
+  Marker = "Marker",
+  Npc = "Npc",
+  LootContainer = "LootContainer",
+  ExplorationVolume = "ExplorationVolume",
+  PentashieldKey = "PentashieldKey",
+  SecretDoor = "SecretDoor",
+  InteractionTarget = "InteractionTarget",
+  IntelPoint = "IntelPoint",
+  GoToTarget = "GoToTarget",
+  ResourceNode = "ResourceNode",
+  Vehicle = "Vehicle",
 }
 
 export enum LocalizationField {
-  ListingTitle = 'ListingTitle',
-  ListingDescription = 'ListingDescription',
-  DetailsTitle = 'DetailsTitle',
-  DetailsDescription = 'DetailsDescription',
+  ListingTitle = "ListingTitle",
+  ListingDescription = "ListingDescription",
+  DetailsTitle = "DetailsTitle",
+  DetailsDescription = "DetailsDescription",
 }
 
 export enum Language {
-  En = 'En',
+  En = "En",
+  De = "De",
 }
 
 export enum EntityType {
-  None = 'None',
-  Unknown = 'Unknown',
-  Any = 'Any',
-  Item = 'Item',
-  Recipe = 'Recipe',
-  TechTree = 'TechTree',
-  BuildableUnlockableSet = 'BuildableUnlockableSet',
-  Placeable = 'Placeable',
-  Npc = 'Npc',
-  Faction = 'Faction',
-  Contract = 'Contract',
-  Dialogue = 'Dialogue',
-  JourneyStory = 'JourneyStory',
-  LootContainer = 'LootContainer',
-  LootSpawner = 'LootSpawner',
-  Skill = 'Skill',
-  Research = 'Research',
-  LandsraadHouse = 'LandsraadHouse',
+  None = "None",
+  Unknown = "Unknown",
+  Any = "Any",
+  Item = "Item",
+  Recipe = "Recipe",
+  TechTree = "TechTree",
+  BuildableUnlockableSet = "BuildableUnlockableSet",
+  Placeable = "Placeable",
+  Npc = "Npc",
+  Faction = "Faction",
+  Contract = "Contract",
+  Dialogue = "Dialogue",
+  JourneyStory = "JourneyStory",
+  LootContainer = "LootContainer",
+  LootSpawner = "LootSpawner",
+  Skill = "Skill",
+  Research = "Research",
+  LandsraadHouse = "LandsraadHouse",
+  LandsraadTask = "LandsraadTask",
 }
 
 export enum EVectorQuantization {
-  None = 'None',
-  RoundWholeNumber = 'RoundWholeNumber',
-  RoundOneDecimal = 'RoundOneDecimal',
-  RoundTwoDecimals = 'RoundTwoDecimals',
+  None = "None",
+  RoundWholeNumber = "RoundWholeNumber",
+  RoundOneDecimal = "RoundOneDecimal",
+  RoundTwoDecimals = "RoundTwoDecimals",
 }
 
 export enum ETickingGroup {
-  None = 'None',
-  TGPrePhysics = 'TG_PrePhysics',
-  TGStartPhysics = 'TG_StartPhysics',
-  TGDuringPhysics = 'TG_DuringPhysics',
-  TGEndPhysics = 'TG_EndPhysics',
-  TGPostPhysics = 'TG_PostPhysics',
-  TGPostUpdateWork = 'TG_PostUpdateWork',
-  TGLastDemotable = 'TG_LastDemotable',
-  TGNewlySpawned = 'TG_NewlySpawned',
-  TG_MAX = 'TG_MAX',
+  None = "None",
+  TGPrePhysics = "TG_PrePhysics",
+  TGStartPhysics = "TG_StartPhysics",
+  TGDuringPhysics = "TG_DuringPhysics",
+  TGEndPhysics = "TG_EndPhysics",
+  TGPostPhysics = "TG_PostPhysics",
+  TGPostUpdateWork = "TG_PostUpdateWork",
+  TGLastDemotable = "TG_LastDemotable",
+  TGNewlySpawned = "TG_NewlySpawned",
+  TG_MAX = "TG_MAX",
 }
 
 export enum ESurfaceSnappingType {
-  None = 'None',
-  ToSurface = 'ToSurface',
-  ToSurfaceNormal = 'ToSurfaceNormal',
-  ToLowestSurfaceInArea = 'ToLowestSurfaceInArea',
-  ToTopmostSurfaceInArea = 'ToTopmostSurfaceInArea',
+  None = "None",
+  ToSurface = "ToSurface",
+  ToSurfaceNormal = "ToSurfaceNormal",
+  ToLowestSurfaceInArea = "ToLowestSurfaceInArea",
+  ToTopmostSurfaceInArea = "ToTopmostSurfaceInArea",
 }
 
 export enum ESpawnActorCollisionHandlingMethod {
-  None = 'None',
-  Undefined = 'Undefined',
-  AlwaysSpawn = 'AlwaysSpawn',
-  AdjustIfPossibleButAlwaysSpawn = 'AdjustIfPossibleButAlwaysSpawn',
-  AdjustIfPossibleButDontSpawnIfColliding = 'AdjustIfPossibleButDontSpawnIfColliding',
-  DontSpawnIfColliding = 'DontSpawnIfColliding',
+  None = "None",
+  Undefined = "Undefined",
+  AlwaysSpawn = "AlwaysSpawn",
+  AdjustIfPossibleButAlwaysSpawn = "AdjustIfPossibleButAlwaysSpawn",
+  AdjustIfPossibleButDontSpawnIfColliding = "AdjustIfPossibleButDontSpawnIfColliding",
+  DontSpawnIfColliding = "DontSpawnIfColliding",
 }
 
 export enum ESkillType {
-  None = 'None',
-  Ability = 'Ability',
-  Technique = 'Technique',
-  Attribute = 'Attribute',
+  None = "None",
+  Ability = "Ability",
+  Technique = "Technique",
+  Attribute = "Attribute",
 }
 
 export enum ESkillTree {
-  None = 'None',
-  Hidden = 'Hidden',
-  BeneGesserit = 'BeneGesserit',
-  Mentat = 'Mentat',
-  Trooper = 'Trooper',
-  Swordmaster = 'Swordmaster',
-  Planetologist = 'Planetologist',
-  MAX = 'MAX',
+  None = "None",
+  Hidden = "Hidden",
+  BeneGesserit = "BeneGesserit",
+  Mentat = "Mentat",
+  Trooper = "Trooper",
+  Swordmaster = "Swordmaster",
+  Planetologist = "Planetologist",
+  MAX = "MAX",
 }
 
 export enum ES2SCull {
-  None = 'None',
-  Players = 'Players',
-  DistanceOnly = 'DistanceOnly',
-  Off = 'Off',
+  None = "None",
+  Players = "Players",
+  DistanceOnly = "DistanceOnly",
+  Off = "Off",
 }
 
 export enum ERotatorQuantization {
-  None = 'None',
-  ByteComponents = 'ByteComponents',
-  ShortComponents = 'ShortComponents',
+  None = "None",
+  ByteComponents = "ByteComponents",
+  ShortComponents = "ShortComponents",
 }
 
 export enum ERangeBoundTypes {
-  None = 'None',
-  Exclusive = 'Exclusive',
-  Inclusive = 'Inclusive',
-  Open = 'Open',
+  None = "None",
+  Exclusive = "Exclusive",
+  Inclusive = "Inclusive",
+  Open = "Open",
 }
 
 export enum EObjectNeedsLoadFor {
-  None = 'None',
-  ClientAndServer = 'ClientAndServer',
-  ClientOnly = 'ClientOnly',
-  ServerOnly = 'ServerOnly',
-  EditorOnly = 'EditorOnly',
+  None = "None",
+  ClientAndServer = "ClientAndServer",
+  ClientOnly = "ClientOnly",
+  ServerOnly = "ServerOnly",
+  EditorOnly = "EditorOnly",
 }
 
 export enum ENetRole {
-  None = 'None',
-  ROLENone = 'ROLE_None',
-  ROLESimulatedProxy = 'ROLE_SimulatedProxy',
-  ROLEAutonomousProxy = 'ROLE_AutonomousProxy',
-  ROLEAuthority = 'ROLE_Authority',
-  ROLE_MAX = 'ROLE_MAX',
+  None = "None",
+  ROLENone = "ROLE_None",
+  ROLESimulatedProxy = "ROLE_SimulatedProxy",
+  ROLEAutonomousProxy = "ROLE_AutonomousProxy",
+  ROLEAuthority = "ROLE_Authority",
+  ROLE_MAX = "ROLE_MAX",
 }
 
 export enum ENetDormancy {
-  None = 'None',
-  DORMNever = 'DORM_Never',
-  DORMAwake = 'DORM_Awake',
-  DORMDormantAll = 'DORM_DormantAll',
-  DORMDormantPartial = 'DORM_DormantPartial',
-  DORMInitial = 'DORM_Initial',
-  DORM_MAX = 'DORM_MAX',
+  None = "None",
+  DORMNever = "DORM_Never",
+  DORMAwake = "DORM_Awake",
+  DORMDormantAll = "DORM_DormantAll",
+  DORMDormantPartial = "DORM_DormantPartial",
+  DORMInitial = "DORM_Initial",
+  DORM_MAX = "DORM_MAX",
 }
 
 export enum EModularAiBehaviorState {
-  None = 'None',
-  Active = 'Active',
-  Inactive = 'Inactive',
-  InUse = 'InUse',
+  None = "None",
+  Active = "Active",
+  Inactive = "Inactive",
+  InUse = "InUse",
 }
 
 export enum ELootTableItemVariety {
-  None = 'None',
-  RandomItems = 'RandomItems',
-  LockFirstRandomItem = 'LockFirstRandomItem',
-  Unique = 'Unique',
+  None = "None",
+  RandomItems = "RandomItems",
+  LockFirstRandomItem = "LockFirstRandomItem",
+  Unique = "Unique",
 }
 
 export enum EJourneyNodeEventState {
-  None = 'None',
-  Hidden = 'Hidden',
-  Revealed = 'Revealed',
-  Completed = 'Completed',
+  None = "None",
+  Hidden = "Hidden",
+  Revealed = "Revealed",
+  Completed = "Completed",
 }
 
 export enum EHostilityType {
-  None = 'None',
-  Neutral = 'Neutral',
-  Hostile = 'Hostile',
+  None = "None",
+  Neutral = "Neutral",
+  Hostile = "Hostile",
 }
 
 export enum EGameplayModOp {
-  None = 'None',
-  Additive = 'Additive',
-  Multiplicitive = 'Multiplicitive',
-  Division = 'Division',
-  Override = 'Override',
-  Max = 'Max',
+  None = "None",
+  Additive = "Additive",
+  Multiplicitive = "Multiplicitive",
+  Division = "Division",
+  Override = "Override",
+  Max = "Max",
 }
 
 export enum EDoorState {
-  None = 'None',
-  Opened = 'Opened',
-  ClosedByPlayer = 'ClosedByPlayer',
-  ClosedAutomatically = 'ClosedAutomatically',
+  None = "None",
+  Opened = "Opened",
+  ClosedByPlayer = "ClosedByPlayer",
+  ClosedAutomatically = "ClosedAutomatically",
 }
 
 export enum EDespawnConditionFlags {
-  None = 'None',
-  QuickResetEvent = 'QuickResetEvent',
-  QuickResetLOD = 'QuickResetLOD',
-  VictoryEvent = 'VictoryEvent',
+  None = "None",
+  QuickResetEvent = "QuickResetEvent",
+  QuickResetLOD = "QuickResetLOD",
+  VictoryEvent = "VictoryEvent",
 }
 
 export enum EContractConditionType {
-  None = 'None',
-  Invalid = 'Invalid',
-  KillNumber = 'KillNumber',
-  ClearArea = 'ClearArea',
-  DeliverItemById = 'DeliverItemById',
-  ReceiveItemById = 'ReceiveItemById',
-  Interact = 'Interact',
-  GoToLocation = 'GoToLocation',
-  ScanObject = 'ScanObject',
-  UseAbility = 'UseAbility',
-  PlayerHasFlags = 'PlayerHasFlags',
-  HandInContract = 'HandInContract',
-  ContactIssuer = 'ContactIssuer',
-  Exsanguination = 'Exsanguination',
+  None = "None",
+  Invalid = "Invalid",
+  KillNumber = "KillNumber",
+  ClearArea = "ClearArea",
+  DeliverItemById = "DeliverItemById",
+  ReceiveItemById = "ReceiveItemById",
+  Interact = "Interact",
+  GoToLocation = "GoToLocation",
+  ScanObject = "ScanObject",
+  UseAbility = "UseAbility",
+  PlayerHasFlags = "PlayerHasFlags",
+  HandInContract = "HandInContract",
+  ContactIssuer = "ContactIssuer",
+  Exsanguination = "Exsanguination",
 }
 
 export enum ECompositeConditionType {
-  None = 'None',
-  And = 'And',
-  Or = 'Or',
+  None = "None",
+  And = "And",
+  Or = "Or",
 }
 
 export enum EAutoReceiveInput {
-  None = 'None',
-  Disabled = 'Disabled',
-  Player0 = 'Player0',
-  Player1 = 'Player1',
-  Player2 = 'Player2',
-  Player3 = 'Player3',
-  Player4 = 'Player4',
-  Player5 = 'Player5',
-  Player6 = 'Player6',
-  Player7 = 'Player7',
+  None = "None",
+  Disabled = "Disabled",
+  Player0 = "Player0",
+  Player1 = "Player1",
+  Player2 = "Player2",
+  Player3 = "Player3",
+  Player4 = "Player4",
+  Player5 = "Player5",
+  Player6 = "Player6",
+  Player7 = "Player7",
 }
 
 export enum EAuthorityTransferState {
-  None = 'None',
-  AUTHTRANSFERNone = 'AUTHTRANSFER_None',
-  AUTHTRANSFERTransferring = 'AUTHTRANSFER_Transferring',
-  AUTHTRANSFERFixed = 'AUTHTRANSFER_Fixed',
-  AUTHTRANSFERSerializing = 'AUTHTRANSFER_Serializing',
-  AUTHTRANSFER_MAX = 'AUTHTRANSFER_MAX',
+  None = "None",
+  AUTHTRANSFERNone = "AUTHTRANSFER_None",
+  AUTHTRANSFERTransferring = "AUTHTRANSFER_Transferring",
+  AUTHTRANSFERFixed = "AUTHTRANSFER_Fixed",
+  AUTHTRANSFERSerializing = "AUTHTRANSFER_Serializing",
+  AUTHTRANSFER_MAX = "AUTHTRANSFER_MAX",
 }
 
 export enum EActorUpdateOverlapsMethod {
-  None = 'None',
-  UseConfigDefault = 'UseConfigDefault',
-  AlwaysUpdate = 'AlwaysUpdate',
-  OnlyUpdateMovable = 'OnlyUpdateMovable',
-  NeverUpdate = 'NeverUpdate',
+  None = "None",
+  UseConfigDefault = "UseConfigDefault",
+  AlwaysUpdate = "AlwaysUpdate",
+  OnlyUpdateMovable = "OnlyUpdateMovable",
+  NeverUpdate = "NeverUpdate",
 }
 
 export enum DepthType {
-  Cv8U = 'Cv8U',
-  Cv8S = 'Cv8S',
-  Cv16U = 'Cv16U',
-  Cv16S = 'Cv16S',
-  Cv32S = 'Cv32S',
-  Cv32F = 'Cv32F',
-  Cv64F = 'Cv64F',
-  Default = 'Default',
+  Cv8U = "Cv8U",
+  Cv8S = "Cv8S",
+  Cv16U = "Cv16U",
+  Cv16S = "Cv16S",
+  Cv32S = "Cv32S",
+  Cv32F = "Cv32F",
+  Cv64F = "Cv64F",
+  Default = "Default",
 }
 
 export enum BindingFlags {
-  Default = 'Default',
-  IgnoreCase = 'IgnoreCase',
-  DeclaredOnly = 'DeclaredOnly',
-  Instance = 'Instance',
-  Static = 'Static',
-  Public = 'Public',
-  NonPublic = 'NonPublic',
-  FlattenHierarchy = 'FlattenHierarchy',
-  InvokeMethod = 'InvokeMethod',
-  CreateInstance = 'CreateInstance',
-  GetField = 'GetField',
-  SetField = 'SetField',
-  GetProperty = 'GetProperty',
-  SetProperty = 'SetProperty',
-  PutDispProperty = 'PutDispProperty',
-  PutRefDispProperty = 'PutRefDispProperty',
-  ExactBinding = 'ExactBinding',
-  SuppressChangeType = 'SuppressChangeType',
-  OptionalParamBinding = 'OptionalParamBinding',
-  IgnoreReturn = 'IgnoreReturn',
-  DoNotWrapExceptions = 'DoNotWrapExceptions',
+  Default = "Default",
+  IgnoreCase = "IgnoreCase",
+  DeclaredOnly = "DeclaredOnly",
+  Instance = "Instance",
+  Static = "Static",
+  Public = "Public",
+  NonPublic = "NonPublic",
+  FlattenHierarchy = "FlattenHierarchy",
+  InvokeMethod = "InvokeMethod",
+  CreateInstance = "CreateInstance",
+  GetField = "GetField",
+  SetField = "SetField",
+  GetProperty = "GetProperty",
+  SetProperty = "SetProperty",
+  PutDispProperty = "PutDispProperty",
+  PutRefDispProperty = "PutRefDispProperty",
+  ExactBinding = "ExactBinding",
+  SuppressChangeType = "SuppressChangeType",
+  OptionalParamBinding = "OptionalParamBinding",
+  IgnoreReturn = "IgnoreReturn",
+  DoNotWrapExceptions = "DoNotWrapExceptions",
 }
 
 export interface AISpawnAnimation {
@@ -328,45 +331,6 @@ export interface ApiExcludeAttribute {
   typeId?: any;
 }
 
-export interface ArmorItemStats {
-  /** @format float */
-  coldDamageMitigationArmor?: number;
-  /** @format float */
-  coriolisDamageMitigationArmor?: number;
-  /** @format float */
-  dartDamageMitigationArmor?: number;
-  /** @format float */
-  energyDamageMitigationArmor?: number;
-  /** @format float */
-  explosiveDamageMitigationArmor?: number;
-  /** @format float */
-  harvestDamageMitigationArmor?: number;
-  /** @format float */
-  heatDamageMitigationArmor?: number;
-  /** @format float */
-  meleeDamageMitigationArmor?: number;
-  /** @format float */
-  physicalDamageMitigationArmor?: number;
-  /** @format float */
-  poisonDamageMitigationArmor?: number;
-  /** @format float */
-  radiationDamageMitigationArmor?: number;
-  /** @format float */
-  repairDamageMitigationArmor?: number;
-  /** @format float */
-  sandstormDamageMitigationLevel1Armor?: number;
-  /** @format float */
-  sandstormDamageMitigationLevel2Armor?: number;
-  /** @format float */
-  sandstormDamageMitigationLevel3Armor?: number;
-  /** @format float */
-  healingDamageMitigationArmor?: number;
-  /** @format float */
-  heavyDartDamageMitigationArmor?: number;
-  /** @format int32 */
-  armorValue?: number;
-}
-
 export interface AssetEntry {
   type?: string;
   name?: string;
@@ -396,7 +360,6 @@ export interface AssetEntryLink {
 }
 
 export interface AttributeName {
-  key?: string;
   name?: string;
   percentBased?: boolean;
   higherIsBetter?: boolean;
@@ -1663,8 +1626,12 @@ export interface BPTerrainBlockActorC {
   m_bWasObjectLoaded?: boolean | null;
   m_bIsTerrainBlockEnabled?: boolean | null;
   m_TerrainBlockAsset?: ObjectProperty;
-  m_SubLevelGroupsSettings?: KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[] | null;
-  m_SubContentBlocksSettings?: TerrainBlockTemplateSubLevelContentBlockSettings[] | null;
+  m_SubLevelGroupsSettings?:
+    | KeyValuePairStringTerrainBlockTemplateSubLevelGroupSettings[]
+    | null;
+  m_SubContentBlocksSettings?:
+    | TerrainBlockTemplateSubLevelContentBlockSettings[]
+    | null;
   m_bIsVistaOnly?: boolean | null;
   debugArea?: boolean;
 }
@@ -1680,6 +1647,8 @@ export interface BaseModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
 }
@@ -1695,6 +1664,8 @@ export interface BuildableUnlockableSetModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   requiresLearning?: boolean;
@@ -1707,6 +1678,41 @@ export type BuildableUnlockableSetsBuilder = object;
 export type BuildablesBuilder = object;
 
 export type Builder = object;
+
+export interface CalculatorItem {
+  id?: string;
+  name?: string;
+  iconPath?: string;
+  recipes?: CalculatorRecipe[] | null;
+}
+
+export interface CalculatorRecipe {
+  ingredients?: CalculatorRecipeIngredient[] | null;
+  /** @format int32 */
+  waterAmount?: number;
+  /** @format float */
+  craftingTime?: number;
+  outputs?: CalculatorRecipeOutput[] | null;
+  crafters?: CalculatorRecipeCrafter[] | null;
+}
+
+export interface CalculatorRecipeCrafter {
+  id?: string;
+  name?: string;
+  iconPath?: string;
+}
+
+export interface CalculatorRecipeIngredient {
+  id?: string;
+  /** @format int32 */
+  quantity?: number;
+}
+
+export interface CalculatorRecipeOutput {
+  id?: string;
+  /** @format int32 */
+  quantity?: number;
+}
 
 export interface Categories {
   /** @uniqueItems true */
@@ -1761,6 +1767,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: ResearchNodeModel[] | null;
@@ -1790,6 +1798,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   tag?: string;
@@ -1817,6 +1827,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   ingredients?: EntityQuantityModel[] | null;
@@ -1845,6 +1857,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   faction?: string;
@@ -1872,10 +1886,13 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
+  buysItems?: VendorItem[] | null;
   locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
@@ -1897,6 +1914,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   /** @format int32 */
@@ -1914,6 +1933,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   uniqueReward?: RelatedEntity;
@@ -1931,6 +1952,24 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
+  reward?: EntityCountInt32;
+} & {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   children?: JourneyModel[] | null;
@@ -1960,6 +1999,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   shortDescription?: string;
@@ -1981,20 +2022,17 @@ export type CombinedModel = {
   requiredForContract?: RelatedEntity[] | null;
   /** @uniqueItems true */
   createdByRecipe?: RelatedEntity[] | null;
-  armorStats?: ArmorItemStats;
-  weaponStats?: WeaponStats;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
   soldBy?: VendorItem[] | null;
+  canBeSoldTo?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
-  dewReaperStats?: DewReaperStats;
-  cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
   isSchematic?: boolean;
@@ -2026,6 +2064,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
 } & {
@@ -2039,6 +2079,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: Record<string, DialogueNodeModel>;
@@ -2061,6 +2103,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   conditions?: ContractConditionModel[] | null;
@@ -2088,6 +2132,8 @@ export type CombinedModel = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   requiresLearning?: boolean;
@@ -2176,6 +2222,8 @@ export interface ContractModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   conditions?: ContractConditionModel[] | null;
@@ -2205,6 +2253,8 @@ export interface CoordinateModel {
   z?: number;
 }
 
+export type CraftingCalculatorDataBuilder = object;
+
 export interface DataIndex {
   path?: string;
   entries?: DataIndexEntry[] | null;
@@ -2227,6 +2277,18 @@ export interface DataTableRowHandle {
 export interface DataTableRowReference {
   dataTable?: ObjectProperty;
   rowName?: string;
+}
+
+export type DeepDesertLiveWorldBuilder = object;
+
+export interface DeepDesertModel {
+  /** @format int32 */
+  coriolisWorldSeed?: number | null;
+  /** @format int64 */
+  lastCoriolisTime?: number;
+  /** @format int64 */
+  nextCoriolisTime?: number;
+  terrainBlockSourceData?: WorldLayoutTerrainBlockArrayItem[] | null;
 }
 
 export interface DetailsContractResolver {
@@ -2258,6 +2320,8 @@ export interface DialogueModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: Record<string, DialogueNodeModel>;
@@ -2371,6 +2435,8 @@ export interface FactionModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
 }
@@ -2388,6 +2454,8 @@ export interface FakeModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
 }
@@ -2430,8 +2498,10 @@ export interface GameDb {
   lootContainersMap?: Record<string, LootContainerModel>;
   skills?: SkillModel[] | null;
   skillsMap?: Record<string, SkillModel>;
-  landstraadHouses?: LandsraadHouseModel[] | null;
+  landsraadHouses?: LandsraadHouseModel[] | null;
   landsraadHousesMap?: Record<string, LandsraadHouseModel>;
+  landsraadTasks?: LandsraadTaskModel[] | null;
+  landsraadTasksMap?: Record<string, LandsraadTaskModel>;
 }
 
 export interface GameplayAttribute {
@@ -2537,6 +2607,8 @@ export interface ItemModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   shortDescription?: string;
@@ -2558,20 +2630,17 @@ export interface ItemModel {
   requiredForContract?: RelatedEntity[] | null;
   /** @uniqueItems true */
   createdByRecipe?: RelatedEntity[] | null;
-  armorStats?: ArmorItemStats;
-  weaponStats?: WeaponStats;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
   soldBy?: VendorItem[] | null;
+  canBeSoldTo?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
-  dewReaperStats?: DewReaperStats;
-  cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
   isSchematic?: boolean;
@@ -2623,6 +2692,8 @@ export interface JourneyModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   children?: JourneyModel[] | null;
@@ -2665,12 +2736,32 @@ export interface LandsraadHouseModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   uniqueReward?: RelatedEntity;
   mapMarkerIconPath?: string;
   npc?: NpcModel;
   mapMarkers?: MarkerLocationModel[] | null;
+}
+
+export interface LandsraadTaskModel {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
+  reward?: EntityCountInt32;
 }
 
 export type LanguageExtensions = object;
@@ -2724,6 +2815,8 @@ export interface LootContainerModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   /** @format int32 */
@@ -2979,10 +3072,13 @@ export interface NpcModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
+  buysItems?: VendorItem[] | null;
   locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
@@ -3048,6 +3144,8 @@ export interface PlaceableModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   faction?: string;
@@ -3133,6 +3231,8 @@ export interface RecipeModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   ingredients?: EntityQuantityModel[] | null;
@@ -3167,6 +3267,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: ResearchNodeModel[] | null;
@@ -3196,6 +3298,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   tag?: string;
@@ -3223,6 +3327,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   ingredients?: EntityQuantityModel[] | null;
@@ -3251,6 +3357,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   faction?: string;
@@ -3278,10 +3386,13 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   hostilityType?: EHostilityType;
   sellsItems?: VendorItem[] | null;
+  buysItems?: VendorItem[] | null;
   locations?: Record<string, Vector3[] | null>;
   isNamed?: boolean;
   /** @uniqueItems true */
@@ -3303,6 +3414,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   /** @format int32 */
@@ -3320,6 +3433,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   uniqueReward?: RelatedEntity;
@@ -3337,6 +3452,24 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
+  /** @uniqueItems true */
+  filterCategoryIds: string[];
+  reward?: EntityCountInt32;
+} & {
+  /** @minLength 1 */
+  id: string;
+  entityType: EntityType;
+  type?: string;
+  name?: string;
+  iconPath?: string;
+  description?: string;
+  mainCategoryId?: string;
+  subCategoryId?: string;
+  isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   children?: JourneyModel[] | null;
@@ -3366,6 +3499,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   shortDescription?: string;
@@ -3387,20 +3522,17 @@ export type RelatedEntity = {
   requiredForContract?: RelatedEntity[] | null;
   /** @uniqueItems true */
   createdByRecipe?: RelatedEntity[] | null;
-  armorStats?: ArmorItemStats;
-  weaponStats?: WeaponStats;
   teachesRecipes?: EntityQuantityModel[] | null;
   isDefaultSchematic?: boolean;
   unlocksPlaceables?: RelatedEntity[] | null;
   soldBy?: VendorItem[] | null;
+  canBeSoldTo?: VendorItem[] | null;
   action?: string;
   infoCard?: string;
   lootSpawners?: LootSpawnerModel[] | null;
   dropLocations?: ItemDropLocation[] | null;
   schematicDropLocations?: ItemDropLocation[] | null;
   heatmaps?: Record<string, string | null>;
-  dewReaperStats?: DewReaperStats;
-  cutlerayYields?: Record<string, number | null>;
   otherContainers?: ItemDropLocation[] | null;
   schematicOtherContainers?: ItemDropLocation[] | null;
   isSchematic?: boolean;
@@ -3432,6 +3564,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
 } & {
@@ -3445,6 +3579,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: Record<string, DialogueNodeModel>;
@@ -3467,6 +3603,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   conditions?: ContractConditionModel[] | null;
@@ -3494,6 +3632,8 @@ export type RelatedEntity = {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   requiresLearning?: boolean;
@@ -3557,6 +3697,8 @@ export interface ResearchNodeModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   nodes?: ResearchNodeModel[] | null;
@@ -3678,6 +3820,8 @@ export interface SkillModel {
   mainCategoryId?: string;
   subCategoryId?: string;
   isDev?: boolean;
+  isHidden?: boolean;
+  subtitle?: string;
   /** @uniqueItems true */
   filterCategoryIds: string[];
   tag?: string;
@@ -3750,6 +3894,7 @@ export interface TagArea {
   tag?: string;
   polygons?: Polygon[] | null;
   data?: any[] | null;
+  valid?: boolean;
 }
 
 export interface TagBehavior {
@@ -3769,7 +3914,9 @@ export interface TerrainBlockTemplateSubLevelContentBlockSettings {
   bShouldOverrideTerrainBlockAsset?: boolean | null;
   terrainBlockAsset?: ObjectProperty;
   bShouldOverrideSubLevelsGroups?: boolean | null;
-  subLevelsGroupsOverride?: TerrainBlockTemplateSubLevelGroupSettingsOverride[] | null;
+  subLevelsGroupsOverride?:
+    | TerrainBlockTemplateSubLevelGroupSettingsOverride[]
+    | null;
 }
 
 export interface TerrainBlockTemplateSubLevelGroupSettings {
@@ -3857,6 +4004,25 @@ export interface VectorNetQuantize100 {
   z?: number;
 }
 
+export interface VehicleLocationModel {
+  mapId?: string;
+  worldId?: string;
+  subMapId?: string;
+  name?: string;
+  localizationKey?: string;
+  transform?: SimpleTransform;
+  mapIcon?: MapIconModel;
+  locationType?: MapLocationType;
+  /** @uniqueItems true */
+  tags?: string[] | null;
+  metadata?: AssetEntry;
+  location?: Vector3;
+  mapMarkers?: MarkerLocationModel[] | null;
+  /** @format uuid */
+  worldGuid?: string;
+  vehicleType?: string;
+}
+
 export interface VendorItem {
   entity?: RelatedEntity;
   /** @format float */
@@ -3926,6 +4092,26 @@ export interface WeightedLootTableEntry {
 
 export type WorldBuilder = object;
 
+export interface WorldLayoutTerrainBlockArrayItem {
+  /** @format int32 */
+  replicationID?: number;
+  /** @format int32 */
+  replicationKey?: number;
+  /** @format int32 */
+  mostRecentArrayReplicationKey?: number;
+  location?: Vector;
+  rotation?: Rotator;
+  /** @format int32 */
+  nameIndex?: number;
+  assetName?: string;
+  subLevelGroupsSettings?:
+    | TerrainBlockTemplateSubLevelGroupSettingsOverride[]
+    | null;
+  subContentBlocksSettings?:
+    | TerrainBlockTemplateSubLevelContentBlockSettings[]
+    | null;
+}
+
 export interface WorldModel {
   id?: string;
   subWorlds?: WorldModel[] | null;
@@ -3936,9 +4122,13 @@ export interface WorldModel {
   markers?: MarkerLocationModel[] | null;
   lootSpawners?: LootSpawnerModel[] | null;
   pentashieldKeys?: PentashieldKeyModel[] | null;
+  /** @format int32 */
+  coriolisWorldSeed?: number | null;
+  lootLayoutTag?: string;
   rootId?: string;
   /** @format uuid */
   guid?: string;
+  mapLocations?: MapLocationModel[] | null;
 }
 
 export interface WorldSubLevelModel {
