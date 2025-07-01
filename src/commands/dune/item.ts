@@ -133,17 +133,6 @@ export default new (class extends Command {
       });
     }
 
-    if (data.canBeSoldTo?.length) {
-      const vendors = data.canBeSoldTo.map((vendor) => {
-        if (!vendor?.entity) return 'Unknown';
-        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/${vendor.entity.mainCategoryId}/${vendor.entity.id}`);
-      });
-      fields.push({
-        name: 'Can be sold to',
-        value: unorderedList(truncateArray(vendors, 5)),
-      });
-    }
-
     let file: AttachmentBuilder | null = null;
 
     if (data.customization?.swatchColors?.length) {
