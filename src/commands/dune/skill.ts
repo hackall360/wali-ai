@@ -61,7 +61,7 @@ export default new (class extends Command {
 
     if (data.name) {
       embed.setTitle(data.name);
-      embed.setURL(`${DATABASE_URL}/skills/${data.id}`);
+      embed.setURL(`${DATABASE_URL}/${data.mainCategoryId}/${data.id}`);
     }
 
     if (data.description) {

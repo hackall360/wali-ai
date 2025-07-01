@@ -56,7 +56,7 @@ export default new (class extends Command {
 
     if (data.name) {
       embed.setTitle(data.name);
-      embed.setURL(`${DATABASE_URL}/items/${data.id}`);
+      embed.setURL(`${DATABASE_URL}/${data.mainCategoryId}/${data.id}`);
     }
 
     if (data.description) {
@@ -72,7 +72,7 @@ export default new (class extends Command {
         new ButtonBuilder({
           label: 'View locations',
           style: ButtonStyle.Link,
-          url: `${DATABASE_URL}/items/${data.id}`,
+          url: `${DATABASE_URL}/${data.mainCategoryId}/${data.id}`,
         })
       );
     }

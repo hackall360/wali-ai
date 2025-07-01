@@ -53,7 +53,7 @@ export default new (class extends Command {
 
     if (data.name) {
       embed.setTitle(data.name);
-      embed.setURL(`${DATABASE_URL}/contracts/${data.id}`);
+      embed.setURL(`${DATABASE_URL}/${data.mainCategoryId}/${data.id}`);
     }
 
     if (data.description) {
@@ -79,7 +79,7 @@ export default new (class extends Command {
           new ButtonBuilder({
             label: 'View locations',
             style: ButtonStyle.Link,
-            url: `${DATABASE_URL}/contracts/${data.id}`,
+            url: `${DATABASE_URL}/${data.mainCategoryId}/${data.id}`,
           })
         );
       }
@@ -91,7 +91,7 @@ export default new (class extends Command {
             str = str.replace('{number}', condition.number.toString());
           }
           if (condition.contractItem?.entity?.name) {
-            str = str.replace('{item_name}', hyperlink(condition.contractItem.entity.name, `${DATABASE_URL}/items/${condition.contractItem.entity.id}`));
+            str = str.replace('{item_name}', hyperlink(condition.contractItem.entity.name, `${DATABASE_URL}/${condition.contractItem.entity.mainCategoryId}/${condition.contractItem.entity.id}`));
           }
           return str;
         }
@@ -117,7 +117,7 @@ export default new (class extends Command {
           if (item.entity?.isHidden) {
             return `x${item.count} ${item.entity.name}`;
           }
-          return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/items/${item.entity.id}`)}`;
+          return `x${item.count} ${hyperlink(item.entity.name, `${DATABASE_URL}/${item.entity.mainCategoryId}/${item.entity.id}`)}`;
         }
         return item.entity.name;
       });
@@ -145,7 +145,7 @@ export default new (class extends Command {
         value: unorderedList(
           truncateArray(
             data.chainContracts.map((contract) =>
-              hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`)
+              hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/${contract.mainCategoryId}/${contract.id}`)
             ),
             5
           )
