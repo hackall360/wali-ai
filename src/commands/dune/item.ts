@@ -97,7 +97,7 @@ export default new (class extends Command {
     if (data.requiredForContract?.length) {
       const contracts = data.requiredForContract.map((contract) => {
         if (!contract?.name) return 'Unknown';
-        return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/contracts/${contract.id}`);
+        return hyperlink(contract.name ?? 'Unknown', `${DATABASE_URL}/${contract.mainCategoryId}/${contract.id}`);
       });
 
       fields.push({
@@ -109,7 +109,7 @@ export default new (class extends Command {
     if (data.soldBy?.length) {
       const vendors = data.soldBy.map((vendor) => {
         if (!vendor?.entity) return 'Unknown';
-        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/npcs/${vendor.entity.id}`);
+        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/${vendor.entity.mainCategoryId}/${vendor.entity.id}`);
       });
       fields.push({
         name: 'Sold By',
@@ -117,10 +117,26 @@ export default new (class extends Command {
       });
     }
 
+    if (data.rewardFrom?.length) {
+      const rewards = data.rewardFrom.map((reward) => {
+        if (!reward?.entity) return 'Unknown';
+
+        if (reward.count && reward.count > 1) {
+          return `x${reward.count} ${hyperlink(reward.entity.name ?? 'Unknown', `${DATABASE_URL}/${reward.entity.mainCategoryId}/${reward.entity.id}`)}`;
+        }
+
+        return hyperlink(reward.entity.name ?? 'Unknown', `${DATABASE_URL}/${reward.entity.mainCategoryId}/${reward.entity.id}`);
+      });
+      fields.push({
+        name: 'Rewarded From',
+        value: unorderedList(truncateArray(rewards, 5)),
+      });
+    }
+
     if (data.canBeSoldTo?.length) {
       const vendors = data.canBeSoldTo.map((vendor) => {
         if (!vendor?.entity) return 'Unknown';
-        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/npcs/${vendor.entity.id}`);
+        return hyperlink(vendor.entity.name ?? 'Unknown', `${DATABASE_URL}/${vendor.entity.mainCategoryId}/${vendor.entity.id}`);
       });
       fields.push({
         name: 'Can be sold to',
