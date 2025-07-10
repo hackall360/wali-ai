@@ -87,7 +87,7 @@ export default new (class extends Command {
           return `${bold(key)}: ${this.getStatValue(key, value)}`;
         });
 
-        embed.addFields({
+        fields.push({
           name: 'Attributes',
           value: unorderedList(value),
         });

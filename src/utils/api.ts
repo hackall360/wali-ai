@@ -45,9 +45,13 @@ const customFetch = async <T>(path: string): Promise<T | null> => {
   try {
     const headers: Record<string, string> = config.secretToken ? { 'X-Secret-Token': config.secretToken } : {};
     const response = await fetch(format(path), { headers });
-    const data = (await response.json()) as T;
-    cache.set(path, data);
-    return data;
+    if (!response.ok) {
+      logger.error(`HTTP error ${response.status} while fetching ${format(path)}`);
+      return null;
+    }
+    const result = (await response.json()) as T;
+    cache.set(path, result);
+    return result;
   } catch (error) {
     if (error instanceof SyntaxError) {
       logger.error(`Syntax error while fetching ${format(path)}: ${error}`);
@@ -56,5 +60,5 @@ const customFetch = async <T>(path: string): Promise<T | null> => {
     }
   }
 
-  return data;
+  return null;
 };
