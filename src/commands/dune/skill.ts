@@ -43,7 +43,7 @@ export default new (class extends Command {
     const data = await api.get<SkillModel>(name, context.locale);
 
     if (!data) {
-      interaction.reply(`The skill "${name}" could not be found.`);
+      interaction.editReply(`The skill "${name}" could not be found.`);
       return;
     }
 

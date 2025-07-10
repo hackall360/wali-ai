@@ -43,7 +43,7 @@ export default new (class extends Command {
     const data = await api.get<NpcModel>(name, context.locale);
 
     if (!data) {
-      interaction.reply(`The npc "${name}" could not be found.`);
+      interaction.editReply(`The npc "${name}" could not be found.`);
       return;
     }
 

@@ -56,7 +56,7 @@ export default new (class extends Command {
     const data = await api.get<PlaceableModel>(name, context.locale);
 
     if (!data) {
-      interaction.reply(`The item "${name}" could not be found.`);
+      interaction.editReply(`The building "${name}" could not be found.`);
       return;
     }
 
