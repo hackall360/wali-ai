@@ -2,6 +2,8 @@ import { ShardingManager } from 'discord.js';
 
 import { config } from '#config';
 import { migrateDatabase } from '#database/migrator';
+import { serviceManager } from '#models/service';
+import { deepDesert } from '#services/deepDesert';
 import { logger } from '#utils/logger';
 
 let manager: ShardingManager | null = null;
@@ -29,6 +31,13 @@ const main = async (): Promise<void> => {
   try {
     await manager.spawn({ timeout: 60000 });
     logger.info('All shards launched');
+
+    serviceManager.initialize(manager);
+
+    serviceManager.registerService(deepDesert);
+
+    await serviceManager.startServices();
+    logger.info('All services started');
   } catch (error) {
     logger.error(`Failed to spawn shards: ${error}`);
     process.exit(1);
@@ -37,12 +46,19 @@ const main = async (): Promise<void> => {
 
 const handleShutdown = (signal: string): void => {
   logger.info(`Received ${signal}. Shutting down...`);
-  if (manager) {
-    for (const shard of manager.shards.values()) {
-      shard.kill();
+
+  serviceManager.stopServices().then(() => {
+    if (manager) {
+      for (const shard of manager.shards.values()) {
+        shard.kill();
+      }
+      logger.info('All shards killed');
     }
-  }
-  process.exit(0);
+    process.exit(0);
+  }).catch((error) => {
+    logger.error(`Error during shutdown: ${error}`);
+    process.exit(1);
+  });
 }
 
 process.on('SIGINT', () => handleShutdown('SIGINT'));
