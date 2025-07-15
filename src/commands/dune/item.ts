@@ -84,7 +84,6 @@ export default new (class extends Command {
 
       if (attributes.length) {
         const value = attributes
-          .filter(([key, value]) => key && value)
           .map(([key, value]) => {
             return `${bold(key)}: ${this.getStatValue(key, value)}`;
           });
@@ -178,8 +177,8 @@ export default new (class extends Command {
     return values
       .filter((attr) => {
         if (!attr?.attribute?.name || attr.value == null) return false;
-        if (typeof attr.value === 'string') return true;
-        if (typeof attr.value === 'number') return !isNaN(attr.value);
+        if (typeof attr.value === 'string') return attr.value.trim().length > 0;
+        if (typeof attr.value === 'number') return !isNaN(attr.value) && attr.value !== 0;
         if (typeof attr.value === 'object') return attr.value !== null;
         return false;
       })
