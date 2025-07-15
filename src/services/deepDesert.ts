@@ -88,7 +88,7 @@ export class DeepDesert extends Service {
           '',
           unorderedList(uniques.filter(item => item.name && item.id).map(item => hyperlink(item.name!, hideLinkEmbed(`${DATABASE_URL}/${item.mainCategoryId}/${item.id}`)))),
           '',
-          `To see their locations, drop counts and probabilities, you should consider navigating to the ${hyperlink('Dune Awakening Database', hideLinkEmbed(DATABASE_URL))}.`,
+          `To see their locations, drop counts and probabilities, you should consider navigating to the ${hyperlink('Dune Awakening Database', hideLinkEmbed(`${DATABASE_URL}/deep-desert`))}.`,
         ]
       } else {
         message = [
