@@ -83,14 +83,18 @@ export default new (class extends Command {
       const attributes = this.getAttributeValues(data.attributeValues);
 
       if (attributes.length) {
-        const value = attributes.map(([key, value]) => {
-          return `${bold(key)}: ${this.getStatValue(key, value)}`;
-        });
+        const value = attributes
+          .filter(([key, value]) => key && value)
+          .map(([key, value]) => {
+            return `${bold(key)}: ${this.getStatValue(key, value)}`;
+          });
 
-        fields.push({
-          name: 'Attributes',
-          value: unorderedList(value),
-        });
+        if (value.length) {
+          fields.push({
+            name: 'Attributes',
+            value: unorderedList(value),
+          });
+        }
       }
     }
 
