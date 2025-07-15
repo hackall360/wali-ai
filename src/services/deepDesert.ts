@@ -39,9 +39,9 @@ export class DeepDesert extends Service {
 
   constructor() {
     super({
-      name: 'deep-desert-monitor',
+      name: 'deep-desert',
       enabled: true,
-      interval: 10000,
+      interval: 1000 * 60 * 60 * 24,
       retryAttempts: 3,
       retryDelay: 10000,
     });

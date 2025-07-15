@@ -37,7 +37,6 @@ const main = async (): Promise<void> => {
     serviceManager.registerService(deepDesert);
 
     await serviceManager.startServices();
-    logger.info('All services started');
   } catch (error) {
     logger.error(`Failed to spawn shards: ${error}`);
     process.exit(1);

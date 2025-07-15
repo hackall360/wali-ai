@@ -137,7 +137,7 @@ export default new (class extends Command {
 
           const webhook = await channel.createWebhook({
             name: interaction.client.user.username,
-            avatar: interaction.client.user.displayAvatarURL(),
+            avatar: interaction.client.user.avatarURL(),
             reason: `Created by ${interaction.user.username} for ${serviceType.replace('_', ' ')} service`,
           });
 
