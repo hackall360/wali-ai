@@ -157,6 +157,7 @@ export class DeepDesert extends Service {
           context: {
             settings,
             message,
+            logger,
           }
         }
       );
