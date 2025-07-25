@@ -123,7 +123,7 @@ export class DeepDesert extends Service {
             const channel = client.channels.cache.get(setting.channelId);
 
             if (!channel || channel.isDMBased() || !channel.isTextBased() || channel.isThread()) {
-              logger.warn(`Channel ${setting.channelId} is not valid for broadcasting`);
+              console.warn(`Channel ${setting.channelId} is not valid for broadcasting`);
               continue;
             }
 
@@ -132,23 +132,34 @@ export class DeepDesert extends Service {
               const webhook = webhooks.find(w => w.id === setting.webhookId && w.token === setting.webhookToken);
 
               if (!webhook) {
-                logger.warn(`Webhook not found for channel ${setting.channelId}`);
+                console.warn(`Webhook not found for channel ${setting.channelId}`);
                 continue;
               }
 
-              // TODO: Add later logic to delete old messages if needed
-              // const messages = await channel.messages.fetch({ limit: 100 });
-              // const oldMessages = messages.filter(m => m.author.id === client.user?.id);
+              const messages = await channel.messages.fetch({ limit: 100 });
+              const twoWeeksAgo = Date.now() - (14 * 24 * 60 * 60 * 1000);
 
-              // channel.bulkDelete(oldMessages).catch(error => {
-              //   logger.error(`Failed to delete old messages in channel ${setting.channelId}: ${error}`)
-              // });
+              const oldMessages = messages.filter(m => {
+                return m.webhookId === setting.webhookId && m.createdTimestamp > twoWeeksAgo;
+              });
+
+              if (oldMessages.size > 0) {
+                try {
+                  if (oldMessages.size === 1) {
+                    await oldMessages.first()?.delete();
+                  } else {
+                    await channel.bulkDelete(oldMessages);
+                  }
+                } catch (error) {
+                  console.error(`Failed to delete old messages in channel ${setting.channelId}: ${error}`);
+                }
+              }
 
               await webhook.send({
                 content: message,
               });
             } catch (error) {
-              logger.error(`Failed to send message to channel ${setting.channelId}: ${error}`);
+              console.error(`Failed to send message to channel ${setting.channelId}: ${error}`);
               continue;
             }
           }
@@ -157,7 +168,6 @@ export class DeepDesert extends Service {
           context: {
             settings,
             message,
-            logger,
           }
         }
       );
