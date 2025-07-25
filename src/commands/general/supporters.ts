@@ -6,12 +6,9 @@ import {
   SKUFlags,
   unorderedList,
   userMention,
-  type APIEmbedField,
-  type APIEntitlement,
-  type APISKU
+  type APIEmbedField
 } from 'discord.js';
 
-import { config } from '#config';
 import { Command } from '#models/command';
 import { Embed } from '#models/embed';
 
@@ -28,21 +25,9 @@ export default new (class extends Command {
 
     if (!interaction.deferred) await interaction.deferReply();
 
-    let response = await fetch(`https://entitlements.glazk0.dev/applications/${interaction.client.application.id}/entitlements`, {
-      headers: {
-        'Authorization': config.entitlementsSecretToken,
-      },
-    });
-
-    const entitlements = await response.json() as APIEntitlement[];
-
-    response = await fetch(`https://entitlements.glazk0.dev/applications/${interaction.client.application.id}/skus`, {
-      headers: {
-        'Authorization': config.entitlementsSecretToken,
-      },
-    });
-
-    const skus = await response.json() as APISKU[];
+    const entitlements = interaction.entitlements ?? [];
+    let skus = await interaction.client.application.fetchSKUs();
+    skus = skus.filter(sku => sku.flags.has(SKUFlags.UserSubscription) && sku.flags.has(SKUFlags.Available));
 
     const embed = new Embed();
 
@@ -54,8 +39,8 @@ export default new (class extends Command {
 
     const fields: APIEmbedField[] = [];
 
-    if (entitlements.length) {
-      const users = entitlements.filter(entitlement => entitlement.user_id).map(entitlement => userMention(entitlement.user_id as string))
+    if (entitlements.size) {
+      const users = entitlements.filter(entitlement => entitlement.userId).map(entitlement => userMention(entitlement.userId))
       fields.push({
         name: 'Thanks to our supporters',
         value: unorderedList(users),
@@ -66,7 +51,7 @@ export default new (class extends Command {
 
     const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
-    for (const sku of skus.filter(sku => sku.flags === (SKUFlags.UserSubscription | SKUFlags.Available))) {
+    for (const [_, sku] of skus) {
       const button = new ButtonBuilder()
         .setStyle(ButtonStyle.Premium)
         .setSKUId(sku.id);
