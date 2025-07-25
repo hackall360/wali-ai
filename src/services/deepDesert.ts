@@ -50,6 +50,7 @@ export class DeepDesert extends Service {
   protected async onStart(): Promise<void> {
     await this.loadLastCoriolisTime();
     logger.info('Deep Desert service started');
+    await this.execute();
   }
 
   protected async onStop(): Promise<void> {
@@ -69,6 +70,8 @@ export class DeepDesert extends Service {
         logger.info('No new Coriolis reset detected');
         return;
       }
+
+      logger.info(`New Coriolis reset detected at ${new Date(data.nextCoriolisTime * 1000).toISOString()}`);
 
       this.lastCoriolisTime = data.nextCoriolisTime;
 
@@ -109,6 +112,8 @@ export class DeepDesert extends Service {
       const settings = await database.query.webhookChannels.findMany({
         where: (webhookChannels, { eq }) => eq(webhookChannels.webhookType, 'DEEP_DESERT'),
       });
+
+      logger.info(`Broadcasting Deep Desert message to ${settings.length} channels`);
 
       await this.manager?.broadcastEval(
         async (client, { settings, message }) => {
@@ -173,8 +178,7 @@ export class DeepDesert extends Service {
   }
 
   private isNewCoriolisReset(data: DeepDesertApiResponse): boolean {
-    return !this.lastCoriolisTime ||
-      (data.nextCoriolisTime !== this.lastCoriolisTime);
+    return !this.lastCoriolisTime || (data.nextCoriolisTime !== this.lastCoriolisTime);
   }
 
   private getUniques(deepDesertUniques: DeepDesertUnique[]): ItemModel[] {
