@@ -41,7 +41,7 @@ export class DeepDesert extends Service {
     super({
       name: 'deep-desert',
       enabled: true,
-      interval: 1000 * 60 * 60 * 24,
+      interval: 1000 * 60 * 60 * 1,
       retryAttempts: 3,
       retryDelay: 10000,
     });
