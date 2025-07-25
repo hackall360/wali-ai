@@ -1,7 +1,5 @@
 import {
   ActionRowBuilder,
-  type APIEntitlement,
-  type APISKU,
   bold,
   ButtonBuilder,
   ButtonStyle,
@@ -15,14 +13,13 @@ import {
 import { eq } from 'drizzle-orm';
 
 import { commands } from '#commands';
-import { config } from '#config';
 import { database } from '#database';
 import { guilds } from '#database/schema';
 import type { Context } from '#models/command';
 import { Embed } from '#models/embed';
 import { Event } from '#models/event';
 import { contributors } from '#utils/cache';
-import { isSupportedLocale, type SupportedLocales } from '#utils/common';
+import { isSupportedLocale, KO_FI_URL, type SupportedLocales } from '#utils/common';
 import { logger } from '#utils/logger';
 import { commandCounter, commandFailureCounter, commandSuccessCounter } from '#utils/prometheus';
 
@@ -83,47 +80,41 @@ export default new (class extends Event {
     try {
       await command.execute(interaction, context);
 
-      // const response = await fetch(`https://entitlements.glazk0.dev/applications/${interaction.client.application.id}/entitlements`, {
-      //   headers: {
-      //     'Authorization': config.entitlementsSecretToken,
-      //   },
-      // });
+      const isContributor = interaction.entitlements?.some(entitlement => entitlement.userId === interaction.user.id);
 
-      // const entitlements = await response.json() as APIEntitlement[];
+      if (interaction.commandName !== 'supporters' && !contributors.has(interaction.user.id) && !isContributor) {
+        contributors.set(interaction.user.id, new Date());
 
-      // const isContributor = entitlements.some((entitlement) => entitlement.user_id === interaction.user.id);
-
-      // if (interaction.commandName !== 'supporters' && !contributors.has(interaction.user.id) && !isContributor) {
-      //   const response = await fetch(`https://entitlements.glazk0.dev/applications/${interaction.client.application.id}/skus`, {
-      //     headers: {
-      //       'Authorization': config.entitlementsSecretToken,
-      //     },
-      //   });
-
-      //   const skus = await response.json() as APISKU[];
-
-      //   contributors.set(interaction.user.id, new Date());
+        let skus = await interaction.client.application.fetchSKUs();
+        skus = skus.filter(sku => sku.flags.has(SKUFlags.UserSubscription) && sku.flags.has(SKUFlags.Available));
 
         const embed = new Embed()
           .setTitle(`Hey ${interaction.user.username}, thanks for using ${interaction.client.user.username}!`)
           .setDescription(`I hope you're enjoying the bot! If you find it helpful, please consider ${bold('supporting the developer')} to help him maintain and improve it further. Your support is greatly appreciated!`)
           .setColor(Math.floor(Math.random() * 16777215));
 
-      //   const actionRow = new ActionRowBuilder<ButtonBuilder>();
+        const actionRow = new ActionRowBuilder<ButtonBuilder>();
 
-      //   for (const sku of skus.filter(sku => sku.flags === (SKUFlags.UserSubscription | SKUFlags.Available))) {
-      //     const button = new ButtonBuilder()
-      //       .setStyle(ButtonStyle.Premium)
-      //       .setSKUId(sku.id);
-      //     actionRow.addComponents(button);
-      //   }
+        const supportButton = new ButtonBuilder()
+          .setLabel('One-time support')
+          .setStyle(ButtonStyle.Link)
+          .setURL(KO_FI_URL);
+
+        actionRow.addComponents(supportButton);
+
+        for (const [_, sku] of skus) {
+          const button = new ButtonBuilder()
+            .setStyle(ButtonStyle.Premium)
+            .setSKUId(sku.id);
+          actionRow.addComponents(button);
+        }
 
         await interaction.followUp({
           embeds: [embed],
-          // components: actionRow.components.length ? [actionRow] : [],
+          components: actionRow.components.length ? [actionRow] : [],
           flags: MessageFlags.Ephemeral,
         });
-      // }
+      }
 
       commandSuccessCounter.inc({
         commandType: interaction.commandType,
