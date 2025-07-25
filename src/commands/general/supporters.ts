@@ -11,6 +11,7 @@ import {
 
 import { Command } from '#models/command';
 import { Embed } from '#models/embed';
+import { KO_FI_URL } from '#utils/common';
 
 export default new (class extends Command {
   constructor() {
@@ -50,6 +51,13 @@ export default new (class extends Command {
     embed.addFields(fields);
 
     const actionRow = new ActionRowBuilder<ButtonBuilder>();
+
+    const supportButton = new ButtonBuilder()
+      .setLabel('One-time support')
+      .setStyle(ButtonStyle.Link)
+      .setURL(KO_FI_URL);
+
+    actionRow.addComponents(supportButton);
 
     for (const [_, sku] of skus) {
       const button = new ButtonBuilder()
