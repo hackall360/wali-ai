@@ -33,7 +33,7 @@ export const api = {
   },
 };
 
-const format = (path: string) => PROXY_URL + '/' + encodeURI(path) + '.json';
+const format = (path: string) => PROXY_URL + '/' + encodeURI(path) + '.json' + '?random=' + Math.random();
 
 const customFetch = async <T>(path: string): Promise<T | null> => {
   if (cache.has(path)) {
