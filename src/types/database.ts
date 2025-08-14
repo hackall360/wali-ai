@@ -1832,6 +1832,8 @@ export interface BaseModel {
   filterCategoryIds: string[];
 }
 
+export type Bounds3D = object;
+
 export interface BuildableUnlockableSetModel {
   /** @minLength 1 */
   id: string;
@@ -2265,6 +2267,8 @@ export type CombinedModel = {
   /** @uniqueItems true */
   landsraadRewardHouses?: RelatedEntity[] | null;
   attributeValues?: AttributeValueModel[] | null;
+  appliesEffectsToTarget?: AttributeValueModel[] | null;
+  appliesEffectsToAttacker?: AttributeValueModel[] | null;
   customization?: ItemCustomizationModel;
   rewardFrom?: EntityCountInt32[] | null;
   /** @format int32 */
@@ -2493,6 +2497,7 @@ export interface DDSubMapModel {
   mapMarkers?: MarkerLocationModel[] | null;
   /** @format uuid */
   worldGuid?: string;
+  polygon?: PointF[] | null;
 }
 
 export interface DataIndex {
@@ -2715,6 +2720,8 @@ export interface FloatRangeBound {
   value?: number;
 }
 
+export type FootprintExtractor = object;
+
 export type GameData = object;
 
 export interface GameDb {
@@ -2921,6 +2928,8 @@ export interface ItemModel {
   /** @uniqueItems true */
   landsraadRewardHouses?: RelatedEntity[] | null;
   attributeValues?: AttributeValueModel[] | null;
+  appliesEffectsToTarget?: AttributeValueModel[] | null;
+  appliesEffectsToAttacker?: AttributeValueModel[] | null;
   customization?: ItemCustomizationModel;
   rewardFrom?: EntityCountInt32[] | null;
   /** @format int32 */
@@ -3068,6 +3077,8 @@ export interface LandsraadTaskRewardTier {
   rewardThreshold?: number;
   /** @format int32 */
   turnInCount?: number;
+  /** @format float */
+  rewardPerTurnIn?: number;
 }
 
 export interface LandsraadTaskRewardWeeklyTiers {
@@ -3527,11 +3538,21 @@ export interface Point {
   y?: number;
 }
 
+export interface PointF {
+  isEmpty?: boolean;
+  /** @format float */
+  x?: number;
+  /** @format float */
+  y?: number;
+}
+
 export interface Polygon {
   points?: Point[] | null;
   /** @format double */
   area?: number;
 }
+
+export type PolygonTransformer = object;
 
 export interface Quat {
   /** @format double */
@@ -3901,6 +3922,8 @@ export type RelatedEntity = {
   /** @uniqueItems true */
   landsraadRewardHouses?: RelatedEntity[] | null;
   attributeValues?: AttributeValueModel[] | null;
+  appliesEffectsToTarget?: AttributeValueModel[] | null;
+  appliesEffectsToAttacker?: AttributeValueModel[] | null;
   customization?: ItemCustomizationModel;
   rewardFrom?: EntityCountInt32[] | null;
   /** @format int32 */
