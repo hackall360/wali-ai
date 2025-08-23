@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "private": true,
   "scripts": {
-    "build": "tsc && tsc-alias && pnpm run copy-migrations",
+    "build": "tsc && tsc-alias && npm run copy-migrations",
     "start": "NODE_ENV=production node dist",
     "dev": "NODE_ENV=development tsx watch src/bot.ts",
     "dev:shard": "NODE_ENV=development tsx watch src/index.ts",
@@ -73,5 +73,5 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "pnpm@10.6.2"
+  "packageManager": "npm@11.4.2"
 }
