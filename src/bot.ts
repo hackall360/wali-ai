@@ -13,7 +13,7 @@ const { registerCommands } = await import('#commands');
 
 const client = new Client<true>({
   shards: 'auto',
-  intents: [GatewayIntentBits.Guilds],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
   presence: {
     status: 'online',
     activities: [
