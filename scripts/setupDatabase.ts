@@ -1,6 +1,27 @@
 import EmbeddedPostgres from 'embedded-postgres';
-import { existsSync } from 'fs';
+import {
+  accessSync,
+  constants,
+  existsSync,
+  chmodSync,
+} from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
+
+// Ensure the embedded postgres binaries are executable
+const require = createRequire(import.meta.url);
+const embeddedMain = require.resolve('@embedded-postgres/linux-x64');
+const initdbPath = path.resolve(
+  path.dirname(embeddedMain),
+  '..',
+  'native/bin/initdb',
+);
+
+try {
+  accessSync(initdbPath, constants.X_OK);
+} catch {
+  chmodSync(initdbPath, 0o755);
+}
 
 const dataDir = './data/db';
 
