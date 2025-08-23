@@ -1,9 +1,15 @@
 import { ActivityType, Client, GatewayIntentBits, Options } from 'discord.js';
 
-import { registerCommands } from '#commands';
 import { config } from '#config';
-import { registerEvents } from '#events';
+import { startDatabase, stopDatabase } from '#database/server';
 import { logger } from '#utils/logger';
+
+if (config.isDevelopment) {
+  await startDatabase();
+}
+
+const { registerEvents } = await import('#events');
+const { registerCommands } = await import('#commands');
 
 const client = new Client<true>({
   shards: 'auto',
@@ -56,21 +62,21 @@ await registerCommands(client);
 process.on('SIGINT', () => {
   logger.info('SIGINT received. Shutting down...');
   client.destroy();
-  process.exit(0);
+  stopDatabase().finally(() => process.exit(0));
 });
 
 process.on('SIGTERM', () => {
   logger.info('SIGTERM received. Shutting down...');
   client.destroy();
-  process.exit(0);
+  stopDatabase().finally(() => process.exit(0));
 });
 
 process.on('uncaughtException', (error) => {
   logger.error(`Uncaught exception: ${error}`);
-  process.exit(1);
+  stopDatabase().finally(() => process.exit(1));
 });
 
 process.on('unhandledRejection', (reason) => {
   logger.error(`Unhandled rejection: ${reason}`);
-  process.exit(1);
+  stopDatabase().finally(() => process.exit(1));
 });
