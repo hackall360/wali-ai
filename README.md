@@ -35,9 +35,11 @@ Recent updates bundle an embedded PostgreSQL database and trim the configuration
 ## Environment variables
 | Variable | Description |
 | --- | --- |
+| `AI_CHANNEL_ID` | Optional: Discord channel ID for LLM responses |
 | `DISCORD_BOT_TOKEN` | Discord bot token |
 | `DISCORD_CLIENT_ID` | Application client ID |
 | `DISCORD_GUILD_ID` | Optional: register commands to a single guild during development |
+| `POLLINATIONS_TOKEN` | Optional: token used when requesting data from Pollinations |
 | `SECRET_TOKEN` | Optional: token used when requesting data from dune.gaming.tools |
 
 The bot starts an embedded PostgreSQL instance automatically. No external database or AWS configuration is required.
