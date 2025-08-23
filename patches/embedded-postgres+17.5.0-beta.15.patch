@@ -1,0 +1,13 @@
+diff --git a/node_modules/embedded-postgres/dist/index.js b/node_modules/embedded-postgres/dist/index.js
+index bd74c14..9a8e1d7 100644
+--- a/node_modules/embedded-postgres/dist/index.js
++++ b/node_modules/embedded-postgres/dist/index.js
+@@ -23,7 +23,7 @@ const { Client } = pg;
+  * for a particular string, we need to force that string into the right locale.
+  * @see https://github.com/leinelissen/embedded-postgres/issues/15
+  */
+-const LC_MESSAGES_LOCALE = 'en_US.UTF-8';
++const LC_MESSAGES_LOCALE = 'C.UTF-8';
+ // The default configuration options for the class
+ const defaults = {
+     databaseDir: path.join(process.cwd(), 'data', 'db'),

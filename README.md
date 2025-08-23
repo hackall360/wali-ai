@@ -41,7 +41,7 @@ git clone https://github.com/glazk0/wali.git
 2. Install dependencies
 
 ```bash
-pnpm install
+npm install
 ```
 
 3. Copy the example config file and fill in the values
@@ -53,13 +53,13 @@ cp .env.example .env
 4. Build the bot
 
 ```bash
-pnpm build
+npm run build
 ```
 
 5. Start the bot
 
 ```bash
-pnpm start
+npm start
 ```
 
 ## Contributing
