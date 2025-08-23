@@ -44,6 +44,26 @@ Recent updates bundle an embedded PostgreSQL database and trim the configuration
 
 The bot starts an embedded PostgreSQL instance automatically. No external database or AWS configuration is required.
 
+## AI channel workflow
+When `AI_CHANNEL_ID` is set, Wali watches that Discord text channel for regular chat
+messages. Each message is forwarded to [Pollinations](https://pollinations.ai) along
+with a set of database tools. Pollinations may call these tools (which in turn use
+`api.get` to query [dune.gaming.tools](https://dune.gaming.tools)) and then responds
+back into the same channel.
+
+### Pollinations requirements
+- `POLLINATIONS_TOKEN` is optional but recommended for higher request limits.
+- Outbound access to `https://text.pollinations.ai` must be allowed.
+
+### Manual testing
+1. Create a development guild and note the ID of a test channel.
+2. Add `AI_CHANNEL_ID=<channelId>` and optionally `POLLINATIONS_TOKEN=<token>` to
+   `.env`.
+3. Run the bot with `npm run dev`.
+4. Send a message such as `What does a Windtrap cost?` in the configured channel.
+5. A Polli reply should appear with information fetched via the tools layer. Check
+   the process logs if no response arrives.
+
 ## Self-hosting
 Using the publicly hosted bot is recommended. Self-hosting is at your own risk and monetisation is not permitted.
 
