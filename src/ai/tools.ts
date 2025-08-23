@@ -1,4 +1,5 @@
 import type { Tool } from '../polli';
+import { formatBuilding, formatContract, formatItem, formatNpc, formatSkill } from './formatters';
 
 import type { ContractModel, ItemModel, NpcModel, PlaceableModel, SkillModel } from '#types/database';
 import { api } from '#utils/api';
@@ -14,11 +15,26 @@ const searchAndGet = async <T>(query: string, type: string): Promise<T | null> =
 };
 
 export const exec = {
-  get_item: async ({ query }: { query: string }) => searchAndGet<ItemModel>(query, 'items'),
-  get_building: async ({ query }: { query: string }) => searchAndGet<PlaceableModel>(query, 'buildables'),
-  get_skill: async ({ query }: { query: string }) => searchAndGet<SkillModel>(query, 'skills'),
-  get_contract: async ({ query }: { query: string }) => searchAndGet<ContractModel>(query, 'contracts'),
-  get_npc: async ({ query }: { query: string }) => searchAndGet<NpcModel>(query, 'npcs'),
+  get_item: async ({ query }: { query: string }) => {
+    const item = await searchAndGet<ItemModel>(query, 'items');
+    return item ? formatItem(item) : `No item found for "${query}".`;
+  },
+  get_building: async ({ query }: { query: string }) => {
+    const building = await searchAndGet<PlaceableModel>(query, 'buildables');
+    return building ? formatBuilding(building) : `No building found for "${query}".`;
+  },
+  get_skill: async ({ query }: { query: string }) => {
+    const skill = await searchAndGet<SkillModel>(query, 'skills');
+    return skill ? formatSkill(skill) : `No skill found for "${query}".`;
+  },
+  get_contract: async ({ query }: { query: string }) => {
+    const contract = await searchAndGet<ContractModel>(query, 'contracts');
+    return contract ? formatContract(contract) : `No contract found for "${query}".`;
+  },
+  get_npc: async ({ query }: { query: string }) => {
+    const npc = await searchAndGet<NpcModel>(query, 'npcs');
+    return npc ? formatNpc(npc) : `No NPC found for "${query}".`;
+  },
 };
 
 export const tools: Tool[] = [
