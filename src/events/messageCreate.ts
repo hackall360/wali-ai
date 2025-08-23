@@ -2,6 +2,7 @@ import { Events, Message } from 'discord.js';
 
 import { polliClient } from '../ai/polliClient.js';
 import { exec, tools } from '../ai/tools.js';
+import { systemPrompt } from '../ai/prompt.js';
 
 import { config } from '#config';
 import { Event } from '#models/event';
@@ -26,6 +27,7 @@ export default new (class extends Event {
       .join(', ');
 
     const messages = [
+      { role: 'system', content: systemPrompt },
       {
         role: 'system',
         content: `You can call tools to answer accurately. Available tools: ${toolList}.`,
