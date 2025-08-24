@@ -4,6 +4,7 @@ import {
   constants,
   existsSync,
   chmodSync,
+  lstatSync,
   readdirSync,
 } from 'fs';
 import path from 'path';
@@ -32,9 +33,19 @@ if (existsSync(binDir)) {
   for (const file of readdirSync(binDir)) {
     const binaryPath = path.join(binDir, file);
     try {
-      accessSync(binaryPath, constants.X_OK);
-    } catch {
-      chmodSync(binaryPath, 0o755);
+      if (lstatSync(binaryPath).isFile()) {
+        try {
+          accessSync(binaryPath, constants.X_OK);
+        } catch {
+          try {
+            chmodSync(binaryPath, 0o755);
+          } catch (err) {
+            console.warn(`Unable to set execute permission on ${binaryPath}: ${err}`);
+          }
+        }
+      }
+    } catch (err) {
+      console.warn(`Skipping permission check for ${binaryPath}: ${err}`);
     }
   }
 }
@@ -62,3 +73,4 @@ try {
   console.error(`Failed to setup database: ${error}`);
   process.exit(1);
 }
+
