@@ -14,14 +14,28 @@ import { createRequire } from 'module';
 // EACCES. To avoid that, walk through all binaries in the `native/bin`
 // directory and grant execute permissions when needed.
 const require = createRequire(import.meta.url);
-const embeddedMain = require.resolve('@embedded-postgres/linux-x64');
+
+// The embedded-postgres package ships platform specific bundles under
+// `@embedded-postgres/<platform>-<arch>`. Resolve the bundle for the current
+// environment and fall back to the Linux x64 build if resolution fails (e.g.
+// when running in an unsupported environment).
+const platformPackage = `@embedded-postgres/${process.platform}-${process.arch}`;
+let embeddedMain: string;
+try {
+  embeddedMain = require.resolve(platformPackage);
+} catch {
+  embeddedMain = require.resolve('@embedded-postgres/linux-x64');
+}
+
 const binDir = path.resolve(path.dirname(embeddedMain), '..', 'native/bin');
-for (const file of readdirSync(binDir)) {
-  const binaryPath = path.join(binDir, file);
-  try {
-    accessSync(binaryPath, constants.X_OK);
-  } catch {
-    chmodSync(binaryPath, 0o755);
+if (existsSync(binDir)) {
+  for (const file of readdirSync(binDir)) {
+    const binaryPath = path.join(binDir, file);
+    try {
+      accessSync(binaryPath, constants.X_OK);
+    } catch {
+      chmodSync(binaryPath, 0o755);
+    }
   }
 }
 
