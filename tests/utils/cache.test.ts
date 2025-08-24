@@ -1,4 +1,4 @@
-import { cache, contributors } from '../../src/utils/cache';
+import { cache, contributors } from '../../src/utils/cache.js';
 
 describe('cache utilities', () => {
   it('stores and retrieves values in cache', () => {

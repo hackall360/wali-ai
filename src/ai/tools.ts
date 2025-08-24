@@ -1,5 +1,6 @@
-import type { Tool } from '../polli';
-import { formatBuilding, formatContract, formatItem, formatNpc, formatSkill } from './formatters';
+// Relative imports must include the file extension under NodeNext resolution
+import type { Tool } from '../polli/index.js';
+import { formatBuilding, formatContract, formatItem, formatNpc, formatSkill } from './formatters.js';
 
 import type { ContractModel, ItemModel, NpcModel, PlaceableModel, SkillModel } from '#types/database';
 import { api } from '#utils/api';

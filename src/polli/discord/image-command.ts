@@ -1,6 +1,6 @@
 // polli/discord/image-command.ts
 import { AttachmentBuilder, ChatInputCommandInteraction } from "discord.js";
-import { Polli } from "../client";
+import { Polli } from "../client.js";
 
 const polli = new Polli({
   token: process.env.POLLINATIONS_TOKEN,  // keep server-side

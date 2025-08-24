@@ -1,7 +1,7 @@
 // polli/discord/chat-tools-command.ts
 // Example: tool-enabled chat. The model can call tools and we execute them here.
 import { ChatInputCommandInteraction } from "discord.js";
-import { Polli, ChatMessage, Tool } from "../index";
+import { Polli, type ChatMessage, type Tool } from "../index.js";
 
 const polli = new Polli({
   token: process.env.POLLINATIONS_TOKEN,

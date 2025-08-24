@@ -1,6 +1,6 @@
 // polli/discord/chat-command.ts
 import { ChatInputCommandInteraction } from "discord.js";
-import { Polli, ChatMessage } from "../index";
+import { Polli, type ChatMessage } from "../index.js";
 
 const polli = new Polli({
   token: process.env.POLLINATIONS_TOKEN,

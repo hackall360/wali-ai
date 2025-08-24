@@ -3,6 +3,7 @@ import { Events, Message } from 'discord.js';
 import { polliClient } from '../ai/polliClient.js';
 import { exec, tools } from '../ai/tools.js';
 import { systemPrompt } from '../ai/prompt.js';
+import type { ChatMessage } from '../polli/index.js';
 
 import { config } from '#config';
 import { Event } from '#models/event';
@@ -26,7 +27,7 @@ export default new (class extends Event {
       .filter(Boolean)
       .join(', ');
 
-    const messages = [
+    const messages: ChatMessage[] = [
       { role: 'system', content: systemPrompt },
       {
         role: 'system',

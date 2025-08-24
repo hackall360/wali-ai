@@ -3,8 +3,9 @@
 // Works in Node 18+ (global fetch), Bun, Deno, and modern browsers.
 // Endpoints per official APIDOCS: image (/prompt), models (/models), text (GET /), openai chat (POST /openai).
 
-import { ChatMessage, ChatOptions, ImageParams, PollinationsError, TextParams, Tool, ToolCall } from "./types";
-import { qs, backoff, safeJsonParse } from "./utils";
+import type { ChatMessage, ChatOptions, ImageParams, TextParams, Tool, ToolCall } from "./types.js";
+import { PollinationsError } from "./types.js";
+import { qs, backoff, safeJsonParse } from "./utils.js";
 
 export interface PolliConfig {
   token?: string;                 // Bearer token (recommended for servers/bots)
@@ -26,7 +27,7 @@ export class Polli {
     this.baseTextURL  = cfg.baseTextURL  ?? "https://text.pollinations.ai";
   }
 
-  private headers(contentType?: string): HeadersInit {
+  private headers(contentType?: string): Record<string, string> {
     const h: Record<string, string> = {};
     if (contentType) h["Content-Type"] = contentType;
     if (this.token) h["Authorization"] = `Bearer ${this.token}`;
@@ -61,8 +62,7 @@ export class Polli {
       const res = await fetch(url, { method: "GET", headers: this.headers() });
       if (!res.ok) throw new PollinationsError(await res.text().catch(() => res.statusText), res.status);
       const ab = await res.arrayBuffer();
-      // @ts-expect-error - Buffer exists in Node
-      return (opts?.asBuffer && typeof Buffer !== "undefined") ? Buffer.from(ab) : ab;
+      return opts?.asBuffer && typeof Buffer !== "undefined" ? Buffer.from(ab) : ab;
     };
     return backoff(fetchRun);
   }
@@ -123,7 +123,7 @@ export class Polli {
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new PollinationsError(await res.text().catch(() => res.statusText), res.status);
-      const data = await res.json();
+      const data: any = await res.json();
       const msg = data?.choices?.[0]?.message?.content;
       if (typeof msg !== "string") throw new PollinationsError("Unexpected chat completion payload");
       return msg;
@@ -218,7 +218,7 @@ export class Polli {
         body: JSON.stringify({ ...bodyBase, messages: msgs }),
       });
       if (!res.ok) throw new PollinationsError(await res.text().catch(() => res.statusText), res.status);
-      const data = await res.json();
+      const data: any = await res.json();
 
       const choice = data?.choices?.[0];
       const assistantMsg = choice?.message as any;
