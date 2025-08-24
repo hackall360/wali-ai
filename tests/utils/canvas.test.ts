@@ -7,7 +7,7 @@ vi.mock('@napi-rs/canvas', () => ({
   })),
 }));
 
-import { createColorPaletteImage } from '../../src/utils/canvas';
+import { createColorPaletteImage } from '../../src/utils/canvas.js';
 import { createCanvas } from '@napi-rs/canvas';
 
 describe('createColorPaletteImage', () => {

@@ -1,4 +1,4 @@
-import { isSupportedLocale, truncateArray } from '../../src/utils/common';
+import { isSupportedLocale, truncateArray } from '../../src/utils/common.js';
 
 describe('isSupportedLocale', () => {
   it('returns true for supported locale', () => {

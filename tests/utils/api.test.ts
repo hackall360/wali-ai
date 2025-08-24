@@ -1,8 +1,8 @@
-import { api } from '../../src/utils/api';
-import { cache } from '../../src/utils/cache';
-import { config } from '../../src/config';
-import { logger } from '../../src/utils/logger';
-import type { SearchEntry } from '../../src/types/database';
+import { api } from '../../src/utils/api.js';
+import { cache } from '../../src/utils/cache.js';
+import { config } from '../../src/config.js';
+import { logger } from '../../src/utils/logger.js';
+import type { SearchEntry } from '../../src/types/database.js';
 import { vi } from 'vitest';
 
 const originalFetch = global.fetch;

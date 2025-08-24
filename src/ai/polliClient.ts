@@ -1,4 +1,5 @@
-import { Polli } from '../polli';
+// Relative import requires explicit extension for NodeNext module resolution
+import { Polli } from '../polli/index.js';
 
 import { config } from '#config';
 import { logger } from '#utils/logger';

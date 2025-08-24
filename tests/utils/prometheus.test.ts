@@ -4,7 +4,7 @@ import {
   commandSuccessCounter,
   totalGuilds,
   totalUsers,
-} from '../../src/utils/prometheus';
+} from '../../src/utils/prometheus.js';
 
 describe('prometheus metrics', () => {
   it('updates counters and gauges without throwing', () => {

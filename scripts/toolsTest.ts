@@ -1,6 +1,7 @@
-import { Polli } from '../polli';
-import { tools, exec } from '../src/ai/tools';
-import { api } from '../src/utils/api';
+// Update import paths to include explicit extensions under NodeNext resolution
+import { Polli } from '../src/polli/index.js';
+import { tools, exec } from '../src/ai/tools.js';
+import { api } from '../src/utils/api.js';
 
 // Simple script to exercise the tools layer without Discord.
 // Usage: tsx scripts/toolsTest.ts

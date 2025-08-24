@@ -1,6 +1,6 @@
 // polli/examples/node-tools-demo.ts
 // Simple Node demo to run tool-enabled chat on the command line.
-import { Polli, ChatMessage, Tool } from "../index";
+import { Polli, type ChatMessage, type Tool } from "../index.js";
 
 async function main() {
   const polli = new Polli({ token: process.env.POLLINATIONS_TOKEN, referrer: "CLI-Demo" });
