@@ -4,23 +4,25 @@ import {
   constants,
   existsSync,
   chmodSync,
+  readdirSync,
 } from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 
-// Ensure the embedded postgres binaries are executable
+// Ensure the embedded Postgres binaries are executable. Some environments may
+// strip the executable bit during installation which causes spawn to fail with
+// EACCES. To avoid that, walk through all binaries in the `native/bin`
+// directory and grant execute permissions when needed.
 const require = createRequire(import.meta.url);
 const embeddedMain = require.resolve('@embedded-postgres/linux-x64');
-const initdbPath = path.resolve(
-  path.dirname(embeddedMain),
-  '..',
-  'native/bin/initdb',
-);
-
-try {
-  accessSync(initdbPath, constants.X_OK);
-} catch {
-  chmodSync(initdbPath, 0o755);
+const binDir = path.resolve(path.dirname(embeddedMain), '..', 'native/bin');
+for (const file of readdirSync(binDir)) {
+  const binaryPath = path.join(binDir, file);
+  try {
+    accessSync(binaryPath, constants.X_OK);
+  } catch {
+    chmodSync(binaryPath, 0o755);
+  }
 }
 
 const dataDir = './data/db';
